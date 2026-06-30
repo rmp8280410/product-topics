@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你辛苦累積的資產，用在你不想用的地方怎麼辦？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero{background:linear-gradient(135deg,#ffffff,#edf4ff)}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem);font-weight:900;line-height:1.22}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:30px;font-weight:900}
+h2.tight{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+p{font-size:1.15rem;line-height:1.85;max-width:900px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;padding:28px;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.08);text-align:center;opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.card h3{margin-top:10px;font-size:1.15rem;font-weight:700}
+.card p{font-size:0.95rem;margin:8px 0 0;color:#6B7280}
+.card b{font-size:1.6rem;color:#0A3D91;display:block;margin-bottom:4px}
+.float{animation:floaty 4.5s ease-in-out infinite}
+.card:nth-child(2).float{animation-delay:.3s}
+.card:nth-child(3).float{animation-delay:.6s}
+.card:nth-child(4).float{animation-delay:.9s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card.in.float{animation-play-state:running}
+.card:not(.in).float{animation-play-state:paused}
+.big{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;color:#0A3D91;margin:40px 0;line-height:1.5;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.big.in{opacity:1;transform:translateY(0)}
+.cta{background:linear-gradient(135deg,#eef5ff,#ffffff);color:#111827;text-align:center;align-items:center}
+.cta p{color:#374151}
+.btn{display:inline-block;background:#4F8CFF;color:#fff;text-decoration:none;padding:18px 36px;border-radius:99px;font-weight:700;margin-top:30px;box-shadow:0 12px 30px rgba(79,140,255,.4);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,140,255,.55)}
+.shape{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;will-change:transform}
+.s1{width:220px;height:220px;background:#4F8CFF22;top:5%;right:5%}
+.s2{width:120px;height:120px;background:#FFB84D33;bottom:15%;left:8%}
+.graph{display:flex;align-items:end;gap:16px;height:220px;margin:40px auto;max-width:700px}
+.bar{flex:1;background:linear-gradient(#4F8CFF,#0A3D91);border-radius:12px 12px 0 0;color:#fff;padding-top:10px;text-align:center;font-weight:700;font-size:.95rem;height:0;transition:height 1.4s cubic-bezier(.22,1,.36,1)}
+.bar.warn{background:linear-gradient(#FFB84D,#D9881A)}
+.timeline{display:flex;justify-content:space-between;gap:10px;margin:40px 0;flex-wrap:wrap;align-items:center}
+.timeline.vertical{flex-direction:column;max-width:420px;margin-left:auto;margin-right:auto}
+.timeline.vertical .step{width:100%}
+.timeline.vertical .arrow{transform:rotate(90deg)}
+.step{flex:1;min-width:130px;background:#f3f7ff;padding:25px 16px;border-radius:18px;text-align:center;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.step.in{opacity:1;transform:translateY(0)}
+.step span{display:block;font-size:.85rem;font-weight:400;color:#6B7280;margin-top:6px}
+.arrow{font-size:2rem;color:#4F8CFF;opacity:0;transition:opacity .6s ease .3s}
+.arrow.in{opacity:1}
+.eyebrow{font-size:.95rem;font-weight:700;color:#4F8CFF;letter-spacing:.05em;margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:680px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:24px;padding:32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.split-card.in{opacity:1;transform:translateY(0)}
+.split-card.smooth{background:#EAFBF1}
+.split-card.rough{background:#FFF3E0}
+.split-card .label{font-weight:900;font-size:1.2rem;margin-bottom:10px}
+.split-card.smooth .label{color:#0F8A4D}
+.split-card.rough .label{color:#C2730A}
+.split-card p{color:#4B5563;font-size:1rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.fine{font-size:.8rem;color:#9CA3AF;max-width:480px;margin-top:30px}
+.cta .fine{color:#6B7280}
+.scroll-cue{position:absolute;bottom:5vh;left:50%;transform:translateX(-50%);font-size:.8rem;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+.scroll-cue .arrow-down{width:16px;height:16px;border-right:2px solid #6B7280;border-bottom:2px solid #6B7280;transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+/* progress bar (used-elsewhere visual) */
+.progress-wrap{max-width:640px;width:100%;margin:40px auto 0}
+.progress-label{display:flex;justify-content:space-between;font-size:.9rem;color:#6B7280;margin-bottom:8px}
+.progress-track{height:24px;background:#EEF2F7;border-radius:12px;overflow:hidden}
+.progress-fill{height:100%;width:0%;border-radius:12px;background:linear-gradient(90deg,#4F8CFF,#0A3D91);transition:width 1.6s cubic-bezier(.22,1,.36,1)}
+.progress-fill.warn{background:linear-gradient(90deg,#FFB84D,#D9881A)}
+
+/* equal-assets comparison (取代「資產用在原本的地方」) */
+.equal-wrap{max-width:560px;width:100%;margin:40px auto 0;display:flex;flex-direction:column;gap:18px}
+.equal-row{display:flex;align-items:center;gap:16px}
+.equal-row .equal-label{width:110px;flex-shrink:0;font-weight:700;font-size:.95rem;color:#374151;text-align:right}
+.equal-track{flex:1;height:20px;background:#EEF2F7;border-radius:10px;overflow:hidden}
+.equal-fill{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#4F8CFF,#0A3D91);transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.equal-fill.highlight{background:linear-gradient(90deg,#0F8A4D,#0A6B3A)}
+
+/* eaten-profit bar (情境一) */
+.eat-wrap{max-width:560px;width:100%;margin:40px auto 0}
+.eat-track{position:relative;height:64px;background:#EEF2F7;border-radius:16px;overflow:hidden}
+.eat-fill{position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,#4F8CFF,#0A3D91);border-radius:16px;display:flex;align-items:center;padding-left:18px;color:#fff;font-weight:700;font-size:.95rem;transition:width 3.6s cubic-bezier(.65,0,.35,1)}
+.eat-bite{position:absolute;right:0;top:0;height:100%;width:0%;background:repeating-linear-gradient(135deg,#FFE3E3,#FFE3E3 6px,#FFC9C9 6px,#FFC9C9 12px);border-radius:0 16px 16px 0;display:flex;align-items:center;justify-content:center;color:#C0392B;font-weight:700;font-size:.85rem;opacity:0;transition:width 3.6s cubic-bezier(.65,0,.35,1), opacity .6s ease .6s}
+.eat-bite.in{opacity:1}
+.eat-label{display:flex;justify-content:space-between;font-size:.85rem;color:#6B7280;margin-top:10px}
+.red{color:#D7263D}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero" id="hero">
+<div class="shape s1" data-parallax="0.15"></div>
+<div class="shape s2" data-parallax="0.25"></div>
+<div class="reveal in">
+<p class="eyebrow in">在你開始規劃任何投資之前</p>
+<h1>你辛苦累積的資產，<br>用在你不想用的地方怎麼辦？</h1>
+<div class="big in" style="margin-top:30px">你以為自己在存錢，<br>其實是在賭一件事：<br>「自己永遠不會出事。」</div>
+</div>
+<div class="scroll-cue"><span>往下滑</span><span class="arrow-down"></span></div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">情境一 · 投資</p>
+<h2>那筆股票，<br>本來不該在今天賣。</h2>
+<p>抱了三年，等的就是這一波；但某天因為一場<span class="red">突如其來的重大狀況</span>，你必須在低點把它變現，不是你看壞了它，是這筆錢，今天被挪去了別的地方。</p>
+<div class="eat-wrap">
+<div class="eat-track">
+<div class="eat-fill" data-target="55">原本該有的獲利</div>
+<div class="eat-bite" data-target="45">被提早變現吃掉</div>
+</div>
+<div class="eat-label"><span>持續持有</span><span>提早賣出</span></div>
+</div>
+<div class="big">不是市場讓你虧損，<br>是「被迫挪用」讓你虧損。</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">情境二 · 儲蓄</p>
+<h2 class="tight">那筆存款本來都有各自的目的。</h2>
+<div class="cards">
+<div class="card">🏠<h3>買房基金</h3></div>
+<div class="card">💍<h3>結婚基金</h3></div>
+<div class="card">✈️<h3>旅行基金</h3></div>
+<div class="card">🎓<h3>教育基金</h3></div>
+<div class="card">🌴<h3>退休基金</h3></div>
+</div>
+<div class="big">每一筆錢，<br>都早就有它該去的地方。</div>
+<p>但如果中途出現一筆「沒有人預期的支出」，它就會被改名、被挪用，原本屬於買房的錢，變成了醫藥費；原本屬於旅行的錢，變成收入中斷的生活急用金。</p>
+</div>
+</section>
+
+<section style="background:#eef5ff">
+<div class="reveal">
+<p class="eyebrow">如果突然兩、三年不能工作</p>
+<h2>你的資產，<br>會一筆一筆地被挪走。</h2>
+<div class="timeline vertical">
+<div class="step">300萬的存款／投資<span>原本的人生資金</span></div>
+<div class="arrow">→</div>
+<div class="step">醫療支出<span>50萬～100萬，突如其來</span></div>
+<div class="arrow">→</div>
+<div class="step">生活費<span>2-3年無收入</span></div>
+<div class="arrow">→</div>
+<div class="step">人生計畫<span>重新排序</span></div>
+</div>
+<div class="cards">
+<div class="card"><b class="countup" data-target="150" data-unit="萬">0</b>本來要買房</div>
+<div class="card"><b class="countup" data-target="50" data-unit="萬">0</b>本來要結婚</div>
+<div class="card"><b class="countup" data-target="50" data-unit="萬">0</b>本來要旅行</div>
+<div class="card"><b class="countup" data-target="50" data-unit="萬">0</b>本來要投資</div>
+</div>
+<div class="big">最大的風險，<br>不是賺得不夠多，而是辛苦存的錢，最後沒有用在你想用的地方。</div>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">如果有一筆錢，專門用來「補上那段空缺」</p>
+<h2>原本的資產，<br>就不用被挪走了</h2>
+<div class="cards">
+<div class="card float">📋<h3>啟動條件單純</h3><p>由醫院認定即可申請，不必等到住院或開刀</p></div>
+<div class="card float"><b class="countup" data-target="100" data-suffix="～200萬">0</b><h3>一次取得</h3><p>快速因應重大支出，不必變賣原本的資產</p></div>
+<div class="card float">🔄<h3>自由運用</h3><p>錢給你決定怎麼花，需要花在醫療還是需要花在生活，都由你決定。</p></div>
+<div class="card float">🛡️<h3>降低衝擊</h3><p>讓股票、存款留在它原本該去的地方</p></div>
+<div class="card float">🏡<h3>生活不受影響</h3><p>保戶與家人原本的生活不受影響，不用因為一筆突發支出，打亂全家人原本的步調</p></div>
+</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">把時間拉長來看</p>
+<h2 class="tight">如果我這一生真的就平安健康呢？</h2>
+<div class="timeline">
+<div class="step">現在<span>持續累積</span></div>
+<div class="step">50歲<span>開始領回</span></div>
+<div class="step">之後<span>退休金 / 旅遊基金</span></div>
+</div>
+<div class="equal-wrap">
+<div class="equal-row"><span class="equal-label">你的存款</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">你的股票</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">這筆規劃</span><div class="equal-track"><div class="equal-fill highlight" data-target="100"></div></div></div>
+</div>
+<p style="text-align:center;margin:18px auto 0;max-width:560px">這筆錢、這筆規劃，就跟你的存款、股票一樣，都是為你所用。</p>
+<div class="split">
+<div class="split-card rough">
+<div class="label">如果遇到狀況</div>
+<p>憑證明即可申請理賠金，補上醫療費與停工期間的生活費，原本的股票、存款，不用被挪去別的地方。</p>
+</div>
+<div class="split-card smooth">
+<div class="label">如果一路平安</div>
+<p>持續累積，50 歲後可以開始領退休金；沒用到的部分，仍然是你資產配置的一部分，和基金、股票、存款一樣，留著它原本的名字。</p>
+</div>
+</div>
+<div class="big">有些準備，最後也能成為<br>你自己選擇要怎麼用的未來資產。</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="reveal">
+<h1>最好的結果，<br>不是這筆錢一定用不到。</h1>
+<p style="max-width:none">用到了，它保護你所有的資產，與你所有的家人。<br>沒用到，它與你的存款、股票一樣，全部為你的未來所用。</p>
+<a class="btn" href="#">我想了解這種規劃</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div>
+</section>
+
+<script>
+// Scroll reveal for generic elements
+const revealEls = document.querySelectorAll('.reveal, .card, .big, .step, .arrow, .eyebrow, .split-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.25 });
+revealEls.forEach(el => io.observe(el));
+
+// Stagger cards within each grid
+document.querySelectorAll('.cards').forEach(grid => {
+  [...grid.children].forEach((card, i) => { card.style.transitionDelay = (i * 0.1) + 's'; });
+});
+
+// Eaten-profit bar fill on view (情境一): full blue bar gets eaten from the right by red
+document.querySelectorAll('.eat-track').forEach(track => {
+  const fill = track.querySelector('.eat-fill');
+  const bite = track.querySelector('.eat-bite');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          bite.classList.add('in');
+          fill.style.width = fill.dataset.target + '%';
+          bite.style.width = bite.dataset.target + '%';
+        }, 400);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  obs.observe(track);
+});
+
+// Progress bar fill on view
+document.querySelectorAll('.progress-fill').forEach(fill => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { fill.style.width = fill.dataset.target + '%'; }, 200);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(fill);
+});
+
+// Equal-assets bar fill on view (50歲段落)
+document.querySelectorAll('.equal-fill').forEach((fill, i) => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { fill.style.width = fill.dataset.target + '%'; }, 200 + i * 250);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(fill);
+});
+
+// Count-up numbers
+document.querySelectorAll('.countup').forEach(el => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const unit = el.dataset.unit || '';
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const duration = 1200;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + unit + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + unit + suffix;
+        }
+        requestAnimationFrame(tick);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+
+// Parallax background shapes
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+</script>
+</body></html>
