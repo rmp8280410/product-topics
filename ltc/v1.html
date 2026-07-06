@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>長照這件事，通常來得比想像中久</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero{background:linear-gradient(135deg,#ffffff,#edf4ff)}
+h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:900;line-height:1.28}
+h2{font-size:clamp(2.1rem,4.4vw,3rem);margin-bottom:30px;font-weight:900}
+h2.tight{font-size:clamp(1.8rem,3.8vw,2.6rem)}
+p{font-size:1.3rem;line-height:1.9;max-width:900px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;padding:32px 28px;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.08);text-align:center;opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.card .icon{font-size:3rem;display:block;line-height:1}
+.card h3{margin-top:14px;font-size:1.35rem;font-weight:700}
+.card p{font-size:1.1rem;margin:10px 0 0;color:#6B7280;line-height:1.7}
+.card b{font-size:2.2rem;color:#0A3D91;display:block;margin-bottom:6px}
+.float{animation:floaty 4.5s ease-in-out infinite}
+.card:nth-child(2).float{animation-delay:.3s}
+.card:nth-child(3).float{animation-delay:.6s}
+.card:nth-child(4).float{animation-delay:.9s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card.in.float{animation-play-state:running}
+.card:not(.in).float{animation-play-state:paused}
+.big{font-size:clamp(1.8rem,4.6vw,2.9rem);font-weight:800;color:#0A3D91;margin:40px 0;line-height:1.55;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.hero-icon{font-size:5.5rem;line-height:1;margin-bottom:8px;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.hero-icon.in{opacity:1;transform:translateY(0)}
+.big.in{opacity:1;transform:translateY(0)}
+.cta{background:linear-gradient(135deg,#eef5ff,#ffffff);color:#111827;text-align:center;align-items:center}
+.cta p{color:#374151}
+.btn{display:inline-block;background:#4F8CFF;color:#fff;text-decoration:none;padding:18px 36px;border-radius:99px;font-weight:700;margin-top:30px;box-shadow:0 12px 30px rgba(79,140,255,.4);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,140,255,.55)}
+.shape{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;will-change:transform}
+.s1{width:220px;height:220px;background:#4F8CFF22;top:5%;right:5%}
+.s2{width:120px;height:120px;background:#FFB84D33;bottom:15%;left:8%}
+.timeline{display:flex;justify-content:space-between;gap:10px;margin:40px 0;flex-wrap:wrap;align-items:center}
+.timeline.vertical{flex-direction:column;max-width:420px;margin-left:auto;margin-right:auto}
+.timeline.vertical .step{width:100%}
+.timeline.vertical .arrow{transform:rotate(90deg)}
+.step{flex:1;min-width:130px;background:#f3f7ff;padding:28px 18px;border-radius:18px;text-align:center;font-weight:700;font-size:1.15rem;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.step.in{opacity:1;transform:translateY(0)}
+.step span{display:block;font-size:1rem;font-weight:400;color:#6B7280;margin-top:8px;line-height:1.6}
+.step-danger{background:#FFF3F3;border:1px solid #FFD0D0}
+.step-red{display:block;font-size:1.1rem;font-weight:700;color:#D7263D;line-height:1.7}
+.arrow{font-size:2.2rem;color:#4F8CFF;opacity:0;transition:opacity .6s ease .3s}
+.arrow.in{opacity:1}
+.eyebrow{font-size:1.1rem;font-weight:700;color:#4F8CFF;letter-spacing:.05em;margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:680px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:24px;padding:32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.split-card.in{opacity:1;transform:translateY(0)}
+.split-card.smooth{background:#EAFBF1}
+.split-card.rough{background:#FFF3E0}
+.split-card .icon{font-size:3rem;display:block;margin-bottom:10px}
+.split-card .label{font-weight:900;font-size:1.5rem;margin-bottom:12px}
+.split-card.smooth .label{color:#0F8A4D}
+.split-card.rough .label{color:#C2730A}
+.split-card p{color:#4B5563;font-size:1.15rem;line-height:1.8}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.fine{font-size:.8rem;color:#9CA3AF;max-width:480px;margin-top:30px}
+.cta .fine{color:#6B7280}
+.source{font-size:.8rem;color:#9CA3AF;margin-top:16px}
+.callout{max-width:680px;margin:8px auto 0;background:#FFF3E0;border:1px solid #FFD9A8;border-radius:18px;padding:22px 28px;text-align:center;font-size:1.25rem;font-weight:700;color:#C2730A;line-height:1.7}
+.adl-cards{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:40px}
+@media(max-width:820px){.adl-cards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:420px){.adl-cards{grid-template-columns:repeat(2,1fr)}}
+.adl-cards .card{padding:24px 12px}
+.adl-cards .icon{font-size:2.8rem}
+.adl-cards h3{font-size:1.25rem;margin-top:10px}
+.scroll-cue{position:absolute;bottom:5vh;left:50%;transform:translateX(-50%);font-size:.8rem;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+.scroll-cue .arrow-down{width:16px;height:16px;border-right:2px solid #6B7280;border-bottom:2px solid #6B7280;transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+.examples{background:#fafcff}
+.example-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;width:100%;margin-top:40px}
+@media(max-width:820px){.example-grid{grid-template-columns:1fr}}
+.example-card{background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 16px 40px rgba(0,0,0,.07);cursor:pointer;text-align:left;border:none;font-family:inherit;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.example-card.in{opacity:1;transform:translateY(0)}
+.example-card:hover{box-shadow:0 22px 54px rgba(0,0,0,.12);transform:translateY(-4px)}
+.example-card .icon{font-size:2.6rem;display:block;margin-bottom:10px}
+.example-card .ex-tag{display:inline-block;font-size:.95rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.example-card h3{font-size:1.4rem;font-weight:800;margin-bottom:10px;color:#111827}
+.example-card p{font-size:1.1rem;color:#6B7280;margin:0;line-height:1.7}
+.example-card .ex-more{margin-top:16px;font-size:1rem;color:#0A3D91;font-weight:700}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(17,24,39,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:28px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:#F1F4F8;border:none;font-size:1.1rem;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#E2E8F0}
+.modal-box .ex-tag{display:inline-block;font-size:.95rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.modal-box h3{font-size:1.6rem;font-weight:900;margin-bottom:16px;color:#111827}
+.modal-box p{font-size:1.15rem;line-height:1.9;color:#374151}
+.modal-box .ex-result{margin-top:20px;padding:18px 20px;background:#EAFBF1;border-radius:16px;font-size:1.05rem;color:#0F8A4D;font-weight:700}
+
+.eat-wrap{max-width:560px;width:100%;margin:40px auto 0}
+.eat-track{position:relative;height:64px;background:#EEF2F7;border-radius:16px;overflow:hidden}
+.eat-fill{position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,#4F8CFF,#0A3D91);border-radius:16px;display:flex;align-items:center;padding-left:18px;color:#fff;font-weight:700;font-size:.95rem;transition:width 3.6s cubic-bezier(.65,0,.35,1)}
+.eat-bite{position:absolute;right:0;top:0;height:100%;width:0%;background:repeating-linear-gradient(135deg,#FFE3E3,#FFE3E3 6px,#FFC9C9 6px,#FFC9C9 12px);border-radius:0 16px 16px 0;display:flex;align-items:center;justify-content:center;color:#C0392B;font-weight:700;font-size:.85rem;opacity:0;transition:width 3.6s cubic-bezier(.65,0,.35,1), opacity .6s ease .6s}
+.eat-bite.in{opacity:1}
+.eat-label{display:flex;justify-content:space-between;font-size:.85rem;color:#6B7280;margin-top:10px}
+.red{color:#D7263D}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero" id="hero">
+<div class="shape s1" data-parallax="0.15"></div>
+<div class="shape s2" data-parallax="0.25"></div>
+<div class="reveal in">
+<p class="eyebrow in">長照，多數人沒想過的事</p>
+<h1>長照這件事，<br>通常來得比想像中久</h1>
+<div class="big in" style="margin-top:30px">平均要照顧 9.9 年<br>每天照顧長達 13.6 小時</div>
+<p class="source">資料來源：中華民國家庭照顧者關懷總會</p>
+</div>
+<div class="scroll-cue"><span>往下滑</span><span class="arrow-down"></span></div>
+</section>
+
+<section>
+<div class="reveal">
+<span class="hero-icon">🤔</span>
+<p class="eyebrow">你可能誤會的一件事</p>
+<h2 class="tight">不用等到臥床，<br>才叫需要長照</h2>
+<p>日常這六件事，只要有三件需要別人幫忙，就已經是需要長期照顧的狀態。失智也一樣，不必等到最嚴重。</p>
+<div class="adl-cards">
+<div class="card"><span class="icon">🍚</span><h3>吃飯</h3></div>
+<div class="card"><span class="icon">👕</span><h3>穿衣</h3></div>
+<div class="card"><span class="icon">🛏️</span><h3>起身</h3></div>
+<div class="card"><span class="icon">🚶</span><h3>行動</h3></div>
+<div class="card"><span class="icon">🛁</span><h3>洗澡</h3></div>
+<div class="card"><span class="icon">🚽</span><h3>如廁</h3></div>
+</div>
+<div class="callout">這個門檻，比多數人以為的還早，<br>甚至比一般請看護的標準還低。</div>
+<div class="big">很多狀況，其實比想像中<br>更接近「需要長照」。</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<span class="hero-icon">🧠</span>
+<p class="eyebrow">情境一 · 失智風險</p>
+<h2 class="tight">如果是失智，<br>這段時間可能更長</h2>
+<p>台灣 65 歲以上長者，平均每 13 人就有 1 人失智。年紀越大，風險越高。</p>
+<div class="cards">
+<div class="card"><span class="icon">🙂</span><b>2.4%</b>65～69 歲</div>
+<div class="card"><span class="icon">😐</span><b>9.1%</b>75～79 歲</div>
+<div class="card"><span class="icon">😟</span><b>16%</b>80～84 歲</div>
+<div class="card"><span class="icon">😰</span><b>23.2%</b>85 歲以上</div>
+</div>
+<div class="big">年紀每往上一階，<br>失智風險就跳一個量級。</div>
+<p class="source">資料來源：衛生福利部，國家衛生研究院社區失智症盛行率調查（民國109～112年）</p>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<span class="hero-icon">💰</span>
+<p class="eyebrow">情境二 · 花費</p>
+<h2 class="tight">長照的支出，<br>通常要撐好幾年</h2>
+<div class="cards">
+<div class="card"><span class="icon">📅</span><b>21,923 元</b>每月平均花費</div>
+<div class="card"><span class="icon">📈</span><b>近 400 萬</b>照顧 10 年估算</div>
+</div>
+<div class="eat-wrap">
+<div class="eat-track">
+<div class="eat-fill" data-target="60">原本該存下的錢</div>
+<div class="eat-bite" data-target="40">被長期照顧支出吃掉</div>
+</div>
+<div class="eat-label"><span>持續累積</span><span>持續支出</span></div>
+</div>
+<div class="big">這筆錢，不是一次付完就沒事，<br>是一個月接著一個月地付。</div>
+<p class="source">資料來源：中華民國家庭照顧者關懷總會 2023 年「長期照顧服務使用經驗與意見」調查</p>
+</div>
+</section>
+
+<section style="background:#eef5ff">
+<div class="reveal">
+<span class="hero-icon">👨‍👩‍👧‍👦</span>
+<p class="eyebrow">如果長照發生在你家</p>
+<h2>需要人照顧的不只是他，<br>被拖住的是整個家庭</h2>
+<div class="timeline vertical">
+<div class="step">家人開始需要照顧<span>從尋找資源開始，手忙腳亂</span></div>
+<div class="arrow">→</div>
+<div class="step">每天多花 13.6 小時<span>等於再上一份全職工作</span></div>
+<div class="arrow">→</div>
+<div class="step">每月多支出 2 萬多元<span>持續好幾年，沒有終點</span></div>
+<div class="arrow">→</div>
+<div class="step">工作與收入受影響<span>每年逾 13 萬人因照顧離職</span></div>
+<div class="arrow">→</div>
+<div class="step step-danger"><span class="step-red">存款被迫挪用<br>原本要給退休、子女的錢，變成照顧支出</span></div>
+</div>
+<div class="big">最沉重的不是照顧本身，<br>是照顧看不到終點。</div>
+<p class="source">資料來源：中華民國家庭照顧者關懷總會、勞動部（2015年國民長期照顧需要調查推估）</p>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<span class="hero-icon">🛟</span>
+<p class="eyebrow">如果有一份規劃，能先把這段風險接住</p>
+<h2 style="font-size:clamp(2.4rem,5.4vw,3.6rem)">讓長照這段期間，<br>不用拖垮整個家庭</h2>
+<div class="cards">
+<div class="card float"><span class="icon">📋</span><h3>啟動條件單純</h3><p>經評估符合長照狀態即可申請</p></div>
+<div class="card float"><span class="icon">📆</span><h3>持續性給付</h3><p>按月或按年提供，因應長期支出</p></div>
+<div class="card float"><span class="icon">🔄</span><h3>自由運用</h3><p>照護人力、輔具、生活費都可以</p></div>
+<div class="card float"><span class="icon">🛡️</span><h3>降低衝擊</h3><p>教育金、退休金不被挪用</p></div>
+<div class="card float"><span class="icon">🏡</span><h3>減輕負擔</h3><p>家人不必自己蠟燭兩頭燒</p></div>
+</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<span class="hero-icon">🌱</span>
+<p class="eyebrow">把時間拉長來看</p>
+<h2 class="tight">這份規劃，<br>兩種結果都不會白費</h2>
+<div class="split">
+<div class="split-card rough">
+<span class="icon">🏥</span>
+<div class="label">如果需要長期照顧</div>
+<p>持續提供費用，減輕子女與家庭的經濟負擔，不必一個人硬撐。</p>
+</div>
+<div class="split-card smooth">
+<span class="icon">🎁</span>
+<div class="label">如果一路平安</div>
+<p>沒用到的部分，在身故時會連同這份規劃，一起留給子女，成為一份心意。</p>
+</div>
+</div>
+<div class="big">用到了，它照顧你。<br>用不到，它照顧你最重要的人。</div>
+</div>
+</section>
+
+<section class="examples">
+<div class="reveal">
+<p class="eyebrow">以下是情境案例</p>
+<h2>這份規劃，<br>實際上會發生什麼事？</h2>
+<div class="example-grid">
+
+<button class="example-card" data-modal="ex1">
+<span class="icon">🧠</span>
+<span class="ex-tag">失智 · 家庭</span>
+<h3>媽媽確診中度失智那一年</h3>
+<p>68 歲的王媽媽確診中度失智，家人開始需要安排長期照顧。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex2">
+<span class="icon">🩼</span>
+<span class="ex-tag">中風 · 意外</span>
+<h3>一次中風之後的復健路</h3>
+<p>72 歲的陳伯伯突然中風，需要長期看護與復健。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex3">
+<span class="icon">🎁</span>
+<span class="ex-tag">傳承 · 留給子女</span>
+<h3>一路平安，最後留下的心意</h3>
+<p>身體硬朗一輩子沒用到長照給付，最後這份規劃成為留給子女的資產。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+</div>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-ex1">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">失智 · 家庭</span>
+<h3>王媽媽，68 歲，健檢那天發現的事</h3>
+<p>王媽媽健檢確診中度失智，需要長期的日常照顧。子女白天要上班，只能輪流排班，也開始聘請居家照護人力協助。</p>
+<p style="margin-top:14px">因為先前有做規劃，經評估符合長期照顧狀態後，開始依約定按月領取費用，用來支付照護人力與相關生活開銷。</p>
+<p style="margin-top:14px">原本準備給孫子的教育金，完全沒有被挪用。</p>
+<div class="ex-result">依約定按月領取費用，孫子的教育金完全未動用</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex2">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">中風 · 意外</span>
+<h3>陳伯伯，72 歲，那個突然的早上</h3>
+<p>陳伯伯某天早上突然中風，半身行動不便，日常生活起居需要有人協助。</p>
+<p style="margin-top:14px">家人原本擔心看護費用會拖垮存款，幸好先前有做好規劃。經評估符合長期照顧狀態後，開始持續取得費用，用來支付看護人力與復健支出，不必變賣原本的資產。</p>
+<p style="margin-top:14px">太太原本準備的退休金，也不必提前拿出來用。</p>
+<div class="ex-result">持續取得照顧費用，退休金與原有存款完整保留</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex3">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">傳承 · 留給子女</span>
+<h3>林先生，規劃多年後一切平安</h3>
+<p>林先生規劃這份保障多年，身體一直很健康，一輩子沒有用到任何長期照顧的給付。</p>
+<p style="margin-top:14px">後來安詳辭世，這份規劃連同保障金額，成為留給子女的一筆資產，減輕了家人在後事與財務上的負擔。</p>
+<p style="margin-top:14px">平安的這些年，這份規劃不是白白花的錢；它只是換了一個方式，繼續照顧著家人。</p>
+<div class="ex-result">一生平安，這份規劃最後成為留給子女的資產</div>
+</div>
+</div>
+
+<section class="cta">
+<div class="reveal">
+<span class="hero-icon">💙</span>
+<h1>長照這件事，<br>越早準備影響越小</h1>
+<p style="max-width:none">用到了，它是你們家的長照後盾。<br>用不到，它會留給你最重要的人。</p>
+<a class="btn" href="#">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。文中統計數據引用自衛生福利部、國家衛生研究院、中華民國家庭照顧者關懷總會及勞動部公開資料，僅供參考，實際情況因人而異。</p>
+</div>
+</section>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .card, .big, .step, .arrow, .eyebrow, .split-card, .example-card, .hero-icon');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.25 });
+revealEls.forEach(el => io.observe(el));
+
+document.querySelectorAll('.cards, .example-grid').forEach(grid => {
+  [...grid.children].forEach((card, i) => { card.style.transitionDelay = (i * 0.1) + 's'; });
+});
+
+document.querySelectorAll('.eat-track').forEach(track => {
+  const fill = track.querySelector('.eat-fill');
+  const bite = track.querySelector('.eat-bite');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          bite.classList.add('in');
+          fill.style.width = fill.dataset.target + '%';
+          bite.style.width = bite.dataset.target + '%';
+        }, 400);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  obs.observe(track);
+});
+
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+
+document.querySelectorAll('.example-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const modal = document.getElementById('modal-' + card.dataset.modal);
+    if (modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  overlay.querySelector('[data-close]').addEventListener('click', () => {
+    overlay.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+</script>
+</body></html>
