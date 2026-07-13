@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你的保單，上次認真看是什麼時候？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero{background:linear-gradient(135deg,#ffffff,#edf4ff)}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem);font-weight:900;line-height:1.22}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:30px;font-weight:900}
+h2.tight{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+p{font-size:1.15rem;line-height:1.85;max-width:900px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;padding:28px;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.08);text-align:center;opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.card h3{margin-top:10px;font-size:1.15rem;font-weight:700}
+.card p{font-size:0.95rem;margin:8px 0 0;color:#6B7280}
+.card b{font-size:1.6rem;color:#0A3D91;display:block;margin-bottom:4px}
+.float{animation:floaty 4.5s ease-in-out infinite}
+.card:nth-child(2).float{animation-delay:.3s}
+.card:nth-child(3).float{animation-delay:.6s}
+.card:nth-child(4).float{animation-delay:.9s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card.in.float{animation-play-state:running}
+.card:not(.in).float{animation-play-state:paused}
+.big{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;color:#0A3D91;margin:40px 0;line-height:1.5;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.big.in{opacity:1;transform:translateY(0)}
+.cta{background:linear-gradient(135deg,#eef5ff,#ffffff);color:#111827;text-align:center;align-items:center}
+.cta p{color:#374151}
+.btn{display:inline-block;background:#4F8CFF;color:#fff;text-decoration:none;padding:18px 36px;border-radius:99px;font-weight:700;margin-top:30px;box-shadow:0 12px 30px rgba(79,140,255,.4);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,140,255,.55)}
+.shape{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;will-change:transform}
+.s1{width:220px;height:220px;background:#4F8CFF22;top:5%;right:5%}
+.s2{width:120px;height:120px;background:#FFB84D33;bottom:15%;left:8%}
+.timeline{display:flex;justify-content:space-between;gap:10px;margin:40px 0;flex-wrap:wrap;align-items:center}
+.timeline.vertical{flex-direction:column;max-width:420px;margin-left:auto;margin-right:auto}
+.timeline.vertical .step{width:100%}
+.timeline.vertical .arrow{transform:rotate(90deg)}
+.step{flex:1;min-width:130px;background:#f3f7ff;padding:25px 16px;border-radius:18px;text-align:center;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.step.in{opacity:1;transform:translateY(0)}
+.step span{display:block;font-size:.85rem;font-weight:400;color:#6B7280;margin-top:6px}
+.step-danger{background:#FFF3F3;border:1px solid #FFD0D0}
+.step-red{display:block;font-size:.95rem;font-weight:700;color:#D7263D;line-height:1.6}
+.arrow{font-size:2rem;color:#4F8CFF;opacity:0;transition:opacity .6s ease .3s}
+.arrow.in{opacity:1}
+.eyebrow{font-size:.95rem;font-weight:700;color:#4F8CFF;letter-spacing:.05em;margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:680px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:24px;padding:32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.split-card.in{opacity:1;transform:translateY(0)}
+.split-card.smooth{background:#EAFBF1}
+.split-card.rough{background:#FFF3E0}
+.split-card .label{font-weight:900;font-size:1.2rem;margin-bottom:10px}
+.split-card.smooth .label{color:#0F8A4D}
+.split-card.rough .label{color:#C2730A}
+.split-card p{color:#4B5563;font-size:1rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.fine{font-size:.8rem;color:#9CA3AF;max-width:480px;margin-top:30px}
+.cta .fine{color:#6B7280}
+.scroll-cue{position:absolute;bottom:5vh;left:50%;transform:translateX(-50%);font-size:.8rem;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+.scroll-cue .arrow-down{width:16px;height:16px;border-right:2px solid #6B7280;border-bottom:2px solid #6B7280;transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+.equal-wrap{max-width:560px;width:100%;margin:40px auto 0;display:flex;flex-direction:column;gap:18px}
+.equal-row{display:flex;align-items:center;gap:16px}
+.equal-row .equal-label{width:110px;flex-shrink:0;font-weight:700;font-size:.95rem;color:#374151;text-align:right}
+.equal-track{flex:1;height:20px;background:#EEF2F7;border-radius:10px;overflow:hidden}
+.equal-fill{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#4F8CFF,#0A3D91);transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.equal-fill.highlight{background:linear-gradient(90deg,#0F8A4D,#0A6B3A)}
+
+.eat-wrap{max-width:560px;width:100%;margin:40px auto 0}
+.eat-track{position:relative;height:64px;background:#EEF2F7;border-radius:16px;overflow:hidden}
+.eat-fill{position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,#4F8CFF,#0A3D91);border-radius:16px;display:flex;align-items:center;padding-left:18px;color:#fff;font-weight:700;font-size:.95rem;transition:width 3.6s cubic-bezier(.65,0,.35,1)}
+.eat-bite{position:absolute;right:0;top:0;height:100%;width:0%;background:repeating-linear-gradient(135deg,#FFE3E3,#FFE3E3 6px,#FFC9C9 6px,#FFC9C9 12px);border-radius:0 16px 16px 0;display:flex;align-items:center;justify-content:center;color:#C0392B;font-weight:700;font-size:.85rem;opacity:0;transition:width 3.6s cubic-bezier(.65,0,.35,1), opacity .6s ease .6s}
+.eat-bite.in{opacity:1}
+.eat-label{display:flex;justify-content:space-between;font-size:.85rem;color:#6B7280;margin-top:10px}
+.red{color:#D7263D}
+
+.examples{background:#fafcff}
+.example-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;width:100%;margin-top:40px}
+@media(max-width:820px){.example-grid{grid-template-columns:1fr}}
+.example-card{background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 16px 40px rgba(0,0,0,.07);cursor:pointer;text-align:left;border:none;font-family:inherit;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.example-card.in{opacity:1;transform:translateY(0)}
+.example-card:hover{box-shadow:0 22px 54px rgba(0,0,0,.12);transform:translateY(-4px)}
+.example-card .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.example-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;color:#111827}
+.example-card p{font-size:.95rem;color:#6B7280;margin:0}
+.example-card .ex-more{margin-top:16px;font-size:.88rem;color:#0A3D91;font-weight:700}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(17,24,39,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:28px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:#F1F4F8;border:none;font-size:1.1rem;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#E2E8F0}
+.modal-box .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.modal-box h3{font-size:1.4rem;font-weight:900;margin-bottom:16px;color:#111827}
+.modal-box p{font-size:1.02rem;line-height:1.85;color:#374151}
+.modal-box .ex-result{margin-top:20px;padding:18px 20px;background:#EAFBF1;border-radius:16px;font-size:.95rem;color:#0F8A4D;font-weight:700}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero" id="hero">
+<div class="shape s1" data-parallax="0.15"></div>
+<div class="shape s2" data-parallax="0.25"></div>
+<div class="reveal in">
+<p class="eyebrow in">關於保單，先回想一下</p>
+<h1>你的保單，<br>上次認真看是什麼時候？</h1>
+<div class="big in" style="margin-top:30px">大部分人只記得每年有在繳，<br>卻不記得自己保了什麼。</div>
+</div>
+<div class="scroll-cue"><span>往下滑</span><span class="arrow-down"></span></div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">情境一 · 買的時候很安心</p>
+<h2>那份保單，<br>是好幾年前的你買的。</h2>
+<p>當年業務員很認真，你也覺得買了很安心，就放進抽屜裡。這些年你換了工作、加了薪、成了家，人生一直在變，但那份保單的內容，還停在簽名那一天。安心是真的，只是它保的，可能是好幾年前的你。</p>
+<div class="eat-wrap">
+<div class="eat-track">
+<div class="eat-fill" data-target="55">當年買的保障</div>
+<div class="eat-bite" data-target="45">跟不上現在的缺口</div>
+</div>
+<div class="eat-label"><span>簽名那天</span><span>現在的你</span></div>
+</div>
+<div class="big">保單沒有變，<br>是你的人生一直往前走。</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">情境二 · 這些年你的人生變了很多</p>
+<h2 class="tight">每一個變化，都在改寫你需要的保障。</h2>
+<div class="cards">
+<div class="card">💍<h3>結婚</h3></div>
+<div class="card">👶<h3>生小孩</h3></div>
+<div class="card">🏠<h3>買房揹房貸</h3></div>
+<div class="card">📈<h3>收入變高</h3></div>
+<div class="card">👵<h3>父母年邁</h3></div>
+</div>
+<div class="big">人生每翻一頁，<br>該有的保障也不一樣。</div>
+<p>剛出社會時，你可能一個人吃飽全家飽。但現在有了房貸、有了要照顧的人，肩上扛的責任跟當年完全不同。當年那份保單夠不夠，得用現在的你來看，不是用當年的你。</p>
+</div>
+</section>
+
+<section style="background:#eef5ff">
+<div class="reveal">
+<p class="eyebrow">如果一直沒有回頭檢視</p>
+<h2>你以為有保，<br>需要時才發現有洞。</h2>
+<div class="timeline vertical">
+<div class="step">每年準時繳費<span>錢一直有在付</span></div>
+<div class="arrow">→</div>
+<div class="step">保單放進抽屜<span>好幾年沒再打開</span></div>
+<div class="arrow">→</div>
+<div class="step">人生責任變重<span>保障卻停在原地</span></div>
+<div class="arrow">→</div>
+<div class="step">真的出事那天<span>才第一次仔細看內容</span></div>
+<div class="arrow">→</div>
+<div class="step step-danger"><span class="step-red">才發現保額不夠、<br>或根本沒保到那一項</span></div>
+</div>
+<div class="cards">
+<div class="card"><b class="countup" data-target="1" data-suffix="份保單">0</b>可能保障重複</div>
+<div class="card"><b class="countup" data-target="3" data-suffix="種缺口">0</b>常見沒保到</div>
+<div class="card"><b class="countup" data-target="5" data-suffix="年以上">0</b>沒再檢視</div>
+<div class="card"><b>?</b>受益人還對嗎</div>
+</div>
+<div class="big">保單最怕的，<br>不是沒買，<br>而是買了卻不知道有洞。</div>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">花一次時間做保單健檢，能看清楚這些事</p>
+<h2 style="font-size:clamp(2.2rem,5vw,3.4rem)">把抽屜裡的保單，<br>攤開來看一次</h2>
+<div class="cards">
+<div class="card float">🔍<h3>找出保障缺口</h3><p>看看醫療、意外、家庭責任，哪一塊現在其實不夠</p></div>
+<div class="card float">♻️<h3>揪出重複浪費</h3><p>有些保障買了好幾份重疊，錢花了卻沒發揮效果</p></div>
+<div class="card float">👥<h3>確認受益人</h3><p>結婚、生子後受益人有沒有更新，這一步很多人漏掉</p></div>
+<div class="card float">📊<h3>對上現在的責任</h3><p>房貸、家庭、收入都變了，保額有沒有跟上</p></div>
+<div class="card float">🧾<h3>看懂繳費狀態</h3><p>哪些還在繳、哪些已繳完、哪些快到期，一次弄清楚</p></div>
+</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">健檢不是要你重買，是要你看清楚</p>
+<h2 class="tight">先看懂手上有什麼，再決定要不要補。</h2>
+<div class="timeline">
+<div class="step">攤開<span>把所有保單整理在一起看</span></div>
+<div class="step">比對<span>對照現在的人生責任</span></div>
+<div class="step">調整<span>缺口補上、重複的省下</span></div>
+</div>
+<div class="equal-wrap">
+<div class="equal-row"><span class="equal-label">你的存款</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">你的投資</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">你的保單</span><div class="equal-track"><div class="equal-fill highlight" data-target="100"></div></div></div>
+</div>
+<p style="text-align:center;margin:18px auto 0;max-width:560px">保單跟你的存款、投資一樣，都是資產。資產每隔一段時間就該盤點一次，保單也不例外。</p>
+<div class="split">
+<div class="split-card rough">
+<div class="label">沒有定期健檢</div>
+<p>繳了很多年，真正需要時才發現保額不夠、或根本沒保到那一項，錢花了卻沒接住風險。</p>
+</div>
+<div class="split-card smooth">
+<div class="label">做過一次健檢</div>
+<p>清楚知道自己保了什麼、缺什麼，錢花在對的地方，需要的時候保障真的在。</p>
+</div>
+</div>
+<div class="big">健檢一次，<br>換來的是「我知道自己保了什麼」<br>的那份踏實。</div>
+</div>
+</section>
+
+<section class="examples">
+<div class="reveal">
+<p class="eyebrow">以下是真實情境的改編</p>
+<h2>做一次保單健檢，<br>常常會發現什麼？</h2>
+<div class="example-grid">
+
+<button class="example-card" data-modal="ex1">
+<span class="ex-tag">缺口 · 房貸族</span>
+<h3>揹了房貸卻沒補保障的陳先生</h3>
+<p>買房後每月繳房貸，卻沒發現一旦自己倒下，這筆房貸會全部壓到家人身上。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex2">
+<span class="ex-tag">重複 · 省下保費</span>
+<h3>買太多重疊保障的林小姐</h3>
+<p>這些年陸續買了好幾份，健檢後發現有兩項幾乎重複，調整後每年省下一筆錢。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex3">
+<span class="ex-tag">受益人 · 差點給錯人</span>
+<h3>受益人沒更新的王先生</h3>
+<p>結婚多年，保單受益人卻還寫著多年前的名字，健檢時剛好抓出來。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+</div>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-ex1">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">缺口 · 房貸族</span>
+<h3>陳先生，剛買房，房貸繳得很認真</h3>
+<p>陳先生買房後，每個月最大的一筆支出就是房貸。他覺得自己很負責，準時繳、從不遲。保單則是出社會第一年買的，他幾乎忘了內容。</p>
+<p style="margin-top:14px">做保單健檢時他才發現，萬一自己因為意外或疾病無法工作，這筆將近 <b>800 萬</b>的房貸，會直接壓到太太一個人身上，而他當年那份保單的保額，遠遠不夠接住這個責任。</p>
+<p style="margin-top:14px">健檢後他把家庭責任這一塊補了起來。他說：「我一直以為我很負責，原來只負責了一半。」</p>
+<div class="ex-result">健檢發現房貸保障缺口，補上後家人不必獨自扛下 800 萬</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex2">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">重複 · 省下保費</span>
+<h3>林小姐，這些年陸續買了好幾份保單</h3>
+<p>林小姐是那種「朋友推薦就買」的人。這幾年下來，手上累積了好幾份保單，每一份單獨看都沒問題，她卻從沒把它們攤在一起看過。</p>
+<p style="margin-top:14px">健檢時把所有保單排開比對，發現其中有兩項保障<b>幾乎完全重複</b>，等於同一個風險付了兩次錢，另一邊真正需要補強的地方卻是空的。</p>
+<p style="margin-top:14px">調整之後，她把重複的部分省下來，補到缺口上。整體保障更完整，每年還少繳了一筆保費。</p>
+<div class="ex-result">健檢揪出重複保障，調整後保障更完整、每年還省下保費</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex3">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">受益人 · 差點給錯人</span>
+<h3>王先生，結婚多年，保單卻沒跟著更新</h3>
+<p>王先生的保單是單身時買的，一放就是十幾年。這期間他結了婚、有了孩子，人生大事一件接一件，唯獨保單一直沒再打開過。</p>
+<p style="margin-top:14px">做健檢時，顧問請他確認受益人欄位，他才發現上面寫的<b>還是多年前填的名字</b>，跟現在的家庭狀況完全對不上。萬一真的發生事情，這筆錢會給到他最不希望的對象。</p>
+<p style="margin-top:14px">他當場更新了受益人。一個十分鐘的動作，卻避免了一個可能影響全家的大問題。</p>
+<div class="ex-result">健檢抓出過期的受益人設定，更新後保障確定留給對的人</div>
+</div>
+</div>
+
+<section class="cta">
+<div class="reveal">
+<h1>保單不是買了就好，<br>是要定期回頭看一次</h1>
+<p style="max-width:none">花一次時間，把抽屜裡的保單攤開來看。<br>不一定要買，重點是讓你清楚知道，自己到底保了什麼。</p>
+<a class="btn" href="#">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div>
+</section>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .card, .big, .step, .arrow, .eyebrow, .split-card, .example-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.25 });
+revealEls.forEach(el => io.observe(el));
+
+document.querySelectorAll('.cards, .example-grid').forEach(grid => {
+  [...grid.children].forEach((card, i) => { card.style.transitionDelay = (i * 0.1) + 's'; });
+});
+
+document.querySelectorAll('.eat-track').forEach(track => {
+  const fill = track.querySelector('.eat-fill');
+  const bite = track.querySelector('.eat-bite');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          bite.classList.add('in');
+          fill.style.width = fill.dataset.target + '%';
+          bite.style.width = bite.dataset.target + '%';
+        }, 400);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  obs.observe(track);
+});
+
+document.querySelectorAll('.equal-fill').forEach((fill, i) => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { fill.style.width = fill.dataset.target + '%'; }, 200 + i * 250);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(fill);
+});
+
+document.querySelectorAll('.countup').forEach(el => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const unit = el.dataset.unit || '';
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const duration = 1200;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + unit + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + unit + suffix;
+        }
+        requestAnimationFrame(tick);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+
+document.querySelectorAll('.example-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const modal = document.getElementById('modal-' + card.dataset.modal);
+    if (modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  overlay.querySelector('[data-close]').addEventListener('click', () => {
+    overlay.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+</script>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你上一次打開保單，是什麼時候？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--accent:#2B4C7E;--accent-soft:#E9EEF5;--ink:#1C1B19;--muted:#6B6862;--paper:#FAF9F6}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 26px}
+section{padding:13vh 0}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
+.eyebrow{font-size:.82rem;letter-spacing:.22em;font-weight:700;color:var(--accent);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent)}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.5rem,7vw,3.9rem);line-height:1.32;letter-spacing:.01em}
+.lead{margin-top:30px;font-size:1.12rem;color:var(--muted);font-weight:300;max-width:28em}
+.beat h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(1.5rem,4vw,2rem);line-height:1.55;margin-bottom:20px}
+.beat p{font-size:1.1rem;color:#403D39;font-weight:300;max-width:32em}
+.hl{color:var(--accent);font-weight:500}
+.close{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.5}
+.cta-sec{padding:10vh 0 15vh}
+.cta{display:inline-block;font-weight:700;color:var(--accent);text-decoration:none;border:1.5px solid var(--accent);padding:15px 34px;border-radius:999px;transition:all .3s ease;font-size:1rem}
+.cta:hover{background:var(--accent);color:var(--paper)}
+.fine{margin-top:54px;font-size:.76rem;color:#AEA9A2;line-height:1.7;font-weight:300;max-width:34em}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center}
+.scroll-cue i{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite;opacity:.55}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+.sig{margin:44px 0 8px}
+.checklist{display:flex;flex-direction:column;gap:22px}
+.ck{display:flex;align-items:center;gap:18px;opacity:0;transform:translateX(-12px);transition:opacity .6s ease,transform .6s ease}
+.sig.in .ck{opacity:1;transform:none}
+.sig.in .ck:nth-child(2){transition-delay:.15s}
+.sig.in .ck:nth-child(3){transition-delay:.3s}
+.ck .q{flex-shrink:0;width:42px;height:42px;border:1.6px solid var(--accent);border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.3rem;color:var(--accent)}
+.ck .qt{font-size:1.06rem;color:#403D39;font-weight:400}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ck{opacity:1;transform:none}}
+</style></head><body>
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow fade">保單．一個你可能忘了的抽屜</p>
+<h1 class="fade">你上一次<br>打開保單，<br>是什麼時候？</h1>
+<p class="lead fade">多數人記得每年有在繳，<br>卻不太記得，自己到底保了什麼。</p>
+</div><div class="scroll-cue"><i></i></div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>那份保單，是好幾年前的你買的。</h2>
+<p>這些年，你換了工作、成了家、扛起房貸。<br>人生一直往前走，<span class="hl">保單卻停在簽名那一天</span>。</p>
+</div></div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>三個簡單的問題。</h2>
+<p>很多人繳了十幾年，卻一個都答不出來。</p></div>
+<div class="sig fade">
+<div class="checklist">
+<div class="ck"><div class="q">?</div><div class="qt">現在的保額，還夠用嗎？</div></div>
+<div class="ck"><div class="q">?</div><div class="qt">受益人，還是對的那個人嗎？</div></div>
+<div class="ck"><div class="q">?</div><div class="qt">有沒有哪幾項，其實重複繳了？</div></div>
+</div>
+</div>
+</div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>保單健檢，不是要你重買。</h2>
+<p>是花十分鐘，把抽屜裡的東西看懂。<br>知道自己保了什麼，<span class="hl">本身就是一種安心</span>。</p>
+</div></div></section>
+
+<section class="cta-sec"><div class="wrap"><div class="fade">
+<p class="close">不一定要買。<br>先看懂，再決定。</p>
+<div style="margin-top:44px"><a class="cta" href="#">想幫你看一次，隨時找我</a></div>
+<p class="fine">本頁為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div></div></section>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.3});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你撐著這個家。那，誰撐著你？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--accent:#9C4A34;--accent-soft:#F4E9E4;--ink:#201815;--muted:#6E645F;--paper:#FBF7F3}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 26px}
+section{padding:13vh 0}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
+.eyebrow{font-size:.82rem;letter-spacing:.22em;font-weight:700;color:var(--accent);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent)}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.5rem,7vw,3.9rem);line-height:1.34;letter-spacing:.01em}
+.lead{margin-top:30px;font-size:1.12rem;color:var(--muted);font-weight:300;max-width:28em}
+.beat h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(1.5rem,4vw,2rem);line-height:1.55;margin-bottom:20px}
+.beat p{font-size:1.1rem;color:#453B36;font-weight:300;max-width:32em}
+.hl{color:var(--accent);font-weight:500}
+.close{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.5}
+.cta-sec{padding:10vh 0 15vh}
+.cta{display:inline-block;font-weight:700;color:var(--accent);text-decoration:none;border:1.5px solid var(--accent);padding:15px 34px;border-radius:999px;transition:all .3s ease;font-size:1rem}
+.cta:hover{background:var(--accent);color:var(--paper)}
+.fine{margin-top:54px;font-size:.76rem;color:#B0A69F;line-height:1.7;font-weight:300;max-width:34em}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center}
+.scroll-cue i{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite;opacity:.55}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+.sig{margin:44px 0 8px}
+.sig svg{width:100%;max-width:360px;height:auto;display:block;margin:0 auto;overflow:visible}
+.beam{stroke:#453B36;stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:280;stroke-dashoffset:280;transition:stroke-dashoffset 1.3s ease}
+.sig.in .beam{stroke-dashoffset:0}
+.pillar{stroke:var(--accent);stroke-width:4;fill:none;stroke-linecap:round;stroke-dasharray:110;stroke-dashoffset:110;transition:stroke-dashoffset 1s ease 1s}
+.sig.in .pillar{stroke-dashoffset:0}
+.base{stroke:#D8CEC7;stroke-width:3;stroke-linecap:round}
+.sig .lbl{font-family:"Noto Sans TC";font-size:13px;font-weight:700}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.beam,.pillar{stroke-dashoffset:0}}
+</style></head><body>
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow fade">家．一個沒人想問，卻該想一次的問題</p>
+<h1 class="fade">你撐著這個家。<br>那，<br>誰撐著你？</h1>
+<p class="lead fade">你在的時候，這個家靠你。<br>萬一有一天你不在了，日子還是得過下去。</p>
+</div><div class="scroll-cue"><i></i></div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>這個家的重量，其實壓在一個人身上。</h2>
+<p>房貸、孩子的學費、每個月的生活費，<br>這些背後，靠的是你那份穩定的收入。</p></div>
+<div class="sig fade">
+<svg viewBox="0 0 360 175" role="img" aria-label="一根支柱撐起家的橫樑">
+<text class="lbl" x="180" y="24" text-anchor="middle" style="fill:#8A7F79">這個家</text>
+<path class="beam" d="M55 45 H305"/>
+<path class="pillar" d="M180 47 V140"/>
+<text class="lbl" x="180" y="163" text-anchor="middle" style="fill:var(--accent)">你</text>
+<path class="base" d="M120 143 H240"/>
+</svg>
+</div>
+</div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>悲傷會慢慢過去，帳單不會等人。</h2>
+<p>你最放不下的，從來不是那些數字。<br><span class="hl">是那些人。</span></p>
+</div></div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>有一種準備，是把你的收入留下來。</h2>
+<p>就算有一天你不在了，<br>這個家的日子，<span class="hl">還能照常過下去</span>。</p>
+</div></div></section>
+
+<section class="cta-sec"><div class="wrap"><div class="fade">
+<p class="close">你照顧了他們這麼久。<br>讓這份準備，<br>替你多照顧一段。</p>
+<div style="margin-top:44px"><a class="cta" href="#">想多了解，我在這裡</a></div>
+<p class="fine">本頁為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div></div></section>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.3});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body></html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>退休金你以為算好了，其實少算了一件事</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero{background:linear-gradient(135deg,#ffffff,#edf4ff)}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem);font-weight:900;line-height:1.22}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:30px;font-weight:900}
+h2.tight{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+p{font-size:1.15rem;line-height:1.85;max-width:900px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;padding:28px;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.08);text-align:center;opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.card h3{margin-top:10px;font-size:1.15rem;font-weight:700}
+.card p{font-size:0.95rem;margin:8px 0 0;color:#6B7280}
+.card b{font-size:1.6rem;color:#0A3D91;display:block;margin-bottom:4px}
+.float{animation:floaty 4.5s ease-in-out infinite}
+.card:nth-child(2).float{animation-delay:.3s}
+.card:nth-child(3).float{animation-delay:.6s}
+.card:nth-child(4).float{animation-delay:.9s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card.in.float{animation-play-state:running}
+.card:not(.in).float{animation-play-state:paused}
+.big{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;color:#0A3D91;margin:40px 0;line-height:1.5;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.big.in{opacity:1;transform:translateY(0)}
+.cta{background:linear-gradient(135deg,#eef5ff,#ffffff);color:#111827;text-align:center;align-items:center}
+.cta p{color:#374151}
+.btn{display:inline-block;background:#4F8CFF;color:#fff;text-decoration:none;padding:18px 36px;border-radius:99px;font-weight:700;margin-top:30px;box-shadow:0 12px 30px rgba(79,140,255,.4);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,140,255,.55)}
+.shape{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;will-change:transform}
+.s1{width:220px;height:220px;background:#4F8CFF22;top:5%;right:5%}
+.s2{width:120px;height:120px;background:#FFB84D33;bottom:15%;left:8%}
+.timeline{display:flex;justify-content:space-between;gap:10px;margin:40px 0;flex-wrap:wrap;align-items:center}
+.timeline.vertical{flex-direction:column;max-width:420px;margin-left:auto;margin-right:auto}
+.timeline.vertical .step{width:100%}
+.timeline.vertical .arrow{transform:rotate(90deg)}
+.step{flex:1;min-width:130px;background:#f3f7ff;padding:25px 16px;border-radius:18px;text-align:center;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.step.in{opacity:1;transform:translateY(0)}
+.step span{display:block;font-size:.85rem;font-weight:400;color:#6B7280;margin-top:6px}
+.step-danger{background:#FFF3F3;border:1px solid #FFD0D0}
+.step-red{display:block;font-size:.95rem;font-weight:700;color:#D7263D;line-height:1.6}
+.arrow{font-size:2rem;color:#4F8CFF;opacity:0;transition:opacity .6s ease .3s}
+.arrow.in{opacity:1}
+.eyebrow{font-size:.95rem;font-weight:700;color:#4F8CFF;letter-spacing:.05em;margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:680px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:24px;padding:32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.split-card.in{opacity:1;transform:translateY(0)}
+.split-card.smooth{background:#EAFBF1}
+.split-card.rough{background:#FFF3E0}
+.split-card .label{font-weight:900;font-size:1.2rem;margin-bottom:10px}
+.split-card.smooth .label{color:#0F8A4D}
+.split-card.rough .label{color:#C2730A}
+.split-card p{color:#4B5563;font-size:1rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.fine{font-size:.8rem;color:#9CA3AF;max-width:480px;margin-top:30px}
+.cta .fine{color:#6B7280}
+.scroll-cue{position:absolute;bottom:5vh;left:50%;transform:translateX(-50%);font-size:.8rem;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+.scroll-cue .arrow-down{width:16px;height:16px;border-right:2px solid #6B7280;border-bottom:2px solid #6B7280;transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+/* equal-assets comparison */
+.equal-wrap{max-width:560px;width:100%;margin:40px auto 0;display:flex;flex-direction:column;gap:18px}
+.equal-row{display:flex;align-items:center;gap:16px}
+.equal-row .equal-label{width:110px;flex-shrink:0;font-weight:700;font-size:.95rem;color:#374151;text-align:right}
+.equal-track{flex:1;height:20px;background:#EEF2F7;border-radius:10px;overflow:hidden}
+.equal-fill{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#4F8CFF,#0A3D91);transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.equal-fill.highlight{background:linear-gradient(90deg,#0F8A4D,#0A6B3A)}
+
+/* eaten-savings bar */
+.eat-wrap{max-width:560px;width:100%;margin:40px auto 0}
+.eat-track{position:relative;height:64px;background:#EEF2F7;border-radius:16px;overflow:hidden}
+.eat-fill{position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,#4F8CFF,#0A3D91);border-radius:16px;display:flex;align-items:center;padding-left:18px;color:#fff;font-weight:700;font-size:.95rem;transition:width 3.6s cubic-bezier(.65,0,.35,1)}
+.eat-bite{position:absolute;right:0;top:0;height:100%;width:0%;background:repeating-linear-gradient(135deg,#FFE3E3,#FFE3E3 6px,#FFC9C9 6px,#FFC9C9 12px);border-radius:0 16px 16px 0;display:flex;align-items:center;justify-content:center;color:#C0392B;font-weight:700;font-size:.85rem;opacity:0;transition:width 3.6s cubic-bezier(.65,0,.35,1), opacity .6s ease .6s}
+.eat-bite.in{opacity:1}
+.eat-label{display:flex;justify-content:space-between;font-size:.85rem;color:#6B7280;margin-top:10px}
+.red{color:#D7263D}
+
+/* examples section */
+.examples{background:#fafcff}
+.example-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;width:100%;margin-top:40px}
+@media(max-width:820px){.example-grid{grid-template-columns:1fr}}
+.example-card{background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 16px 40px rgba(0,0,0,.07);cursor:pointer;text-align:left;border:none;font-family:inherit;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.example-card.in{opacity:1;transform:translateY(0)}
+.example-card:hover{box-shadow:0 22px 54px rgba(0,0,0,.12);transform:translateY(-4px)}
+.example-card .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.example-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;color:#111827}
+.example-card p{font-size:.95rem;color:#6B7280;margin:0}
+.example-card .ex-more{margin-top:16px;font-size:.88rem;color:#0A3D91;font-weight:700}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(17,24,39,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:28px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:#F1F4F8;border:none;font-size:1.1rem;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#E2E8F0}
+.modal-box .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.modal-box h3{font-size:1.4rem;font-weight:900;margin-bottom:16px;color:#111827}
+.modal-box p{font-size:1.02rem;line-height:1.85;color:#374151}
+.modal-box .ex-result{margin-top:20px;padding:18px 20px;background:#EAFBF1;border-radius:16px;font-size:.95rem;color:#0F8A4D;font-weight:700}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero" id="hero">
+<div class="shape s1" data-parallax="0.15"></div>
+<div class="shape s2" data-parallax="0.25"></div>
+<div class="reveal in">
+<p class="eyebrow in">關於退休，先問自己一句話</p>
+<h1>退休金你以為算好了，<br>其實少算了一件事。</h1>
+<div class="big in" style="margin-top:30px">大部分人算的是「我存了多少」，<br>卻很少算「我要花幾年」。</div>
+</div>
+<div class="scroll-cue"><span>往下滑</span><span class="arrow-down"></span></div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">情境一 · 你以為的那個數字</p>
+<h2>那筆存款，<br>其實沒有你想的那麼禁花。</h2>
+<p>假設你退休時準備了一筆看起來很安心的錢。但退休不是花一年，是花二、三十年。物價每年悄悄往上，你不再工作卻還是天天要吃飯、要看醫生。時間跟通膨兩件事，會慢慢把那個數字咬掉一大塊。</p>
+<div class="eat-wrap">
+<div class="eat-track">
+<div class="eat-fill" data-target="52">你以為夠用的退休金</div>
+<div class="eat-bite" data-target="48">被時間與通膨吃掉</div>
+</div>
+<div class="eat-label"><span>退休當下</span><span>二十年後</span></div>
+</div>
+<div class="big">錢沒有變少，<br>是你要花的日子變長了。</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">情境二 · 退休後每個月照樣要付</p>
+<h2 class="tight">不上班了，開銷卻一項都沒少。</h2>
+<div class="cards">
+<div class="card">🍚<h3>生活費</h3></div>
+<div class="card">🏥<h3>醫療與保健</h3></div>
+<div class="card">🏠<h3>房屋與水電</h3></div>
+<div class="card">🚗<h3>交通與雜支</h3></div>
+<div class="card">🎁<h3>紅包與人情</h3></div>
+</div>
+<div class="big">收入停了，<br>帳單還是每個月準時來。</div>
+<p>上班的時候，這些花費有薪水頂著。退休那天開始，薪水這條線斷了，這些支出卻一項都不會消失。差別只在於，錢不再進來，只出去。</p>
+</div>
+</section>
+
+<section style="background:#eef5ff">
+<div class="reveal">
+<p class="eyebrow">如果只靠一筆存款慢慢領</p>
+<h2>你的退休金，<br>會一年一年地變薄。</h2>
+<div class="timeline vertical">
+<div class="step">退休當下<span>帳戶裡有一筆看得到的錢</span></div>
+<div class="arrow">→</div>
+<div class="step">前十年<span>邊領邊花，數字開始往下</span></div>
+<div class="arrow">→</div>
+<div class="step">中後段<span>醫療與照護支出變多</span></div>
+<div class="arrow">→</div>
+<div class="step">越活越久<span>最擔心的不是老，是錢先花完</span></div>
+<div class="arrow">→</div>
+<div class="step step-danger"><span class="step-red">如果活得比預期久，<br>最後可能要伸手跟孩子拿</span></div>
+</div>
+<div class="cards">
+<div class="card"><b class="countup" data-target="25" data-suffix="～30年">0</b>退休後要過的日子</div>
+<div class="card"><b class="countup" data-target="300" data-suffix="次以上">0</b>要領的每月生活費</div>
+<div class="card"><b>0<span style="font-size:1rem;color:#6B7280;font-weight:400">元</span></b>不工作後的月薪</div>
+<div class="card"><b>1<span style="font-size:1rem;color:#6B7280;font-weight:400">筆</span></b>只出不進的存款</div>
+</div>
+<div class="big">退休最大的風險，<br>不是老，<br>而是錢比人先走。</div>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">如果有一筆錢，退休後會自己每月生錢給你</p>
+<h2 style="font-size:clamp(2.2rem,5vw,3.4rem)">把「一筆存款」，<br>換成「一條穩定的現金流」</h2>
+<div class="cards">
+<div class="card float">📅<h3>定期領回</h3><p>退休後可以按月或按年領現金，像是幫自己補上一份退休薪水</p></div>
+<div class="card float">🧭<h3>來源明確</h3><p>不必看盤、不必猜市場，領多少、什麼時候領，事先就規劃好</p></div>
+<div class="card float">🛡️<h3>本金保留</h3><p>領的是現金流，原本準備的錢不必一次砍掉，心裡比較踏實</p></div>
+<div class="card float">♾️<h3>活多久領多久</h3><p>把「活太久」從風險變成安心，越長壽越用得到</p></div>
+<div class="card float">🎈<h3>生活有底氣</h3><p>每個月有固定一筆進來，退休生活不必事事精打細算</p></div>
+</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">把時間拉長來看</p>
+<h2 class="tight">這份規劃，跟你其他資產一樣為你所用。</h2>
+<div class="timeline">
+<div class="step">工作期<span>持續累積，替未來鋪路</span></div>
+<div class="step">退休後<span>轉成每月現金流領回</span></div>
+<div class="step">往後<span>活得越久，領得越久</span></div>
+</div>
+<div class="equal-wrap">
+<div class="equal-row"><span class="equal-label">你的存款</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">你的投資</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">這份規劃</span><div class="equal-track"><div class="equal-fill highlight" data-target="100"></div></div></div>
+</div>
+<p style="text-align:center;margin:18px auto 0;max-width:560px">這份規劃，就跟你的存款、投資一樣，都是為你所用，只是它多了一個功能：會自己生現金流。</p>
+<div class="split">
+<div class="split-card rough">
+<div class="label">如果活得很長</div>
+<p>現金流會一直陪著你領下去，越長壽越划算，不必擔心錢先花完，也不必伸手跟孩子拿。</p>
+</div>
+<div class="split-card smooth">
+<div class="label">如果想提早享受</div>
+<p>累積到一定程度後，就能開始領現金，讓退休生活提早有底氣，也能留一部分給家人。</p>
+</div>
+</div>
+<div class="big">退休的安心，<br>來自每個月都有一筆錢，<br>準時進來。</div>
+</div>
+</section>
+
+<section class="examples">
+<div class="reveal">
+<p class="eyebrow">以下是真實情境的改編</p>
+<h2>這份規劃，<br>退休後實際上長什麼樣子？</h2>
+<div class="example-grid">
+
+<button class="example-card" data-modal="ex1">
+<span class="ex-tag">獨立退休 · 有薪水感</span>
+<h3>不想靠孩子的張先生</h3>
+<p>60 歲退休，最在意的是不要成為孩子的負擔，希望每個月都有一筆固定的錢進來。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex2">
+<span class="ex-tag">長壽 · 越領越安心</span>
+<h3>活到 90 歲的林阿姨</h3>
+<p>身體硬朗，最擔心的是「活太久錢不夠用」，結果這份現金流反而成了她最大的靠山。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex3">
+<span class="ex-tag">提早準備 · 從容轉場</span>
+<h3>45 歲就開始的王經理</h3>
+<p>還在工作高峰期，就先替退休那天鋪路，讓自己在轉場時完全不慌。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+</div>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-ex1">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">獨立退休 · 有薪水感</span>
+<h3>張先生，60 歲退休，最不想成為孩子的負擔</h3>
+<p>張先生工作了大半輩子，退休前最常掛在嘴邊的一句話是：「我不想老了還要跟孩子伸手。」他知道自己有一筆存款，但也怕退休二、三十年，那筆錢會不知不覺見底。</p>
+<p style="margin-top:14px">他提早把一部分資金做了規劃，退休後每個月固定領回一筆現金，像是幫自己發了一份<b>退休薪水</b>。生活費、健保、偶爾出去玩，都從這條穩定的現金流出。</p>
+<p style="margin-top:14px">他原本的存款幾乎沒有被大幅動用，反而留著當作醫療與突發狀況的預備金。孩子看他過得從容，也鬆了一口氣。</p>
+<div class="ex-result">退休後每月有固定現金流，存款留作預備金，沒有成為孩子的負擔</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex2">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">長壽 · 越領越安心</span>
+<h3>林阿姨，身體硬朗，最怕的是活太久</h3>
+<p>林阿姨家族長壽，她自己也保養得很好。別人羨慕她健康，她卻偷偷擔心一件事：「萬一活到 90 幾歲，錢會不會早就花光了？」</p>
+<p style="margin-top:14px">她早年做的規劃，是一份會<b>持續領到老</b>的現金流。活得越久，領得越久。原本她以為是負擔的「長壽」，反而變成她最大的優勢。</p>
+<p style="margin-top:14px">如今她 90 歲，現金流照樣每個月進帳。她笑說：「我現在最不怕的，就是活太久。」</p>
+<div class="ex-result">活得越久領得越久，長壽從擔憂變成安心的底氣</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex3">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">提早準備 · 從容轉場</span>
+<h3>王經理，45 歲收入高峰，先替退休鋪好路</h3>
+<p>王經理事業正好，收入也在高峰。很多人這時候只想著再多賺一點，他卻反過來想：「現在賺得多，正好替退休那天先鋪路。」</p>
+<p style="margin-top:14px">他在收入最好的那幾年，撥出一部分做長期規劃。等到退休，這份規劃剛好轉成穩定的<b>每月現金流</b>，接住了他薪水停掉那一刻的空缺。</p>
+<p style="margin-top:14px">從高薪到退休，他幾乎沒有感覺到收入的落差。轉場那一年，他一點都不慌。</p>
+<div class="ex-result">收入高峰期提早準備，退休轉場零焦慮，現金流無縫接上</div>
+</div>
+</div>
+
+<section class="cta">
+<div class="reveal">
+<h1>退休不必靠一大筆錢，<br>靠的是一條不斷的現金流</h1>
+<p style="max-width:none">存款會花完，現金流不會。<br>幫自己在退休那天，準備一份每個月準時進帳的安心。</p>
+<a class="btn" href="#">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div>
+</section>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .card, .big, .step, .arrow, .eyebrow, .split-card, .example-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.25 });
+revealEls.forEach(el => io.observe(el));
+
+document.querySelectorAll('.cards, .example-grid').forEach(grid => {
+  [...grid.children].forEach((card, i) => { card.style.transitionDelay = (i * 0.1) + 's'; });
+});
+
+document.querySelectorAll('.eat-track').forEach(track => {
+  const fill = track.querySelector('.eat-fill');
+  const bite = track.querySelector('.eat-bite');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          bite.classList.add('in');
+          fill.style.width = fill.dataset.target + '%';
+          bite.style.width = bite.dataset.target + '%';
+        }, 400);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  obs.observe(track);
+});
+
+document.querySelectorAll('.equal-fill').forEach((fill, i) => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { fill.style.width = fill.dataset.target + '%'; }, 200 + i * 250);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(fill);
+});
+
+document.querySelectorAll('.countup').forEach(el => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const unit = el.dataset.unit || '';
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const duration = 1200;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + unit + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + unit + suffix;
+        }
+        requestAnimationFrame(tick);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+
+document.querySelectorAll('.example-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const modal = document.getElementById('modal-' + card.dataset.modal);
+    if (modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  overlay.querySelector('[data-close]').addEventListener('click', () => {
+    overlay.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+</script>
+</body></html>

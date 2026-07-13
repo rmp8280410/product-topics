@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>如果有個朋友，每個月跟你借五萬，借了好幾年，你會願意借他多久？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--accent:#25706B;--accent-soft:#E5F0EE;--ink:#1A1D1C;--muted:#67716E;--paper:#FAF8F3;--warn:#C1553F}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 26px}
+section{padding:13vh 0}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
+.eyebrow{font-size:.82rem;letter-spacing:.2em;font-weight:700;color:var(--accent);margin-bottom:28px;display:flex;align-items:center;gap:12px;line-height:1.6}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent);flex-shrink:0}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.1rem,5.8vw,3.3rem);line-height:1.4;letter-spacing:.01em}
+.lead{margin-top:30px;font-size:1.12rem;color:var(--muted);font-weight:300;max-width:29em}
+.beat h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(1.5rem,4vw,2rem);line-height:1.55;margin-bottom:20px}
+.beat p{font-size:1.1rem;color:#3E4644;font-weight:300;max-width:32em}
+.hl{color:var(--accent);font-weight:500}
+.hl-w{color:var(--warn);font-weight:500}
+.close{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.5}
+.cta-sec{padding:10vh 0 15vh}
+.cta{display:inline-block;font-weight:700;color:var(--accent);text-decoration:none;border:1.5px solid var(--accent);padding:15px 34px;border-radius:999px;transition:all .3s ease;font-size:1rem}
+.cta:hover{background:var(--accent);color:var(--paper)}
+.fine{margin-top:54px;font-size:.76rem;color:#ADA79E;line-height:1.7;font-weight:300;max-width:34em}
+.src{margin-top:14px;font-size:.72rem;color:#B4AEA5;font-weight:300;letter-spacing:.02em;line-height:1.6}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center}
+.scroll-cue i{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite;opacity:.55}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+.sig{margin:40px 0 6px}
+.sig svg{width:100%;height:auto;overflow:visible}
+.sig .lbl{font-family:"Noto Sans TC";font-size:13px;font-weight:700}
+.sig .cap{font-family:"Noto Sans TC";font-size:12px;fill:var(--muted)}
+.sig .big-num{font-family:"Noto Serif TC";font-weight:900}
+.track{fill:#ECE9E2}
+.grow{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;transition:transform 1.4s cubic-bezier(.4,0,.2,1)}
+.sig.in .grow{transform:scaleX(1)}
+.sig.in .grow.u{transition-delay:1.1s}
+.gy{transform:scaleY(0);transform-box:fill-box;transform-origin:bottom;transition:transform 1.3s cubic-bezier(.34,1.15,.4,1)}
+.sig.in .gy{transform:scaleY(1)}
+.sig.in .gy.r{transition-delay:.5s}
+.dashline{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 5;opacity:0;transition:opacity .6s ease 1.2s}
+.sig.in .dashline{opacity:.8}
+.flowarrow{fill:none;stroke:var(--warn);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) 1.7s}
+.sig.in .flowarrow{stroke-dashoffset:0}
+.numfade{opacity:0;transition:opacity .55s ease}
+.sig.in .numfade{opacity:1}
+#rightBar{transition:height .5s cubic-bezier(.4,0,.2,1),y .5s cubic-bezier(.4,0,.2,1)}
+.picker{margin:36px 0 8px;display:flex;flex-direction:column;gap:18px}
+.picker-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pk-btn{font-family:"Noto Sans TC";font-weight:700;font-size:.92rem;color:var(--accent);background:#fff;border:1.5px solid var(--accent);padding:9px 24px;border-radius:999px;cursor:pointer;transition:all .25s ease}
+.pk-btn[aria-pressed="true"]{background:var(--accent);color:#fff}
+.picker-label{font-family:"Noto Sans TC";font-size:.9rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.picker-label b{color:var(--accent);font-size:1rem}
+.picker-age{gap:16px}
+#ageRange{flex:1;min-width:160px;accent-color:var(--accent);height:4px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.grow,.gy{transform:none}.dashline,.numfade,.flowarrow{opacity:1;stroke-dashoffset:0}#rightBar{transition:none}}
+</style></head><body>
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow fade">長照 · 一個大家都以為離自己很遠的問題</p>
+<h1 class="fade">如果有個好朋友，<br>每個月跟你借五萬，<br>一借就是好幾年，<br>你會願意借他多久？</h1>
+<p class="lead fade">一次的急難，多數人都扛得住。<br>真正拖垮一個家的，是看不見盡頭的持續支出。</p>
+</div><div class="scroll-cue"><i></i></div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>現在，把角色換過來。</h2>
+<p>如果每個月需要五萬的那個人，是你自己呢？<br><span class="hl">誰能無條件，一個月接著一個月，撐著你？</span></p>
+</div></div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>而這件事，不看你的年紀。</h2>
+<p>它不是老年人的專利。22 歲一場車禍、52 歲一場中風、65 歲一場失智與退化，都可能從此需要人全天候照顧。<span class="hl">風險，從不問你今年幾歲。</span></p>
+</div></div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>我們都會活得更久，卻不一定活得健康。</h2>
+<p>醫療越來越進步，換來的是平均長達 <span class="hl-w">7.56 年</span>的不健康期，有時甚至更久。<br>這段日子需要有人照顧，也要一直花錢。一個月大約五萬，拖上十年，就是六百萬。</p></div>
+<div class="sig fade">
+<svg viewBox="0 0 560 480" role="img" aria-label="不健康期間與照護費用累積到 600 萬">
+<defs>
+<pattern id="hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+<rect width="9" height="9" fill="#F1DED8"/><line x1="0" y1="0" x2="0" y2="9" stroke="#C1553F" stroke-width="3.4"/>
+</pattern>
+</defs>
+<!-- 健康 / 不健康 長條 -->
+<text class="lbl" x="30" y="22" style="fill:var(--accent)">健康的這些年</text>
+<text class="lbl" x="530" y="22" text-anchor="end" style="fill:var(--warn)">不健康的 7.56 年</text>
+<rect class="track" x="30" y="34" width="500" height="38" rx="8"/>
+<rect class="grow" x="30" y="34" width="453" height="38" rx="8" style="fill:var(--accent)"/>
+<rect class="grow u" x="483" y="34" width="47" height="38" fill="url(#hatch)"/>
+<text class="cap" x="30" y="92">健康餘命 約 73 歲</text>
+<text class="cap" x="530" y="92" text-anchor="end">平均壽命 約 81 歲</text>
+<!-- 從紅色往下的箭頭：尾端收成垂直，與箭頭完美銜接 -->
+<path class="flowarrow" pathLength="1" d="M500 100 C458 106 280 158 280 200"/>
+<path class="numfade" style="transition-delay:2.5s" d="M280 200 l-7 -9 M280 200 l7 -9" fill="none" stroke="var(--warn)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- 成本累積：字體逐步放大 -->
+<text class="big-num numfade" style="transition-delay:2.7s" x="280" y="236" text-anchor="middle" font-size="26" fill="#1A1D1C">每月約 5 萬</text>
+<text class="cap numfade" style="transition-delay:2.7s" x="280" y="256" text-anchor="middle">照顧一個月的花費</text>
+<path class="numfade" style="transition-delay:3.0s" d="M272 272 l8 9 l8 -9" fill="none" stroke="#B7B2AA" stroke-width="2" stroke-linecap="round"/>
+<text class="big-num numfade" style="transition-delay:3.2s" x="280" y="310" text-anchor="middle" font-size="36" fill="var(--accent)">一年 60 萬</text>
+<text class="cap numfade" style="transition-delay:3.2s" x="280" y="330" text-anchor="middle">一年下來</text>
+<path class="numfade" style="transition-delay:3.5s" d="M272 346 l8 9 l8 -9" fill="none" stroke="#B7B2AA" stroke-width="2" stroke-linecap="round"/>
+<rect class="numfade" style="transition-delay:3.8s" x="180" y="364" width="200" height="72" rx="16" fill="#F7E4DF"/>
+<text class="big-num numfade" style="transition-delay:3.9s" x="280" y="412" text-anchor="middle" font-size="56" fill="var(--warn)">600 萬</text>
+<text class="cap numfade" style="transition-delay:3.9s" x="280" y="454" text-anchor="middle">照顧十年，可能就是這個數字</text>
+</svg>
+</div>
+<p class="src fade">不健康餘命：內政部與衛福部 2021。照護費用為一般行情推估，2026。</p>
+</div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>一個月五萬，十年就是六百萬。<br>但最沉重的，從來不是這筆錢。</h2>
+<p>而是那天真的來臨時，你希望家人<span class="hl-w">用他的一生來照顧你</span>，還是希望<span class="hl">彼此都不會因為這件事受到影響</span>？<br>提早準備，錢是未來<span class="hl">能選擇的權利</span>。</p>
+</div></div></section>
+
+<section class="beat" style="background:var(--accent-soft)"><div class="wrap">
+<div class="fade"><h2>都是為未來做準備，結果卻差很多。</h2>
+<p>假設兩種做法，一種是把 <span class="hl">150 萬</span> 存起來備用，一種是換個地方放。<br>存起來，需要照顧時，就是這 150 萬，花完就沒了。<br>換個地方放，同樣這筆錢，長照規劃可以變成更多——挑挑看你的年齡與性別，差多少一目了然。</p></div>
+
+<div class="picker fade">
+<div class="picker-row">
+<button type="button" class="pk-btn" id="btnM" data-g="男" aria-pressed="true">男性</button>
+<button type="button" class="pk-btn" id="btnF" data-g="女" aria-pressed="false">女性</button>
+</div>
+<div class="picker-row picker-age">
+<span class="picker-label">年齡　<b id="ageOut">50</b> 歲</span>
+<input type="range" id="ageRange" min="20" max="70" step="5" value="50" aria-label="選擇年齡">
+</div>
+</div>
+
+<div class="sig fade">
+<svg viewBox="0 0 560 350" role="img" aria-label="150 萬自己存與換個地方放的對照" id="chart2">
+<line class="dashline" x1="36" y1="256" x2="524" y2="256"/>
+<!-- 左：自己存 -->
+<text class="big-num numfade" style="transition-delay:1.0s" x="185" y="246" text-anchor="middle" font-size="24" fill="#8A857E">150 萬</text>
+<rect class="gy" x="130" y="256" width="110" height="40" rx="7" style="fill:#B7B2AA"/>
+<text class="lbl" x="185" y="322" text-anchor="middle" style="fill:var(--muted)">把錢存起來</text>
+<text class="cap" x="185" y="342" text-anchor="middle">花完就沒</text>
+<!-- 右：長照規劃（依年齡/性別動態更新） -->
+<text class="big-num numfade" id="rightNum" style="transition-delay:1.6s" x="385" y="58" text-anchor="middle" font-size="30" fill="var(--accent)">538 萬</text>
+<rect class="gy r" id="rightBar" x="330" y="187.25" width="110" height="108.75" rx="7" style="fill:var(--accent)"/>
+<text class="lbl" x="385" y="322" text-anchor="middle" style="fill:var(--accent)">把錢換個地方放</text>
+</svg>
+<p class="src" style="text-align:center">實際給付以保單與契約為準。</p>
+</div>
+</div></section>
+
+<section class="cta-sec"><div class="wrap"><div class="fade">
+<p class="close">錢，我們都在存。<br>但很少人，為那段<br>「存不到」的日子先準備。</p>
+<div style="margin-top:44px"><a class="cta" href="#">趁還有選擇權，了解詳情</a></div>
+<p class="fine">本頁為觀念說明，非商品條款。保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div></div></section>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.28});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+/* 150萬預算・各年齡最大可投保年期・累計理賠上限（元）
+   資料來源：LTK1 費率表試算（150萬預算版），採各年齡可投保之最長年期 */
+const LTK1_CAP={
+  20:{"男":13824000,"女":11136000},
+  25:{"男":11904000,"女":9600000},
+  30:{"男":10752000,"女":8448000},
+  35:{"男":8832000, "女":7296000},
+  40:{"男":7680000, "女":6528000},
+  45:{"男":6144000, "女":5376000},
+  50:{"男":5376000, "女":4608000},
+  55:{"男":4224000, "女":3840000},
+  60:{"男":3456000, "女":3072000},
+  65:{"男":2304000, "女":2304000},
+  70:{"男":1536000, "女":1536000}
+};
+const CAP_MIN=1536000, CAP_MAX=13824000, H_MIN=40, H_MAX=260, BASE_Y=296;
+let curGender="男";
+const ageRange=document.getElementById('ageRange');
+const ageOut=document.getElementById('ageOut');
+const rightNum=document.getElementById('rightNum');
+const rightBar=document.getElementById('rightBar');
+const chart2=document.getElementById('chart2');
+const pkBtns=[document.getElementById('btnM'),document.getElementById('btnF')];
+
+function updateChart2(){
+  const age=+ageRange.value;
+  ageOut.textContent=age;
+  const cap=LTK1_CAP[age][curGender];
+  const h=H_MIN+(cap-CAP_MIN)/(CAP_MAX-CAP_MIN)*(H_MAX-H_MIN);
+  rightBar.setAttribute('height',h.toFixed(1));
+  rightBar.setAttribute('y',(BASE_Y-h).toFixed(1));
+  const wan=Math.round(cap/10000);
+  rightNum.textContent=wan.toLocaleString('zh-Hant')+' 萬';
+  chart2.setAttribute('aria-label','150 萬自己存，與 '+age+' 歲'+curGender+'性換個地方放後約 '+wan+' 萬的對照');
+}
+pkBtns.forEach(b=>b.addEventListener('click',()=>{
+  pkBtns.forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+  curGender=b.dataset.g;
+  updateChart2();
+}));
+ageRange.addEventListener('input', updateChart2);
+updateChart2();
+</script>
+</body></html>

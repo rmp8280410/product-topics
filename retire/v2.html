@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>退休那天，薪水會停。但生活不會。</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--accent:#2F6E4F;--accent-soft:#EAF2ED;--ink:#1C1B19;--muted:#6B6862;--paper:#FAF8F4;--warn:#C1553F}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 26px}
+section{padding:13vh 0}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
+.eyebrow{font-size:.82rem;letter-spacing:.22em;font-weight:700;color:var(--accent);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent)}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.5rem,7vw,3.9rem);line-height:1.32;letter-spacing:.01em}
+.lead{margin-top:30px;font-size:1.12rem;color:var(--muted);font-weight:300;max-width:28em}
+.beat h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(1.5rem,4vw,2rem);line-height:1.55;margin-bottom:20px}
+.beat p{font-size:1.1rem;color:#403D39;font-weight:300;max-width:32em}
+.hl{color:var(--accent);font-weight:500}
+.close{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.5}
+.cta-sec{padding:10vh 0 15vh}
+.cta{display:inline-block;font-weight:700;color:var(--accent);text-decoration:none;border:1.5px solid var(--accent);padding:15px 34px;border-radius:999px;transition:all .3s ease;font-size:1rem}
+.cta:hover{background:var(--accent);color:var(--paper)}
+.fine{margin-top:54px;font-size:.76rem;color:#AEA9A2;line-height:1.7;font-weight:300;max-width:34em}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center}
+.scroll-cue i{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite;opacity:.55}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+.sig{margin:44px 0 8px}
+.sig svg{width:100%;height:auto;overflow:visible}
+.sig .lbl{font-family:"Noto Sans TC";font-size:14px;font-weight:700}
+.sig .sub{font-family:"Noto Sans TC";font-size:12px;fill:var(--muted)}
+.inc{stroke:var(--accent);stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:270;stroke-dashoffset:270;transition:stroke-dashoffset 1.5s ease .2s}
+.sig.in .inc{stroke-dashoffset:0}
+.dot-end{fill:var(--accent);opacity:0;transition:opacity .4s ease 1.5s}
+.sig.in .dot-end{opacity:1}
+.mark{stroke:#C9C4BC;stroke-width:1.5;stroke-dasharray:4 4}
+.exp{stroke:#B7B2AA;stroke-width:2;fill:none;stroke-dasharray:5 6;stroke-linecap:round}
+.hl-w{color:var(--warn);font-weight:500}
+.stats{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:40px 0 14px;max-width:440px}
+.stat{text-align:center;flex:1}
+.stat b{display:block;font-family:"Noto Serif TC",serif;font-weight:900;line-height:1;color:var(--accent)}
+.stat:nth-child(1) b{font-size:clamp(2.4rem,11vw,3.4rem)}
+.stat:nth-child(2) b{font-size:clamp(1.9rem,8vw,2.7rem)}
+.stat:nth-child(3) b{font-size:clamp(1.5rem,6vw,2rem)}
+.stat b.warn{color:var(--warn)}
+.stat span{display:block;margin-top:12px;font-size:.8rem;color:var(--muted);font-weight:400;line-height:1.5}
+.stat-cap{font-size:1rem;color:var(--muted);font-weight:300;max-width:30em}
+.src{margin-top:16px;font-size:.72rem;color:#B7B1A8;font-weight:300;letter-spacing:.02em;line-height:1.6}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.inc,.dot-end{stroke-dashoffset:0;opacity:1}}
+</style></head><body>
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow fade">退休．一個很少人算對的問題</p>
+<h1 class="fade">退休那天，<br>薪水會停。<br>但生活，<br>不會停止收費。</h1>
+<p class="lead fade">大多數人準備的，是「一筆錢」。<br>真正需要的，是一份不會停的收入。</p>
+</div><div class="scroll-cue"><i></i></div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>想像兩條線。</h2>
+<p>一條是你的收入。退休那天，它斷了。<br>另一條是你的開銷。它一天，都沒打算停。</p></div>
+<div class="sig fade">
+<svg viewBox="0 0 560 165" role="img" aria-label="收入停止、開銷持續的對照">
+<text class="lbl" x="0" y="40" style="fill:var(--accent)">收入</text>
+<path class="inc" d="M60 48 H320"/>
+<circle class="dot-end" cx="320" cy="48" r="5.5"/>
+<line class="mark" x1="320" y1="24" x2="320" y2="140"/>
+<text class="sub" x="320" y="158" text-anchor="middle">退休那天</text>
+<text class="lbl" x="0" y="112" style="fill:#8A857E">開銷</text>
+<path class="exp" d="M60 120 H540"/>
+<path class="exp" d="M540 120 L531 114 M540 120 L531 126" style="stroke-dasharray:none"/>
+</svg>
+</div>
+</div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>「那，不是還有勞保嗎？」</h2>
+<p>問題是，這條線，自己也在變薄。<br>勞保已經連續九年入不敷出，潛藏負債超過 <span class="hl-w">13.5 兆</span>，最新精算預估，最快 <span class="hl-w">2031 年</span>基金就見底，現在是靠政府一年一年撥補硬撐著。</p></div>
+<div class="stats fade">
+<div class="stat"><b>5</b><span>過去<br>約 5 個工作的人<br>養 1 位退休者</span></div>
+<div class="stat"><b>2</b><span>不久的將來<br>約 2 人<br>養 1 位</span></div>
+<div class="stat"><b class="warn">1.2</b><span>再過幾十年<br>約 1.2 人<br>養 1 位</span></div>
+</div>
+<p class="stat-cap fade">而去年台灣的生育率只剩 <b style="color:var(--warn);font-weight:700">0.7</b>，是全球數一數二低。<br>繳錢的年輕人越來越少，領錢的人越來越多。你覺得那份保障，會變厚，還是變薄？</p>
+<p class="src fade">勞保財務：勞動部精算報告。扶養比：國發會人口推估。生育率：內政部 2024。資料整理於 2026 年。</p>
+</div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>而且，你可能會活得比你想的更久。</h2>
+<p>醫療越來越進步，活到 90 歲不再是少數。<br>退休金要撐的，<span class="hl">不是十年，是三十年</span>。</p>
+</div></div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>所以，別把老後全押在別人身上。</h2>
+<p>政府那條線能接多少，沒有人敢保證。<br>與其等，不如替自己準備一份<span class="hl">每個月自己進帳</span>的收入，就像替未來的自己，重新聘一份薪水。這份，握在你自己手裡。</p>
+</div></div></section>
+
+<section class="cta-sec"><div class="wrap"><div class="fade">
+<p class="close">退休不是終點，<br>是另一段三十年。<br>值得花十分鐘，好好想一次。</p>
+<div style="margin-top:44px"><a class="cta" href="#">想聊聊，我在</a></div>
+<p class="fine">本頁為觀念說明，非商品條款。保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div></div></section>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.3});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body></html>

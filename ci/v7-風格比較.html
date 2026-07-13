@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>v7 風格比較稿</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.label{position:absolute;top:24px;left:24px;font-size:.8rem;font-weight:700;letter-spacing:.1em;padding:6px 14px;border-radius:99px;opacity:.85}
+.eyebrow{font-size:.95rem;font-weight:700;letter-spacing:.05em;margin-bottom:14px}
+.big{font-size:clamp(1.5rem,3.6vw,2.2rem);font-weight:700;margin-top:28px;line-height:1.6}
+h1{line-height:1.25}
+
+/* ===== A. 信任權威風 ===== */
+.styleA{background:linear-gradient(135deg,#1E3A5F,#15293F);color:#F8FAFC}
+.styleA .label{background:#A16207;color:#fff}
+.styleA .eyebrow{color:#D4AF6A}
+.styleA h1{font-family:"Noto Serif TC",serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:#fff}
+.styleA .big{color:#D4AF6A;font-family:"Noto Serif TC",serif}
+.styleA .fine{margin-top:36px;font-size:.85rem;color:#93A5C4}
+
+/* ===== B. 大字報編輯風 ===== */
+.styleB{background:#0A0A0A;color:#FAFAFA}
+.styleB .label{background:#FF3D00;color:#0A0A0A}
+.styleB .eyebrow{color:#FF3D00;text-transform:uppercase}
+.styleB h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:900;letter-spacing:-.02em;line-height:1.05}
+.styleB .big{color:#FAFAFA;border-left:none;font-weight:400;font-size:clamp(1.3rem,3vw,1.8rem);color:#A3A3A3}
+.styleB .fine{margin-top:36px;font-size:.85rem;color:#737373;text-decoration:underline;text-underline-offset:6px}
+
+/* ===== C. 敘事溫暖風 ===== */
+.styleC{background:linear-gradient(135deg,#FFF8F0,#FFEEE0)}
+.styleC .label{background:#C2410C;color:#fff}
+.styleC .eyebrow{color:#C2410C}
+.styleC h1{font-family:"Noto Serif TC",serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;color:#431407}
+.styleC .big{font-family:"Noto Serif TC",serif;font-weight:600;color:#9A3412}
+.styleC .fine{margin-top:36px;font-size:.85rem;color:#9A6A4F}
+</style></head><body>
+
+<section class="styleA">
+<span class="label">A · 信任權威風</span>
+<p class="eyebrow">投資理財時須知</p>
+<h1>你辛苦累積的資產，<br>用在你不想用的地方怎麼辦？</h1>
+<div class="big">我們以為自己在理財，<br>其實忽略了一件事：<br>「我在賭我不會出事。」</div>
+<p class="fine">深海軍藍 #1E3A5F ＋ 金色強調 #A16207・Noto Serif TC 標題</p>
+</section>
+
+<section class="styleB">
+<span class="label">B · 大字報編輯風</span>
+<p class="eyebrow">投資理財時須知</p>
+<h1>你辛苦累積的資產，<br>用在你不想用的地方怎麼辦？</h1>
+<div class="big">我們以為自己在理財，其實忽略了一件事：「我在賭我不會出事。」</div>
+<p class="fine">近黑底 #0A0A0A ＋ 暖白字・Noto Sans TC 特粗體、緊字距</p>
+</section>
+
+<section class="styleC">
+<span class="label">C · 敘事溫暖風</span>
+<p class="eyebrow">投資理財時須知</p>
+<h1>你辛苦累積的資產，<br>用在你不想用的地方怎麼辦？</h1>
+<div class="big">我們以為自己在理財，<br>其實忽略了一件事：<br>「我在賭我不會出事。」</div>
+<p class="fine">暖橘漸層底 ＋ 赭紅強調 #C2410C・Noto Serif TC 標題</p>
+</section>
+
+</body></html>

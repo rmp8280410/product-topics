@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你每天為錢工作，你的錢卻只是躺著睡覺</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero{background:linear-gradient(135deg,#ffffff,#edf4ff)}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem);font-weight:900;line-height:1.22}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:30px;font-weight:900}
+h2.tight{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+p{font-size:1.15rem;line-height:1.85;max-width:900px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;padding:28px;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.08);text-align:center;opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.card h3{margin-top:10px;font-size:1.15rem;font-weight:700}
+.card p{font-size:0.95rem;margin:8px 0 0;color:#6B7280}
+.card b{font-size:1.6rem;color:#0A3D91;display:block;margin-bottom:4px}
+.float{animation:floaty 4.5s ease-in-out infinite}
+.card:nth-child(2).float{animation-delay:.3s}
+.card:nth-child(3).float{animation-delay:.6s}
+.card:nth-child(4).float{animation-delay:.9s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card.in.float{animation-play-state:running}
+.card:not(.in).float{animation-play-state:paused}
+.big{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;color:#0A3D91;margin:40px 0;line-height:1.5;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.big.in{opacity:1;transform:translateY(0)}
+.cta{background:linear-gradient(135deg,#eef5ff,#ffffff);color:#111827;text-align:center;align-items:center}
+.cta p{color:#374151}
+.btn{display:inline-block;background:#4F8CFF;color:#fff;text-decoration:none;padding:18px 36px;border-radius:99px;font-weight:700;margin-top:30px;box-shadow:0 12px 30px rgba(79,140,255,.4);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,140,255,.55)}
+.shape{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;will-change:transform}
+.s1{width:220px;height:220px;background:#4F8CFF22;top:5%;right:5%}
+.s2{width:120px;height:120px;background:#FFB84D33;bottom:15%;left:8%}
+.timeline{display:flex;justify-content:space-between;gap:10px;margin:40px 0;flex-wrap:wrap;align-items:center}
+.timeline.vertical{flex-direction:column;max-width:420px;margin-left:auto;margin-right:auto}
+.timeline.vertical .step{width:100%}
+.timeline.vertical .arrow{transform:rotate(90deg)}
+.step{flex:1;min-width:130px;background:#f3f7ff;padding:25px 16px;border-radius:18px;text-align:center;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.step.in{opacity:1;transform:translateY(0)}
+.step span{display:block;font-size:.85rem;font-weight:400;color:#6B7280;margin-top:6px}
+.step-danger{background:#FFF3F3;border:1px solid #FFD0D0}
+.step-red{display:block;font-size:.95rem;font-weight:700;color:#D7263D;line-height:1.6}
+.arrow{font-size:2rem;color:#4F8CFF;opacity:0;transition:opacity .6s ease .3s}
+.arrow.in{opacity:1}
+.eyebrow{font-size:.95rem;font-weight:700;color:#4F8CFF;letter-spacing:.05em;margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:680px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:24px;padding:32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.split-card.in{opacity:1;transform:translateY(0)}
+.split-card.smooth{background:#EAFBF1}
+.split-card.rough{background:#FFF3E0}
+.split-card .label{font-weight:900;font-size:1.2rem;margin-bottom:10px}
+.split-card.smooth .label{color:#0F8A4D}
+.split-card.rough .label{color:#C2730A}
+.split-card p{color:#4B5563;font-size:1rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.fine{font-size:.8rem;color:#9CA3AF;max-width:480px;margin-top:30px}
+.cta .fine{color:#6B7280}
+.scroll-cue{position:absolute;bottom:5vh;left:50%;transform:translateX(-50%);font-size:.8rem;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+.scroll-cue .arrow-down{width:16px;height:16px;border-right:2px solid #6B7280;border-bottom:2px solid #6B7280;transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+.equal-wrap{max-width:560px;width:100%;margin:40px auto 0;display:flex;flex-direction:column;gap:18px}
+.equal-row{display:flex;align-items:center;gap:16px}
+.equal-row .equal-label{width:110px;flex-shrink:0;font-weight:700;font-size:.95rem;color:#374151;text-align:right}
+.equal-track{flex:1;height:20px;background:#EEF2F7;border-radius:10px;overflow:hidden}
+.equal-fill{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#4F8CFF,#0A3D91);transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.equal-fill.highlight{background:linear-gradient(90deg,#0F8A4D,#0A6B3A)}
+
+.eat-wrap{max-width:560px;width:100%;margin:40px auto 0}
+.eat-track{position:relative;height:64px;background:#EEF2F7;border-radius:16px;overflow:hidden}
+.eat-fill{position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,#4F8CFF,#0A3D91);border-radius:16px;display:flex;align-items:center;padding-left:18px;color:#fff;font-weight:700;font-size:.95rem;transition:width 3.6s cubic-bezier(.65,0,.35,1)}
+.eat-bite{position:absolute;right:0;top:0;height:100%;width:0%;background:repeating-linear-gradient(135deg,#FFE3E3,#FFE3E3 6px,#FFC9C9 6px,#FFC9C9 12px);border-radius:0 16px 16px 0;display:flex;align-items:center;justify-content:center;color:#C0392B;font-weight:700;font-size:.85rem;opacity:0;transition:width 3.6s cubic-bezier(.65,0,.35,1), opacity .6s ease .6s}
+.eat-bite.in{opacity:1}
+.eat-label{display:flex;justify-content:space-between;font-size:.85rem;color:#6B7280;margin-top:10px}
+.red{color:#D7263D}
+
+.examples{background:#fafcff}
+.example-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;width:100%;margin-top:40px}
+@media(max-width:820px){.example-grid{grid-template-columns:1fr}}
+.example-card{background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 16px 40px rgba(0,0,0,.07);cursor:pointer;text-align:left;border:none;font-family:inherit;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.example-card.in{opacity:1;transform:translateY(0)}
+.example-card:hover{box-shadow:0 22px 54px rgba(0,0,0,.12);transform:translateY(-4px)}
+.example-card .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.example-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;color:#111827}
+.example-card p{font-size:.95rem;color:#6B7280;margin:0}
+.example-card .ex-more{margin-top:16px;font-size:.88rem;color:#0A3D91;font-weight:700}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(17,24,39,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:28px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:#F1F4F8;border:none;font-size:1.1rem;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#E2E8F0}
+.modal-box .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.modal-box h3{font-size:1.4rem;font-weight:900;margin-bottom:16px;color:#111827}
+.modal-box p{font-size:1.02rem;line-height:1.85;color:#374151}
+.modal-box .ex-result{margin-top:20px;padding:18px 20px;background:#EAFBF1;border-radius:16px;font-size:.95rem;color:#0F8A4D;font-weight:700}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero" id="hero">
+<div class="shape s1" data-parallax="0.15"></div>
+<div class="shape s2" data-parallax="0.25"></div>
+<div class="reveal in">
+<p class="eyebrow in">關於錢，換個角度想一件事</p>
+<h1>你每天為錢工作，<br>你的錢卻只是躺著睡覺。</h1>
+<div class="big in" style="margin-top:30px">你很努力賺錢，<br>但你的錢，有在幫你賺錢嗎？</div>
+</div>
+<div class="scroll-cue"><span>往下滑</span><span class="arrow-down"></span></div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">情境一 · 放在戶頭的那筆錢</p>
+<h2>躺在活存裡的錢，<br>其實正在慢慢變薄。</h2>
+<p>你辛苦存下一筆錢，放在銀行覺得很安心。但活存的利息幾乎追不上物價，同樣一筆錢，過幾年能買到的東西越來越少。它看起來沒有變少，購買力卻一年一年地被通膨咬掉。安穩是假象，錢其實在原地縮水。</p>
+<div class="eat-wrap">
+<div class="eat-track">
+<div class="eat-fill" data-target="60">存款的購買力</div>
+<div class="eat-bite" data-target="40">被通膨悄悄吃掉</div>
+</div>
+<div class="eat-label"><span>現在</span><span>十年後</span></div>
+</div>
+<div class="big">錢放著不動，<br>不是零風險，<br>是慢慢在縮水。</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">情境二 · 你的收入，只靠一條線</p>
+<h2 class="tight">你的每個月，全押在一份薪水上。</h2>
+<div class="cards">
+<div class="card">💼<h3>只有薪水</h3></div>
+<div class="card">🏠<h3>房貸照繳</h3></div>
+<div class="card">🍽️<h3>生活照花</h3></div>
+<div class="card">📱<h3>帳單照來</h3></div>
+<div class="card">⏰<h3>不上班就沒收入</h3></div>
+</div>
+<div class="big">你的收入只有一條線，<br>斷了就什麼都停了。</div>
+<p>只要那份薪水一天沒進來，房貸、生活、帳單全都會卡住。你很努力，但整個財務其實只靠一根繩子吊著。如果能多一條「不靠你上班也會進來」的收入，這根繩子就不會那麼緊。</p>
+</div>
+</section>
+
+<section style="background:#eef5ff">
+<div class="reveal">
+<p class="eyebrow">如果一輩子只靠一份薪水</p>
+<h2>你會發現，<br>你一直在用時間換錢。</h2>
+<div class="timeline vertical">
+<div class="step">年輕時<span>用體力與時間換薪水</span></div>
+<div class="arrow">→</div>
+<div class="step">中年時<span>收入到頂，開銷卻變多</span></div>
+<div class="arrow">→</div>
+<div class="step">存下的錢<span>放在活存，慢慢被通膨追上</span></div>
+<div class="arrow">→</div>
+<div class="step">體力下滑<span>能換錢的時間越來越少</span></div>
+<div class="arrow">→</div>
+<div class="step step-danger"><span class="step-red">一旦停下來，<br>就再也沒有錢進來</span></div>
+</div>
+<div class="cards">
+<div class="card"><b>1<span style="font-size:1rem;color:#6B7280;font-weight:400">條</span></b>全押的收入線</div>
+<div class="card"><b class="countup" data-target="40" data-suffix="年">0</b>用時間換錢</div>
+<div class="card"><b>0<span style="font-size:1rem;color:#6B7280;font-weight:400">元</span></b>錢自己賺的錢</div>
+<div class="card"><b>?</b>停下來後靠什麼</div>
+</div>
+<div class="big">最累的活法，<br>是永遠只能用自己的時間，<br>去換每一塊錢。</div>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">如果有一筆錢，會固定每個月生錢給你</p>
+<h2 style="font-size:clamp(2.2rem,5vw,3.4rem)">讓你的錢，<br>也去上班替你賺錢</h2>
+<div class="cards">
+<div class="card float">📅<h3>每月現金流</h3><p>規劃好的資金會定期領回一筆現金，像多請了一個員工幫你賺錢</p></div>
+<div class="card float">😌<h3>不必看盤</h3><p>不用每天盯市場、猜漲跌，領多少、什麼時候領，事先就清楚</p></div>
+<div class="card float">🧱<h3>本金保留</h3><p>領的是產生出來的現金流，原本那筆錢不必一次砍掉</p></div>
+<div class="card float">🔁<h3>可再滾入</h3><p>暫時用不到的現金流，可以再投入，讓錢繼續替你長大</p></div>
+<div class="card float">🌤️<h3>生活有餘裕</h3><p>薪水之外多一條線，日子不必凡事都精打細算</p></div>
+</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">把時間拉長來看</p>
+<h2 class="tight">與其只靠一份薪水，不如讓資產也發薪水給你。</h2>
+<div class="timeline">
+<div class="step">前期<span>把一筆錢放進來，開始累積</span></div>
+<div class="step">之後<span>轉成每月現金流領回</span></div>
+<div class="step">長期<span>薪水之外，多一條穩定的線</span></div>
+</div>
+<div class="equal-wrap">
+<div class="equal-row"><span class="equal-label">你的薪水</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">你的存款</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">這份規劃</span><div class="equal-track"><div class="equal-fill highlight" data-target="100"></div></div></div>
+</div>
+<p style="text-align:center;margin:18px auto 0;max-width:560px">這份規劃，跟你的薪水、存款一樣，都是收入來源。差別是，它不必靠你上班，也會每個月進帳。</p>
+<div class="split">
+<div class="split-card rough">
+<div class="label">只靠一份薪水</div>
+<p>收入全押在上班這件事上，一旦停下來或收入中斷，整個生活的節奏就會跟著卡住。</p>
+</div>
+<div class="split-card smooth">
+<div class="label">多一條現金流</div>
+<p>薪水之外，還有一筆會自己進來的錢。就算某天想慢下來，生活也有另一條線接住。</p>
+</div>
+</div>
+<div class="big">真正的餘裕，<br>是就算你停下來，<br>錢還會繼續進來。</div>
+</div>
+</section>
+
+<section class="examples">
+<div class="reveal">
+<p class="eyebrow">以下是真實情境的改編</p>
+<h2>多一條現金流，<br>生活實際上會有什麼不同？</h2>
+<div class="example-grid">
+
+<button class="example-card" data-modal="ex1">
+<span class="ex-tag">上班族 · 第二份收入</span>
+<h3>不想只靠薪水的張先生</h3>
+<p>三十幾歲的他，開始讓一部分錢每月生現金，替自己在薪水之外多開一條線。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex2">
+<span class="ex-tag">退休 · 月月有進帳</span>
+<h3>退休後照樣領薪水的林阿姨</h3>
+<p>不上班了，她卻每個月照樣有一筆現金進帳，過得比很多還在工作的人從容。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex3">
+<span class="ex-tag">餘裕 · 敢慢下來</span>
+<h3>敢放心轉職的王小姐</h3>
+<p>因為有一條穩定的現金流墊底，她敢在人生某一年，放心慢下來喘口氣。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+</div>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-ex1">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">上班族 · 第二份收入</span>
+<h3>張先生，三十幾歲，不想一輩子只靠薪水</h3>
+<p>張先生收入不錯，但他很清楚一件事：只要哪個月不上班，收入就是零。他不想到了四、五十歲，還是只有這一條線。</p>
+<p style="margin-top:14px">他把一部分閒置的資金做了規劃，讓它每個月固定領回一筆<b>現金流</b>。金額一開始不大，但那是他人生第一次，有一筆錢是「不靠他上班也會進來的」。</p>
+<p style="margin-top:14px">這條線隨著時間慢慢變粗。他說：「以前是我一個人在賺錢，現在是我跟我的錢，一起在賺錢。」</p>
+<div class="ex-result">薪水之外多開一條現金流，錢開始替他一起賺錢</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex2">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">退休 · 月月有進帳</span>
+<h3>林阿姨，退休了，卻每個月照樣領「薪水」</h3>
+<p>林阿姨退休那年，身邊很多朋友開始擔心錢的問題，畢竟不上班了，收入就斷了。她卻一派輕鬆。</p>
+<p style="margin-top:14px">因為她早年就把一筆錢規劃成會<b>每月領回的現金流</b>。退休後，這筆錢像是幫她繼續發薪水，生活費、旅行、孫子的紅包，全都從這裡出。</p>
+<p style="margin-top:14px">她笑說：「我雖然退休了，但我的錢還在上班。」比起很多還在工作的人，她過得更從容。</p>
+<div class="ex-result">退休後每月現金流照樣進帳，生活比上班時更從容</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex3">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">餘裕 · 敢慢下來</span>
+<h3>王小姐，因為有底氣，才敢放心慢下來</h3>
+<p>王小姐工作多年，某一年身心俱疲，很想休息、換個跑道，卻卡在一個很現實的問題：「不上班，這幾個月的開銷誰來付？」</p>
+<p style="margin-top:14px">還好她這些年有做規劃，手上有一條<b>穩定的現金流</b>墊著。這筆錢在她沒有薪水的那段期間，接住了基本的生活開銷。</p>
+<p style="margin-top:14px">她放心地休息了幾個月，重新出發後找到更適合的工作。她說：「那條現金流，買到的其實是我敢慢下來的勇氣。」</p>
+<div class="ex-result">現金流墊底，讓她敢在空檔期慢下來，換到更好的下一步</div>
+</div>
+</div>
+
+<section class="cta">
+<div class="reveal">
+<h1>與其只靠一份薪水，<br>不如讓錢也發一份薪水給你</h1>
+<p style="max-width:none">你很努力賺錢了，該讓你的錢也開始工作。<br>幫自己多開一條每個月準時進帳的現金流。</p>
+<a class="btn" href="#">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div>
+</section>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .card, .big, .step, .arrow, .eyebrow, .split-card, .example-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.25 });
+revealEls.forEach(el => io.observe(el));
+
+document.querySelectorAll('.cards, .example-grid').forEach(grid => {
+  [...grid.children].forEach((card, i) => { card.style.transitionDelay = (i * 0.1) + 's'; });
+});
+
+document.querySelectorAll('.eat-track').forEach(track => {
+  const fill = track.querySelector('.eat-fill');
+  const bite = track.querySelector('.eat-bite');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          bite.classList.add('in');
+          fill.style.width = fill.dataset.target + '%';
+          bite.style.width = bite.dataset.target + '%';
+        }, 400);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  obs.observe(track);
+});
+
+document.querySelectorAll('.equal-fill').forEach((fill, i) => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { fill.style.width = fill.dataset.target + '%'; }, 200 + i * 250);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(fill);
+});
+
+document.querySelectorAll('.countup').forEach(el => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const unit = el.dataset.unit || '';
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const duration = 1200;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + unit + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + unit + suffix;
+        }
+        requestAnimationFrame(tick);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+
+document.querySelectorAll('.example-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const modal = document.getElementById('modal-' + card.dataset.modal);
+    if (modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  overlay.querySelector('[data-close]').addEventListener('click', () => {
+    overlay.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+</script>
+</body></html>

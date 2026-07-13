@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>如果有一天你不在了，這個家還撐得住嗎？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+section{min-height:100vh;padding:8vh 8vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero{background:linear-gradient(135deg,#ffffff,#edf4ff)}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem);font-weight:900;line-height:1.22}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:30px;font-weight:900}
+h2.tight{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+p{font-size:1.15rem;line-height:1.85;max-width:900px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;padding:28px;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.08);text-align:center;opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.card h3{margin-top:10px;font-size:1.15rem;font-weight:700}
+.card p{font-size:0.95rem;margin:8px 0 0;color:#6B7280}
+.card b{font-size:1.6rem;color:#0A3D91;display:block;margin-bottom:4px}
+.float{animation:floaty 4.5s ease-in-out infinite}
+.card:nth-child(2).float{animation-delay:.3s}
+.card:nth-child(3).float{animation-delay:.6s}
+.card:nth-child(4).float{animation-delay:.9s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card.in.float{animation-play-state:running}
+.card:not(.in).float{animation-play-state:paused}
+.big{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;color:#0A3D91;margin:40px 0;line-height:1.5;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.big.in{opacity:1;transform:translateY(0)}
+.cta{background:linear-gradient(135deg,#eef5ff,#ffffff);color:#111827;text-align:center;align-items:center}
+.cta p{color:#374151}
+.btn{display:inline-block;background:#4F8CFF;color:#fff;text-decoration:none;padding:18px 36px;border-radius:99px;font-weight:700;margin-top:30px;box-shadow:0 12px 30px rgba(79,140,255,.4);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,140,255,.55)}
+.shape{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;will-change:transform}
+.s1{width:220px;height:220px;background:#4F8CFF22;top:5%;right:5%}
+.s2{width:120px;height:120px;background:#FFB84D33;bottom:15%;left:8%}
+.timeline{display:flex;justify-content:space-between;gap:10px;margin:40px 0;flex-wrap:wrap;align-items:center}
+.timeline.vertical{flex-direction:column;max-width:420px;margin-left:auto;margin-right:auto}
+.timeline.vertical .step{width:100%}
+.timeline.vertical .arrow{transform:rotate(90deg)}
+.step{flex:1;min-width:130px;background:#f3f7ff;padding:25px 16px;border-radius:18px;text-align:center;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.step.in{opacity:1;transform:translateY(0)}
+.step span{display:block;font-size:.85rem;font-weight:400;color:#6B7280;margin-top:6px}
+.step-danger{background:#FFF3F3;border:1px solid #FFD0D0}
+.step-red{display:block;font-size:.95rem;font-weight:700;color:#D7263D;line-height:1.6}
+.arrow{font-size:2rem;color:#4F8CFF;opacity:0;transition:opacity .6s ease .3s}
+.arrow.in{opacity:1}
+.eyebrow{font-size:.95rem;font-weight:700;color:#4F8CFF;letter-spacing:.05em;margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:680px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:24px;padding:32px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.split-card.in{opacity:1;transform:translateY(0)}
+.split-card.smooth{background:#EAFBF1}
+.split-card.rough{background:#FFF3E0}
+.split-card .label{font-weight:900;font-size:1.2rem;margin-bottom:10px}
+.split-card.smooth .label{color:#0F8A4D}
+.split-card.rough .label{color:#C2730A}
+.split-card p{color:#4B5563;font-size:1rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.fine{font-size:.8rem;color:#9CA3AF;max-width:480px;margin-top:30px}
+.cta .fine{color:#6B7280}
+.scroll-cue{position:absolute;bottom:5vh;left:50%;transform:translateX(-50%);font-size:.8rem;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+.scroll-cue .arrow-down{width:16px;height:16px;border-right:2px solid #6B7280;border-bottom:2px solid #6B7280;transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+.equal-wrap{max-width:560px;width:100%;margin:40px auto 0;display:flex;flex-direction:column;gap:18px}
+.equal-row{display:flex;align-items:center;gap:16px}
+.equal-row .equal-label{width:110px;flex-shrink:0;font-weight:700;font-size:.95rem;color:#374151;text-align:right}
+.equal-track{flex:1;height:20px;background:#EEF2F7;border-radius:10px;overflow:hidden}
+.equal-fill{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#4F8CFF,#0A3D91);transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.equal-fill.highlight{background:linear-gradient(90deg,#0F8A4D,#0A6B3A)}
+
+.eat-wrap{max-width:560px;width:100%;margin:40px auto 0}
+.eat-track{position:relative;height:64px;background:#EEF2F7;border-radius:16px;overflow:hidden}
+.eat-fill{position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,#4F8CFF,#0A3D91);border-radius:16px;display:flex;align-items:center;padding-left:18px;color:#fff;font-weight:700;font-size:.95rem;transition:width 3.6s cubic-bezier(.65,0,.35,1)}
+.eat-bite{position:absolute;right:0;top:0;height:100%;width:0%;background:repeating-linear-gradient(135deg,#FFE3E3,#FFE3E3 6px,#FFC9C9 6px,#FFC9C9 12px);border-radius:0 16px 16px 0;display:flex;align-items:center;justify-content:center;color:#C0392B;font-weight:700;font-size:.85rem;opacity:0;transition:width 3.6s cubic-bezier(.65,0,.35,1), opacity .6s ease .6s}
+.eat-bite.in{opacity:1}
+.eat-label{display:flex;justify-content:space-between;font-size:.85rem;color:#6B7280;margin-top:10px}
+.red{color:#D7263D}
+
+.examples{background:#fafcff}
+.example-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;width:100%;margin-top:40px}
+@media(max-width:820px){.example-grid{grid-template-columns:1fr}}
+.example-card{background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 16px 40px rgba(0,0,0,.07);cursor:pointer;text-align:left;border:none;font-family:inherit;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.example-card.in{opacity:1;transform:translateY(0)}
+.example-card:hover{box-shadow:0 22px 54px rgba(0,0,0,.12);transform:translateY(-4px)}
+.example-card .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.example-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;color:#111827}
+.example-card p{font-size:.95rem;color:#6B7280;margin:0}
+.example-card .ex-more{margin-top:16px;font-size:.88rem;color:#0A3D91;font-weight:700}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(17,24,39,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:28px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:#F1F4F8;border:none;font-size:1.1rem;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#E2E8F0}
+.modal-box .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:#4F8CFF;background:#EAF1FF;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.modal-box h3{font-size:1.4rem;font-weight:900;margin-bottom:16px;color:#111827}
+.modal-box p{font-size:1.02rem;line-height:1.85;color:#374151}
+.modal-box .ex-result{margin-top:20px;padding:18px 20px;background:#EAFBF1;border-radius:16px;font-size:.95rem;color:#0F8A4D;font-weight:700}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero" id="hero">
+<div class="shape s1" data-parallax="0.15"></div>
+<div class="shape s2" data-parallax="0.25"></div>
+<div class="reveal in">
+<p class="eyebrow in">關於家庭，一個沒人想問但該想的問題</p>
+<h1>如果有一天你突然不在了，<br>這個家還撐得住嗎？</h1>
+<div class="big in" style="margin-top:30px">你在的時候，這個家靠你撐著。<br>你不在了，日子還是得繼續過。</div>
+</div>
+<div class="scroll-cue"><span>往下滑</span><span class="arrow-down"></span></div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">情境一 · 你是家裡的那根柱子</p>
+<h2>家裡的每個月，<br>有一大半是你撐起來的。</h2>
+<p>房貸、生活費、孩子的學費，這些開銷背後，靠的是你每個月穩定的收入。你可能沒特別想過，但這個家的財務，其實很大一部分是踩在你的肩膀上。如果有一天這根柱子突然抽掉，撐著這個家的那份收入，也會跟著一起消失。</p>
+<div class="eat-wrap">
+<div class="eat-track">
+<div class="eat-fill" data-target="45">家庭原本的收入</div>
+<div class="eat-bite" data-target="55">支柱倒下後的缺口</div>
+</div>
+<div class="eat-label"><span>你在的時候</span><span>你不在之後</span></div>
+</div>
+<div class="big">悲傷會慢慢過去，<br>但帳單不會等人。</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">情境二 · 你走了，這些花費不會跟著走</p>
+<h2 class="tight">你不在了，這個家的開銷一項都沒少。</h2>
+<div class="cards">
+<div class="card">🏠<h3>房貸</h3></div>
+<div class="card">🎓<h3>孩子的教育</h3></div>
+<div class="card">🍚<h3>日常生活費</h3></div>
+<div class="card">👵<h3>孝養父母</h3></div>
+<div class="card">💡<h3>水電雜支</h3></div>
+</div>
+<div class="big">收入斷了，<br>責任卻一項也沒斷。</div>
+<p>你最放不下的，從來不是那些數字，而是那些人。你希望孩子照樣能唸想唸的書，希望另一半不必為了錢在最難過的時候還得硬撐，希望父母老了有人養。這些心願，需要一份不會跟著你一起消失的收入來守著。</p>
+</div>
+</section>
+
+<section style="background:#eef5ff">
+<div class="reveal">
+<p class="eyebrow">如果家裡的收入突然中斷</p>
+<h2>你放不下的那些人，<br>會一件一件被迫改變。</h2>
+<div class="timeline vertical">
+<div class="step">收入中斷<span>家庭少了最主要的一份薪水</span></div>
+<div class="arrow">→</div>
+<div class="step">存款先頂著<span>但只能撐一段時間</span></div>
+<div class="arrow">→</div>
+<div class="step">開始做取捨<span>房子、教育、生活品質被迫排序</span></div>
+<div class="arrow">→</div>
+<div class="step">另一半扛雙份<span>又要工作，又要獨自撐起這個家</span></div>
+<div class="arrow">→</div>
+<div class="step step-danger"><span class="step-red">孩子的人生規劃，<br>可能因為錢被迫縮水</span></div>
+</div>
+<div class="cards">
+<div class="card"><b class="countup" data-target="800" data-unit="萬">0</b>可能還沒繳完的房貸</div>
+<div class="card"><b class="countup" data-target="500" data-unit="萬">0</b>孩子到成年的養育費</div>
+<div class="card"><b class="countup" data-target="20" data-suffix="年">0</b>另一半要獨自撐的日子</div>
+<div class="card"><b>0<span style="font-size:1rem;color:#6B7280;font-weight:400">元</span></b>你能再帶進來的收入</div>
+</div>
+<div class="big">最大的遺憾，<br>不是你的離開，<br>而是你走後，家人的生活也跟著垮下來。</div>
+</div>
+</section>
+
+<section>
+<div class="reveal">
+<p class="eyebrow">如果有一筆錢，能替你把那份收入留下來</p>
+<h2 style="font-size:clamp(2.2rem,5vw,3.4rem)">把你的責任，<br>換一種方式繼續守著家</h2>
+<div class="cards">
+<div class="card float">🛡️<h3>收入不斷線</h3><p>你不在了，這筆錢接手替家人補上原本靠你的那份收入</p></div>
+<div class="card float">🏠<h3>房子留得住</h3><p>房貸有著落，家人不必被迫賣掉那個充滿回憶的家</p></div>
+<div class="card float">🎓<h3>孩子照樣唸書</h3><p>教育金不必縮水，孩子的人生規劃不因為錢被打斷</p></div>
+<div class="card float">🤝<h3>另一半有喘息</h3><p>不必在最難過的時候，還被逼著一個人硬扛全部</p></div>
+<div class="card float">❤️<h3>愛不因離開而中斷</h3><p>就算人不在了，你對這個家的照顧還在繼續</p></div>
+</div>
+</div>
+</section>
+
+<section style="background:#fafcff">
+<div class="reveal">
+<p class="eyebrow">把時間拉長來看</p>
+<h2 class="tight">這份規劃，是你留給家人繼續生活的能力。</h2>
+<div class="timeline">
+<div class="step">現在<span>用一筆小額，先把責任守住</span></div>
+<div class="step">萬一<span>它替你補上收入的空缺</span></div>
+<div class="step">平安<span>它也能成為家庭的一份資產</span></div>
+</div>
+<div class="equal-wrap">
+<div class="equal-row"><span class="equal-label">你的收入</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">你的存款</span><div class="equal-track"><div class="equal-fill" data-target="100"></div></div></div>
+<div class="equal-row"><span class="equal-label">這份規劃</span><div class="equal-track"><div class="equal-fill highlight" data-target="100"></div></div></div>
+</div>
+<p style="text-align:center;margin:18px auto 0;max-width:560px">這份規劃，跟你每個月的收入一樣，都是這個家的支撐。差別是，就算有一天你不在了，它還會繼續。</p>
+<div class="split">
+<div class="split-card rough">
+<div class="label">如果真的遇到那一天</div>
+<p>家人立刻拿到一筆錢，接住房貸、教育與生活費，讓他們在最脆弱的時候，至少不必再為錢煩惱。</p>
+</div>
+<div class="split-card smooth">
+<div class="label">如果一路平安</div>
+<p>這份規劃持續累積，成為家庭資產的一部分，將來也能留給孩子，或成為自己退休的一份底氣。</p>
+</div>
+</div>
+<div class="big">你撐這個家很多年了。<br>這份規劃，是替你多撐一段路。</div>
+</div>
+</section>
+
+<section class="examples">
+<div class="reveal">
+<p class="eyebrow">以下是真實情境的改編</p>
+<h2>這份規劃，<br>對一個家實際上意味著什麼？</h2>
+<div class="example-grid">
+
+<button class="example-card" data-modal="ex1">
+<span class="ex-tag">房貸 · 保住的家</span>
+<h3>把家留下來的陳太太</h3>
+<p>先生意外離開後，靠這筆錢繳清了房貸，孩子沒有被迫搬離從小長大的家。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex2">
+<span class="ex-tag">教育 · 沒被中斷的夢</span>
+<h3>照樣出國唸書的孩子</h3>
+<p>爸爸走得突然，但他早就替孩子準備好，孩子的留學計畫一天都沒被耽誤。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+<button class="example-card" data-modal="ex3">
+<span class="ex-tag">平安 · 變成傳承</span>
+<h3>一路平安的林先生一家</h3>
+<p>什麼事都沒發生，這份多年前的規劃，後來成了留給孩子的第一桶金。</p>
+<div class="ex-more">看完整故事 →</div>
+</button>
+
+</div>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-ex1">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">房貸 · 保住的家</span>
+<h3>陳太太，先生突然離開後，那個家差點保不住</h3>
+<p>陳先生是家裡主要的收入來源。某天他因為突發狀況離開，留下太太、兩個孩子，還有一筆將近 <b>800 萬</b>還沒繳完的房貸。</p>
+<p style="margin-top:14px">悲傷之外，最現實的壓力是：這個房子還繳得起嗎？幸好陳先生生前做了規劃，家人很快拿到一筆理賠金，直接把剩下的房貸繳清。</p>
+<p style="margin-top:14px">孩子沒有被迫搬離那個從小長大的家。陳太太說，先生用這種方式，把「這個家」實實在在地留了下來。</p>
+<div class="ex-result">理賠金繳清 800 萬房貸，孩子留住了從小長大的家</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex2">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">教育 · 沒被中斷的夢</span>
+<h3>爸爸走得突然，但孩子的夢一天都沒耽誤</h3>
+<p>王先生的女兒從小就想出國唸書，他也一直把這件事放在心上。沒想到在女兒高中時，他因為一場疾病突然離開。</p>
+<p style="margin-top:14px">收入斷了，媽媽一度以為留學這件事只能放棄。但王先生早年就替這個心願準備了一份規劃，家人拿到的這筆錢，剛好足以支撐女兒完整的<b>留學計畫</b>。</p>
+<p style="margin-top:14px">女兒最後如願出國。她說：「爸爸雖然沒能送我到機場，但其實他一直都在。」</p>
+<div class="ex-result">教育金完整到位，孩子的留學夢一天都沒有被中斷</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-ex3">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">平安 · 變成傳承</span>
+<h3>林先生一家，什麼事都沒發生，這份規劃變成了禮物</h3>
+<p>林先生年輕時就替家庭做了這份規劃，想的很單純：「萬一我有什麼事，不能讓家人跟著受苦。」</p>
+<p style="margin-top:14px">結果這一生平平安安，什麼理賠都沒用上。這份規劃一路累積下來，成了一筆實在的<b>家庭資產</b>。</p>
+<p style="margin-top:14px">孩子成年那年，他把這份累積轉作孩子創業的第一桶金。當年為了「以防萬一」買的保障，最後變成了一份傳承。</p>
+<div class="ex-result">一路平安，規劃累積成家庭資產，化作留給孩子的第一桶金</div>
+</div>
+</div>
+
+<section class="cta">
+<div class="reveal">
+<h1>你撐了這個家這麼久，<br>讓這份規劃替你多撐一段</h1>
+<p style="max-width:none">用到了，它替你接住這個家，讓愛的人不必為錢受苦。<br>沒用到，它就是你留給家人的一份資產與心意。</p>
+<a class="btn" href="#">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div>
+</section>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .card, .big, .step, .arrow, .eyebrow, .split-card, .example-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.25 });
+revealEls.forEach(el => io.observe(el));
+
+document.querySelectorAll('.cards, .example-grid').forEach(grid => {
+  [...grid.children].forEach((card, i) => { card.style.transitionDelay = (i * 0.1) + 's'; });
+});
+
+document.querySelectorAll('.eat-track').forEach(track => {
+  const fill = track.querySelector('.eat-fill');
+  const bite = track.querySelector('.eat-bite');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          bite.classList.add('in');
+          fill.style.width = fill.dataset.target + '%';
+          bite.style.width = bite.dataset.target + '%';
+        }, 400);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  obs.observe(track);
+});
+
+document.querySelectorAll('.equal-fill').forEach((fill, i) => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { fill.style.width = fill.dataset.target + '%'; }, 200 + i * 250);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(fill);
+});
+
+document.querySelectorAll('.countup').forEach(el => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const unit = el.dataset.unit || '';
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const duration = 1200;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + unit + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + unit + suffix;
+        }
+        requestAnimationFrame(tick);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+
+document.querySelectorAll('.example-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const modal = document.getElementById('modal-' + card.dataset.modal);
+    if (modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  overlay.querySelector('[data-close]').addEventListener('click', () => {
+    overlay.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+</script>
+</body></html>
