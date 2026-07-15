@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富邦人壽 × 鄭鈞業務團隊｜工作說明頁面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #003366;
+  --blue-2: #004d99;
+  --teal-a: #0ea5b5;
+  --teal-b: #2eb8a0;
+  --gold: #c9973a;
+  --gold-lt: #f0c96e;
+  --bg-pale: #f4f8fc;
+  --text-dk: #1a2233;
+  --text-md: #4a5568;
+  --text-lt: #8896aa;
+  --r: 12px;
+  --sh: 0 2px 20px rgba(0,51,102,.09);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans TC',-apple-system,'PingFang TC','Microsoft JhengHei',sans-serif;
+  color:var(--text-dk);background:#fff;line-height:1.8;font-size:16px;overflow-x:hidden
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* ── Navbar ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,51,102,.07);
+  height:54px;padding:0 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  transform:translateY(-100%);transition:transform .3s ease
+}
+.nav.show{transform:translateY(0)}
+.nav-brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.nav-logo{
+  width:28px;height:28px;background:var(--blue);border-radius:7px;
+  display:flex;align-items:center;justify-content:center
+}
+.nav-logo svg{width:15px;height:15px}
+.nav-name{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.02em}
+.nav-btn{
+  background:var(--blue);color:#fff;border:none;padding:8px 18px;
+  border-radius:22px;font-size:13px;font-weight:700;font-family:inherit;
+  cursor:pointer;text-decoration:none;transition:background .2s
+}
+.nav-btn:hover{background:var(--blue-2)}
+
+/* ── Float CTA ── */
+.float-btn{
+  position:fixed;bottom:22px;right:18px;z-index:899;
+  background:linear-gradient(135deg,var(--teal-a),var(--teal-b));
+  color:#fff;padding:13px 20px;border-radius:30px;
+  font-size:14px;font-weight:700;text-decoration:none;
+  box-shadow:0 6px 28px rgba(14,165,181,.42);
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s
+}
+.float-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(14,165,181,.52)}
+.float-btn svg{width:17px;height:17px;flex-shrink:0}
+
+/* ── Containers ── */
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* ── Scroll reveal ── */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}
+
+/* ── Section labels / titles ── */
+.lbl{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-a);margin-bottom:.6rem}
+.stitle{font-size:clamp(1.45rem,4vw,2rem);font-weight:900;color:var(--blue);line-height:1.35;margin-bottom:.9rem}
+.sdesc{color:var(--text-md);font-size:.97rem;line-height:1.85;max-width:640px}
+
+/* ── Wave dividers ── */
+.wv{display:block;width:100%;overflow:hidden;line-height:0;margin-top:-1px}
+.wv svg{display:block;width:100%}
+
+/* ════════════════════════════════════════
+   S1 HERO
+════════════════════════════════════════ */
+.hero{
+  min-height:100svh;
+  background:linear-gradient(155deg,#001f44 0%,#003366 50%,#004d80 100%);
+  display:flex;align-items:center;
+  padding:90px 1.25rem 64px;position:relative;overflow:hidden
+}
+.hero::before{
+  content:'';position:absolute;top:-35%;right:-15%;
+  width:580px;height:580px;
+  background:radial-gradient(circle,rgba(14,165,181,.17) 0%,transparent 70%)
+}
+.hero::after{
+  content:'';position:absolute;bottom:-18%;left:-8%;
+  width:380px;height:380px;
+  background:radial-gradient(circle,rgba(46,184,160,.13) 0%,transparent 70%)
+}
+.hero-in{max-width:700px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(14,165,181,.16);border:1px solid rgba(14,165,181,.38);
+  color:#6dd9e8;padding:6px 16px;border-radius:20px;
+  font-size:12.5px;font-weight:500;margin-bottom:1.9rem;letter-spacing:.05em
+}
+.hero-dot{width:6px;height:6px;background:#0ea5b5;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{
+  font-size:clamp(1.85rem,5vw,3rem);font-weight:900;color:#fff;
+  line-height:1.33;margin-bottom:1.2rem;letter-spacing:-.01em
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#0ea5b5,#2eb8a0);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.hero-sub{font-size:1.02rem;color:rgba(255,255,255,.7);margin-bottom:2.4rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.9}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--teal-a),var(--teal-b));
+  color:#fff;padding:15px 34px;border-radius:50px;
+  font-size:1.02rem;font-weight:700;text-decoration:none;
+  box-shadow:0 8px 32px rgba(14,165,181,.44);
+  transition:transform .2s,box-shadow .2s
+}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(14,165,181,.54)}
+.hero-cta svg{width:19px;height:19px}
+.hero-hint{margin-top:3.2rem;color:rgba(255,255,255,.38);font-size:11.5px;letter-spacing:.1em}
+.hero-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.28),transparent);margin:7px auto 0;animation:slideDown 1.6s infinite}
+@keyframes slideDown{0%{opacity:1;transform:scaleY(1);transform-origin:top}100%{opacity:0;transform:scaleY(0);transform-origin:top}}
+
+/* ════════════════════════════════════════
+   S2 INDUSTRY
+════════════════════════════════════════ */
+.s-industry{padding:76px 0 68px;background:var(--bg-pale)}
+.ind-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;margin-top:2.4rem}
+@media(min-width:560px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:860px){.ind-grid{grid-template-columns:repeat(3,1fr)}}
+.ind-card{
+  background:#fff;border-radius:var(--r);padding:1.6rem 1.4rem;
+  box-shadow:var(--sh);border-top:3px solid transparent;
+  border-image:linear-gradient(90deg,var(--teal-a),var(--teal-b)) 1
+}
+.ind-card .n{
+  font-size:clamp(2rem,5vw,2.7rem);font-weight:900;line-height:1;
+  background:linear-gradient(135deg,var(--teal-a),var(--teal-b));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:.45rem
+}
+.ind-card .t{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:.4rem}
+.ind-card .d{font-size:13.5px;color:var(--text-md);line-height:1.8}
+.ind-end{
+  margin-top:1.8rem;
+  background:linear-gradient(135deg,var(--blue),#0055aa);
+  border-radius:var(--r);padding:1.45rem 1.7rem;
+  color:#fff;font-size:.97rem;line-height:1.85;font-weight:500
+}
+
+/* ════════════════════════════════════════
+   S3 FUBON
+════════════════════════════════════════ */
+.s-fubon{padding:76px 0 68px;background:#fff}
+.fb-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:2.2rem}
+@media(min-width:640px){.fb-stats{grid-template-columns:repeat(4,1fr)}}
+.fb-stat{background:var(--bg-pale);border-radius:var(--r);padding:1.4rem 1.2rem;text-align:center}
+.fb-stat .num{
+  font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900;color:var(--blue);
+  line-height:1;margin-bottom:.25rem
+}
+.fb-stat .unit{font-size:11.5px;color:var(--teal-a);font-weight:700;margin-bottom:.4rem}
+.fb-stat .lbl2{font-size:12px;color:var(--text-md);line-height:1.5}
+.fb-awards{display:grid;grid-template-columns:1fr;gap:.85rem;margin-top:1.7rem}
+@media(min-width:560px){.fb-awards{grid-template-columns:repeat(2,1fr)}}
+.aw-item{display:flex;align-items:flex-start;gap:11px;background:var(--bg-pale);border-radius:10px;padding:.95rem 1.2rem}
+.aw-ico{
+  width:36px;height:36px;flex-shrink:0;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold));
+  display:flex;align-items:center;justify-content:center
+}
+.aw-ico svg{width:17px;height:17px}
+.aw-text{font-size:13px;color:var(--text-dk);line-height:1.65}
+.aw-text strong{color:var(--blue);font-weight:700}
+
+/* ════════════════════════════════════════
+   S4 INCOME
+════════════════════════════════════════ */
+.s-income{padding:76px 0 68px;background:var(--bg-pale)}
+.cmp-bar{
+  background:linear-gradient(135deg,var(--blue),#0055aa);
+  border-radius:var(--r);padding:1.65rem 1.9rem;color:#fff;
+  margin-top:1.9rem;margin-bottom:2.3rem;
+  display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap
+}
+.cmp-big{font-size:clamp(2.4rem,6vw,3.2rem);font-weight:900;line-height:1;color:#fff}
+.cmp-big sub{font-size:1rem;font-weight:700;color:rgba(255,255,255,.7);vertical-align:baseline}
+.cmp-right{flex:1;min-width:180px}
+.cmp-right p{font-size:.93rem;color:rgba(255,255,255,.83);line-height:1.75}
+.cmp-right strong{color:#fff}
+
+/* table – desktop */
+.inc-tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);display:none}
+@media(min-width:600px){.inc-tbl{display:table}}
+.inc-tbl thead{background:var(--blue)}
+.inc-tbl th{color:rgba(255,255,255,.88);font-size:12.5px;font-weight:700;padding:13px 15px;text-align:center;letter-spacing:.03em}
+.inc-tbl th:first-child{text-align:left}
+.inc-tbl td{padding:12px 15px;font-size:14px;color:var(--text-dk);border-bottom:1px solid rgba(0,51,102,.055);text-align:center}
+.inc-tbl td:first-child{font-weight:700;text-align:left;color:var(--blue)}
+.inc-tbl tbody tr:hover{background:#f4f8fc}
+.inc-tbl tr.hl td{background:rgba(14,165,181,.07)}
+.inc-tbl tr.hl td:first-child{color:var(--teal-a)}
+.inc-tbl tfoot td{background:#f4f8fc;font-size:11px;color:var(--text-lt);text-align:left;padding:11px 15px;line-height:1.7}
+
+/* cards – mobile */
+.inc-cards{display:grid;grid-template-columns:1fr;gap:.8rem;margin-top:1.4rem}
+@media(min-width:600px){.inc-cards{display:none}}
+.inc-card{
+  background:#fff;border-radius:var(--r);padding:1.1rem 1.2rem;
+  box-shadow:var(--sh);display:flex;justify-content:space-between;align-items:center;gap:.8rem
+}
+.inc-card.hl{border-left:3px solid var(--teal-a)}
+.inc-card .rk{font-size:15px;font-weight:700;color:var(--blue)}
+.inc-card.hl .rk{color:var(--teal-a)}
+.inc-card .sb{font-size:11.5px;color:var(--text-lt);margin-top:2px}
+.inc-card .am{text-align:right}
+.inc-card .av{font-size:17px;font-weight:900;color:var(--blue)}
+.inc-card .tp{font-size:13px;font-weight:700;color:var(--teal-a);margin-top:2px}
+.inc-card .tp-lb{font-size:10.5px;color:var(--text-lt)}
+.mob-note{font-size:11px;color:var(--text-lt);line-height:1.7;padding:.7rem .2rem;display:none}
+@media(max-width:599px){.mob-note{display:block}}
+
+/* new-hire */
+.nh-grid{display:grid;grid-template-columns:1fr;gap:.95rem;margin-top:1.25rem}
+@media(min-width:440px){.nh-grid{grid-template-columns:repeat(2,1fr)}}
+.nh-card{
+  background:#fff;border-radius:var(--r);padding:1.45rem;
+  box-shadow:var(--sh);text-align:center
+}
+.nh-card .big{
+  font-size:2rem;font-weight:900;line-height:1;margin-bottom:.35rem;
+  background:linear-gradient(135deg,var(--teal-a),var(--teal-b));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.nh-card .lb{font-size:13px;color:var(--text-md);margin-bottom:.4rem}
+.nh-card .mo{font-size:12px;color:var(--text-lt)}
+.nh-card .mo strong{color:var(--text-dk)}
+
+/* career ladder */
+.ladder-wrap{display:flex;align-items:flex-end;gap:5px;margin-top:1.3rem;height:200px}
+.l-step{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;gap:4px}
+.l-bar{width:100%;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--teal-a),var(--teal-b));transition:height .4s ease}
+.l-bar.gold{background:linear-gradient(180deg,var(--gold-lt),var(--gold))}
+.l-label{font-size:10px;color:var(--text-md);text-align:center;line-height:1.3}
+.l-label.bold{font-weight:700;color:var(--blue)}
+.l-amt{font-size:10px;color:var(--teal-a);font-weight:700;text-align:center}
+.l-amt.gold-t{color:var(--gold)}
+.ladder-tagline{text-align:center;margin-top:1.4rem;font-size:.97rem;font-weight:700;color:var(--blue)}
+.note-box{
+  margin-top:1.4rem;font-size:11px;color:var(--text-lt);line-height:1.75;
+  padding:.9rem 1.1rem;background:#fff;border-radius:8px;border-left:3px solid rgba(0,51,102,.1)
+}
+
+/* ════════════════════════════════════════
+   S5 REWARDS
+════════════════════════════════════════ */
+.s-rewards{padding:76px 0 68px;background:#fff}
+.rw-hero{
+  text-align:center;
+  background:linear-gradient(135deg,var(--gold),#d4a030);
+  border-radius:var(--r);padding:2.3rem 1.4rem;margin-top:1.9rem;margin-bottom:2.3rem;
+  position:relative;overflow:hidden
+}
+.rw-hero::before{
+  content:'';position:absolute;top:-28%;right:-8%;
+  width:220px;height:220px;background:rgba(255,255,255,.11);border-radius:50%
+}
+.rw-hero .rl{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.82);letter-spacing:.1em;margin-bottom:.45rem}
+.rw-hero .ra{font-size:clamp(2.7rem,8vw,3.8rem);font-weight:900;color:#fff;line-height:1;margin-bottom:.25rem}
+.rw-hero .rs{font-size:13.5px;color:rgba(255,255,255,.82)}
+.rw-items{display:grid;grid-template-columns:1fr;gap:.8rem}
+@media(min-width:460px){.rw-items{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:740px){.rw-items{grid-template-columns:repeat(3,1fr)}}
+.rw-item{
+  background:var(--bg-pale);border-radius:10px;padding:1.15rem 1.15rem;
+  display:flex;align-items:center;gap:11px
+}
+.rw-ico{
+  width:40px;height:40px;flex-shrink:0;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold));
+  display:flex;align-items:center;justify-content:center
+}
+.rw-ico svg{width:19px;height:19px}
+.rw-nm{font-size:12.5px;color:var(--text-md);margin-bottom:2px}
+.rw-am{font-size:17.5px;font-weight:900;color:var(--blue)}
+.rw-note{margin-top:1.1rem;font-size:11px;color:var(--text-lt);line-height:1.75;padding:.8rem 1.1rem;background:var(--bg-pale);border-radius:8px}
+
+/* ════════════════════════════════════════
+   S6 TRAINING
+════════════════════════════════════════ */
+.s-training{padding:76px 0 68px;background:var(--bg-pale)}
+.tr-intro{
+  background:var(--blue);border-radius:var(--r);padding:1.4rem 1.65rem;
+  color:#fff;font-size:1rem;font-weight:500;line-height:1.85;
+  margin-top:1.9rem;margin-bottom:1.9rem
+}
+.tr-grid{display:grid;grid-template-columns:1fr;gap:.95rem}
+@media(min-width:600px){.tr-grid{grid-template-columns:repeat(2,1fr)}}
+.tr-card{background:#fff;border-radius:var(--r);padding:1.4rem;box-shadow:var(--sh)}
+.tr-head{display:flex;align-items:center;gap:10px;margin-bottom:.7rem}
+.tr-ico{
+  width:36px;height:36px;flex-shrink:0;border-radius:8px;
+  background:linear-gradient(135deg,var(--teal-a),var(--teal-b));
+  display:flex;align-items:center;justify-content:center
+}
+.tr-ico svg{width:17px;height:17px}
+.tr-t{font-size:14.5px;font-weight:700;color:var(--blue)}
+.tr-d{font-size:13px;color:var(--text-md);line-height:1.8}
+.ai-box{
+  margin-top:1.5rem;border-radius:var(--r);padding:1.45rem 1.65rem;
+  border:2px solid transparent;
+  background:linear-gradient(#fff,#fff) padding-box,
+             linear-gradient(135deg,var(--teal-a),var(--teal-b)) border-box
+}
+.ai-box h4{font-size:14.5px;font-weight:700;color:var(--teal-a);margin-bottom:.7rem;display:flex;align-items:center;gap:7px}
+.ai-box h4 svg{width:18px;height:18px}
+.ai-box p{font-size:13px;color:var(--text-md);line-height:1.8}
+.ai-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.8rem}
+.ai-tag{
+  background:rgba(14,165,181,.1);color:var(--teal-a);
+  border:1px solid rgba(14,165,181,.25);
+  font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px
+}
+
+/* ════════════════════════════════════════
+   S7 BENEFITS
+════════════════════════════════════════ */
+.s-benefits{padding:76px 0 68px;background:#fff}
+.be-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.95rem;margin-top:1.9rem}
+@media(min-width:740px){.be-grid{grid-template-columns:repeat(3,1fr)}}
+.be-card{background:var(--bg-pale);border-radius:var(--r);padding:1.2rem}
+.be-ico{
+  width:40px;height:40px;border-radius:10px;margin-bottom:.85rem;
+  background:linear-gradient(135deg,var(--teal-a),var(--teal-b));
+  display:flex;align-items:center;justify-content:center
+}
+.be-ico svg{width:20px;height:20px}
+.be-t{font-size:13.5px;font-weight:700;color:var(--blue);margin-bottom:.35rem}
+.be-d{font-size:12.5px;color:var(--text-md);line-height:1.75}
+
+/* ════════════════════════════════════════
+   S8 AWARDS
+════════════════════════════════════════ */
+.s-awards{
+  padding:76px 0 68px;
+  background:linear-gradient(155deg,#001f44,#003366 55%,#004480);
+  position:relative;overflow:hidden
+}
+.s-awards::before{
+  content:'';position:absolute;top:-18%;right:-8%;
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(14,165,181,.11) 0%,transparent 70%)
+}
+.s-awards .lbl{color:#6dd9e8}
+.s-awards .stitle{color:#fff}
+.s-awards .sdesc{color:rgba(255,255,255,.68)}
+.aw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.95rem;margin-top:1.9rem}
+@media(min-width:600px){.aw-grid{grid-template-columns:repeat(4,1fr)}}
+.aw-card{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);
+  border-radius:var(--r);padding:1.2rem 1rem;text-align:center;backdrop-filter:blur(8px)
+}
+.aw-ball{
+  width:44px;height:44px;background:linear-gradient(135deg,var(--gold-lt),var(--gold));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .7rem
+}
+.aw-ball svg{width:21px;height:21px}
+.aw-nm{font-size:13px;font-weight:700;color:#fff;margin-bottom:.2rem}
+.aw-ds{font-size:11.5px;color:rgba(255,255,255,.58);line-height:1.5}
+.travel-box{
+  margin-top:2.3rem;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.65rem
+}
+.travel-t{color:rgba(255,255,255,.82);font-size:14.5px;font-weight:700;text-align:center;margin-bottom:.95rem}
+.ct-list{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem}
+.ct-tag{
+  background:rgba(14,165,181,.18);border:1px solid rgba(14,165,181,.32);
+  color:#6dd9e8;padding:5px 14px;border-radius:20px;
+  font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px
+}
+.ct-dot{width:6px;height:6px;background:#0ea5b5;border-radius:50%}
+.aw-tagline{text-align:center;margin-top:1.9rem;font-size:1rem;font-weight:700;color:rgba(255,255,255,.88)}
+
+/* ════════════════════════════════════════
+   S9 SESSION
+════════════════════════════════════════ */
+.s-session{padding:76px 0 68px;background:var(--bg-pale)}
+.ss-grid{display:grid;grid-template-columns:1fr;gap:1.05rem;margin-top:1.9rem}
+@media(min-width:600px){.ss-grid{grid-template-columns:repeat(3,1fr)}}
+.ss-card{background:#fff;border-radius:var(--r);padding:1.45rem;box-shadow:var(--sh);text-align:center}
+.ss-ico{
+  width:48px;height:48px;background:var(--bg-pale);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto .85rem
+}
+.ss-ico svg{width:23px;height:23px;color:var(--teal-a)}
+.ss-t{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:.3rem}
+.ss-d{font-size:12.5px;color:var(--text-md);line-height:1.7}
+.mgr-box{
+  margin-top:2.3rem;background:#fff;border-radius:var(--r);
+  padding:1.9rem;box-shadow:var(--sh);border-left:4px solid var(--blue)
+}
+.mgr-t{font-size:14.5px;color:var(--text-dk);line-height:1.9;margin-bottom:1.2rem}
+.mgr-sig{display:flex;align-items:center;gap:12px}
+.mgr-av{
+  width:44px;height:44px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),#0055aa);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;font-size:15px
+}
+.mgr-name{font-size:14px;font-weight:700;color:var(--blue)}
+.mgr-pos{font-size:12px;color:var(--text-md)}
+
+/* ════════════════════════════════════════
+   S10 FINAL CTA
+════════════════════════════════════════ */
+.s-final{padding:88px 0 76px;background:#fff;text-align:center}
+.final-sub{font-size:.97rem;color:var(--text-md);margin-bottom:1.65rem;line-height:1.9}
+.final-btn{
+  display:inline-flex;align-items:center;gap:11px;
+  background:linear-gradient(135deg,var(--blue),#0055aa);color:#fff;
+  padding:17px 46px;border-radius:50px;font-size:1.05rem;font-weight:700;
+  text-decoration:none;box-shadow:0 8px 40px rgba(0,51,102,.28);
+  transition:transform .2s,box-shadow .2s
+}
+.final-btn:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,51,102,.38)}
+.final-btn svg{width:21px;height:21px}
+
+/* Footer */
+.footer{
+  background:var(--bg-pale);border-top:1px solid rgba(0,51,102,.07);
+  padding:1.4rem 1.25rem;text-align:center;
+  font-size:12.5px;color:var(--text-lt);line-height:1.8
+}
+.footer .src{margin-top:.65rem;font-size:10.5px;color:#b0b8c5;line-height:1.75}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">
+      <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="1.5" width="5" height="5" rx="1" fill="white"/>
+        <rect x="8.5" y="1.5" width="5" height="5" rx="1" fill="rgba(255,255,255,.5)"/>
+        <rect x="1.5" y="8.5" width="5" height="5" rx="1" fill="rgba(255,255,255,.5)"/>
+        <rect x="8.5" y="8.5" width="5" height="5" rx="1" fill="white"/>
+      </svg>
+    </div>
+    <span class="nav-name">富邦人壽 ｜ 鄭鈞業務團隊</span>
+  </a>
+  <a href="https://calendly.com/rmp8280410/interview" target="_blank" class="nav-btn">預約面試</a>
+</nav>
+
+<!-- FLOAT -->
+<a href="https://calendly.com/rmp8280410/interview" target="_blank" class="float-btn">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+  預約面試時間
+</a>
+
+<!-- ═══ S1 HERO ═══ -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-badge"><span class="hero-dot"></span>富邦人壽業務團隊　誠邀了解</div>
+    <h1>我們想提供的<br>不只是一份工作，<br>而是<em>完善的事業發展。</em></h1>
+    <p class="hero-sub">在您決定是否前來面談之前，請先花五分鐘，了解我們能給您什麼。</p>
+    <a href="https://calendly.com/rmp8280410/interview" target="_blank" class="hero-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      預約面試時間
+    </a>
+    <div class="hero-hint">向下捲動了解更多</div>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<div class="wv" style="background:#003366"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,28 C360,58 1080,0 1440,28 L1440,58 L0,58Z" fill="#f4f8fc"/></svg></div>
+
+<!-- ═══ S2 INDUSTRY ═══ -->
+<section class="s-industry">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">為什麼是這個產業</span>
+      <h2 class="stitle">三大趨勢，讓保險顧問成為<br>未來二十年最需要的專業</h2>
+      <p class="sdesc">數據不說謊。台灣正在經歷一場靜默的人口轉型，而這場轉型為保險顧問帶來的是結構性的長期需求。</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card rv d1">
+        <div class="n">20%<span style="font-size:1.3rem">+</span></div>
+        <div class="t">超高齡社會正式來臨</div>
+        <div class="d">台灣 2025 年 65 歲以上人口超過 20%，從高齡社會到超高齡社會僅花 7 年，老化速度全球最快。</div>
+      </div>
+      <div class="ind-card rv d2">
+        <div class="n">9,883<span style="font-size:1.1rem">億</span></div>
+        <div class="t">健保預算逐年攀升</div>
+        <div class="d">健保總額從 102 年度 5,531 億成長至 115 年度 9,883 億元，新醫療科技推動商業保險需求持續上升。</div>
+      </div>
+      <div class="ind-card rv d3">
+        <div class="n">3</div>
+        <div class="t">長壽、醫療、退休三大風險</div>
+        <div class="d">三大風險同步放大，每個人都需要專業顧問協助規劃，這是任何科技都難以完全取代的人際信任關係。</div>
+      </div>
+    </div>
+    <div class="ind-end rv">
+      長壽、醫療、退休三大風險正在放大，保險顧問正在成為未來二十年需求持續擴大的稀缺專業。這不是市場趨勢，而是正在發生的現實。
+    </div>
+  </div>
+</section>
+
+<div class="wv" style="background:#f4f8fc"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,0 C480,58 960,0 1440,40 L1440,58 L0,58Z" fill="#fff"/></svg></div>
+
+<!-- ═══ S3 FUBON ═══ -->
+<section class="s-fubon">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">為什麼是富邦</span>
+      <h2 class="stitle">台灣金融業最紮實的<br>品牌後盾</h2>
+      <p class="sdesc">富邦金控連續 16 年蟬聯台灣金控每股獲利龍頭。您的名字背後，站著一個有份量的集團。</p>
+    </div>
+    <div class="fb-stats">
+      <div class="fb-stat rv d1">
+        <div class="num"><span class="cu" data-t="12.06" data-d="2">0</span><span style="font-size:.75rem;font-weight:400">兆</span></div>
+        <div class="unit">集團總資產</div>
+        <div class="lbl2">超過 12.06 兆元</div>
+      </div>
+      <div class="fb-stat rv d2">
+        <div class="num"><span class="cu" data-t="1.33" data-d="2">0</span><span style="font-size:.75rem;font-weight:400">兆</span></div>
+        <div class="unit">集團市值</div>
+        <div class="lbl2">超過 1.33 兆元</div>
+      </div>
+      <div class="fb-stat rv d3">
+        <div class="num"><span class="cu" data-t="1437" data-d="0">0</span><span style="font-size:.75rem;font-weight:400">萬</span></div>
+        <div class="unit">集團客戶數</div>
+        <div class="lbl2">超過 1,437 萬人</div>
+      </div>
+      <div class="fb-stat rv d4">
+        <div class="num"><span class="cu" data-t="1026" data-d="0">0</span><span style="font-size:.75rem;font-weight:400">億</span></div>
+        <div class="unit">富邦人壽稅後淨利</div>
+        <div class="lbl2">2024 年 1,026.6 億元</div>
+      </div>
+    </div>
+    <div class="fb-awards" style="margin-top:1.65rem">
+      <div class="aw-item rv d1">
+        <div class="aw-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="aw-text"><strong>TIME 全球 500 大永續企業</strong><br>連續二年獲評，2025 年全球金融產業第 4 名</div>
+      </div>
+      <div class="aw-item rv d2">
+        <div class="aw-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="aw-text"><strong>第 14 度獲《World Finance》評選</strong><br>台灣最佳壽險公司</div>
+      </div>
+      <div class="aw-item rv d3">
+        <div class="aw-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="aw-text"><strong>MSCI ESG 評級 AA 領導等級</strong><br>富邦金控連續 16 年蟬聯每股獲利龍頭</div>
+      </div>
+      <div class="aw-item rv d4">
+        <div class="aw-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="aw-text"><strong>約 500 萬名保戶</strong><br>富邦人壽，台灣最值得信賴的壽險品牌之一</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wv" style="background:#fff"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,40 C360,0 1080,58 1440,20 L1440,58 L0,58Z" fill="#f4f8fc"/></svg></div>
+
+<!-- ═══ S4 INCOME ═══ -->
+<section class="s-income">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">收入與職涯</span>
+      <h2 class="stitle">做到了，讓收入說話</h2>
+      <p class="sdesc">這份工作的門票是努力與專業，但報酬沒有上限。以下所有數字都來自真實統計，不是廣告口號。</p>
+    </div>
+    <div class="cmp-bar rv">
+      <div>
+        <div class="cmp-big">7.1<sub>萬</sub></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.62);margin-top:3px">平均月薪</div>
+      </div>
+      <div class="cmp-right">
+        <p><strong>金融及保險業平均月薪 7.1 萬元</strong>，居台灣工業及服務業各行業之首。<br>資料來源：行政院主計總處 114 年統計</p>
+      </div>
+    </div>
+
+    <!-- Desktop table -->
+    <div class="rv">
+      <table class="inc-tbl">
+        <thead>
+          <tr><th>職級</th><th>全體平均月收入</th><th>前 25% 月收入</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>行銷專員</td><td>3.6 萬元</td><td>9.6 萬元</td></tr>
+          <tr><td>業務主任</td><td>8.0 萬元</td><td>17.7 萬元</td></tr>
+          <tr><td>業務襄理</td><td>10.7 萬元</td><td>23.3 萬元</td></tr>
+          <tr class="hl"><td>業務經理</td><td>16.7 萬元</td><td>36.1 萬元</td></tr>
+          <tr><td>處經理</td><td>40.4 萬元</td><td>74.7 萬元</td></tr>
+          <tr><td>業務總監（含）以上</td><td>79.1 萬元</td><td>138.5 萬元</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="3">以上為統計資料，資料來源：富邦人壽業務行銷部（資料區間 114 年 1 至 10 月）。實際收入依個人業績而定。</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="inc-cards rv">
+      <div class="inc-card"><div><div class="rk">行銷專員</div><div class="sb">職涯起點</div></div><div class="am"><div class="av">3.6 萬</div><div class="tp-lb">前 25%</div><div class="tp">9.6 萬</div></div></div>
+      <div class="inc-card"><div><div class="rk">業務主任</div><div class="sb">初級主管</div></div><div class="am"><div class="av">8.0 萬</div><div class="tp-lb">前 25%</div><div class="tp">17.7 萬</div></div></div>
+      <div class="inc-card"><div><div class="rk">業務襄理</div><div class="sb">中階主管</div></div><div class="am"><div class="av">10.7 萬</div><div class="tp-lb">前 25%</div><div class="tp">23.3 萬</div></div></div>
+      <div class="inc-card hl"><div><div class="rk">業務經理</div><div class="sb">高階主管</div></div><div class="am"><div class="av">16.7 萬</div><div class="tp-lb">前 25%</div><div class="tp">36.1 萬</div></div></div>
+      <div class="inc-card"><div><div class="rk">處經理</div><div class="sb">資深主管</div></div><div class="am"><div class="av">40.4 萬</div><div class="tp-lb">前 25%</div><div class="tp">74.7 萬</div></div></div>
+      <div class="inc-card"><div><div class="rk">業務總監+</div><div class="sb">頂級主管</div></div><div class="am"><div class="av">79.1 萬</div><div class="tp-lb">前 25%</div><div class="tp">138.5 萬</div></div></div>
+    </div>
+    <div class="mob-note">以上為統計資料，資料來源：富邦人壽業務行銷部（資料區間 114 年 1 至 10 月）。實際收入依個人業績而定。</div>
+
+    <!-- New hire -->
+    <div style="margin-top:2.3rem" class="rv">
+      <div style="font-size:.97rem;font-weight:700;color:var(--blue);margin-bottom:1rem">新人第一年收入試算</div>
+      <div class="nh-grid">
+        <div class="nh-card rv d1">
+          <div class="big">74.8<span style="font-size:1.1rem">萬</span></div>
+          <div class="lb">月月產能 3 萬元時</div>
+          <div class="mo">平均月收入約 <strong>6.2 萬元</strong></div>
+        </div>
+        <div class="nh-card rv d2">
+          <div class="big">96.8<span style="font-size:1.1rem">萬</span></div>
+          <div class="lb">月月產能 4 萬元時</div>
+          <div class="mo">平均月收入約 <strong>8 萬元</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career ladder -->
+    <div style="margin-top:2.3rem" class="rv">
+      <div style="font-size:.97rem;font-weight:700;color:var(--blue);margin-bottom:1rem">晉升軌道</div>
+      <div class="ladder-wrap">
+        <div class="l-step"><div class="l-bar" style="height:17%"></div><div class="l-label">行銷<br>專員</div><div class="l-amt">3.6萬</div></div>
+        <div class="l-step"><div class="l-bar" style="height:30%"></div><div class="l-label">業務<br>主任</div><div class="l-amt">8萬</div></div>
+        <div class="l-step"><div class="l-bar" style="height:40%"></div><div class="l-label">業務<br>襄理</div><div class="l-amt">10.7萬</div></div>
+        <div class="l-step"><div class="l-bar" style="height:54%;background:linear-gradient(180deg,#0ea5b5,#2eb8a0)"></div><div class="l-label bold">業務<br>經理</div><div class="l-amt">16.7萬</div></div>
+        <div class="l-step"><div class="l-bar" style="height:74%"></div><div class="l-label">處<br>經理</div><div class="l-amt">40.4萬</div></div>
+        <div class="l-step"><div class="l-bar gold" style="height:100%"></div><div class="l-label bold">業務<br>總監</div><div class="l-amt gold-t">79.1萬</div></div>
+      </div>
+      <div class="ladder-tagline">成就無上限，價值由自己決定。</div>
+    </div>
+
+    <div class="note-box rv">
+      以上為統計資料，資料來源：富邦人壽業務行銷部（資料區間 114 年 1 至 10 月）。實際收入依個人業績而定。
+    </div>
+  </div>
+</section>
+
+<div class="wv" style="background:#f4f8fc"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,20 C480,58 960,0 1440,38 L1440,58 L0,58Z" fill="#fff"/></svg></div>
+
+<!-- ═══ S5 REWARDS ═══ -->
+<section class="s-rewards">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">新人獎勵</span>
+      <h2 class="stitle">前兩年，制度護送你<br>站穩腳步</h2>
+      <p class="sdesc">加入後前兩年，除了薪酬之外，還有一套專為新人設計的獎勵制度作為額外支撐。</p>
+    </div>
+    <div class="rw-hero rv">
+      <div class="rl">新人 2 年獎勵專案</div>
+      <div class="ra"><span class="cu" data-t="43.2" data-d="1">0</span> 萬元</div>
+      <div class="rs">符合條件者最高合計可領</div>
+    </div>
+    <div class="rw-items">
+      <div class="rw-item rv d1">
+        <div class="rw-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div><div class="rw-nm">月月獎勵</div><div class="rw-am">最多 24 萬</div></div>
+      </div>
+      <div class="rw-item rv d2">
+        <div class="rw-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div><div class="rw-nm">季績效獎金</div><div class="rw-am">最高 8 萬</div></div>
+      </div>
+      <div class="rw-item rv d3">
+        <div class="rw-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div><div class="rw-nm">年定著獎勵</div><div class="rw-am">最高 7.6 萬</div></div>
+      </div>
+      <div class="rw-item rv d4">
+        <div class="rw-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div><div class="rw-nm">數位配備輔助金</div><div class="rw-am">最高 2.1 萬</div></div>
+      </div>
+      <div class="rw-item rv d5">
+        <div class="rw-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div><div class="rw-nm">新銳結訓獎勵</div><div class="rw-am">最高 1.5 萬</div></div>
+      </div>
+    </div>
+    <div class="rw-note rv">須符合各項專案辦法核發標準及條件始予核發，詳細辦法以公司公告為主。</div>
+  </div>
+</section>
+
+<div class="wv" style="background:#fff"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,38 C360,0 1080,58 1440,18 L1440,58 L0,58Z" fill="#f4f8fc"/></svg></div>
+
+<!-- ═══ S6 TRAINING ═══ -->
+<section class="s-training">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">培訓與發展</span>
+      <h2 class="stitle">不需要有保險背景，<br>我們有一整套養成系統</h2>
+    </div>
+    <div class="tr-intro rv">
+      你不需要有保險背景，我們有一整套把你養成專業顧問的系統。不同背景的人，我們用不同的路徑帶你入門，重點培訓你本來就擅長的那一面。
+    </div>
+    <div class="tr-grid">
+      <div class="tr-card rv d1">
+        <div class="tr-head">
+          <div class="tr-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div class="tr-t">新銳學程（前三個月）</div>
+        </div>
+        <div class="tr-d">紮根 NPSS 銷售技術，逐月通關：安排約訪 → 銷售面談 → 解決方案提呈與促成。每個月都有具體目標與輔導。</div>
+      </div>
+      <div class="tr-card rv d2">
+        <div class="tr-head">
+          <div class="tr-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="tr-t">階梯訓練制度</div>
+        </div>
+        <div class="tr-d">從職前訓練、基礎、進階，一路到初階、中階、高階主管訓練，每個職級都有對應課程，不讓你自己摸索。</div>
+      </div>
+      <div class="tr-card rv d3">
+        <div class="tr-head">
+          <div class="tr-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="tr-t">顧問式行銷</div>
+        </div>
+        <div class="tr-d">不用同一套方法套在每個人身上。依你的背景與特質安排重點培訓，讓你能把原有的強項帶進這份工作。</div>
+      </div>
+      <div class="tr-card rv d4">
+        <div class="tr-head">
+          <div class="tr-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="tr-t">行動辦公室制度</div>
+        </div>
+        <div class="tr-d">行動辦公室、行動投保（含視訊投保）、理賠 easy pay，符合標準最快 2 小時完成理賠給付，讓你高效服務客戶。</div>
+      </div>
+    </div>
+    <div class="ai-box rv" style="margin-top:1.4rem">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>AI 時代的武器</h4>
+      <p>我們把 AI 相關技能與工具納入團隊培養計畫。這份工作不再是傳統認知上的推銷，而是數據分析、精準溝通與智慧工具的綜合應用。</p>
+      <div class="ai-tags">
+        <span class="ai-tag">FBFLi 智能業務管理</span>
+        <span class="ai-tag">健檢百保箱</span>
+        <span class="ai-tag">視訊投保</span>
+        <span class="ai-tag">理賠 easy pay</span>
+        <span class="ai-tag">AI 業務工具</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wv" style="background:#f4f8fc"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,20 C360,58 1080,0 1440,38 L1440,58 L0,58Z" fill="#fff"/></svg></div>
+
+<!-- ═══ S7 BENEFITS ═══ -->
+<section class="s-benefits">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">福利與後盾</span>
+      <h2 class="stitle">事業做好了，<br>生活也要顧好</h2>
+      <p class="sdesc">完整的福利制度，是我們對夥伴長期承諾的一部分。</p>
+    </div>
+    <div class="be-grid">
+      <div class="be-card rv d1">
+        <div class="be-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="be-t">員工團保</div>
+        <div class="be-d">員工公單公司全額負擔，眷屬保費 70% 由公司負擔</div>
+      </div>
+      <div class="be-card rv d2">
+        <div class="be-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="be-t">富邦寶寶補助</div>
+        <div class="be-d">生育補助每胎 10 萬，育兒補助（6 歲以下）每年 2.4 萬，每位最高 24.4 萬元</div>
+      </div>
+      <div class="be-card rv d3">
+        <div class="be-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="be-t">優於法令假制度</div>
+        <div class="be-d">8 天產檢假、10 週產假，優於一般法令規定</div>
+      </div>
+      <div class="be-card rv d4">
+        <div class="be-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="be-t">持股信託與久任獎勵</div>
+        <div class="be-d">公司相對提撥持股信託，久任獎勵最高 10 萬元</div>
+      </div>
+      <div class="be-card rv d5">
+        <div class="be-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div class="be-t">外勤進修補助</div>
+        <div class="be-d">外勤學位進修補助，支持在職自我提升與成長</div>
+      </div>
+      <div class="be-card rv d1">
+        <div class="be-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="be-t">三節 ｜ 生日 ｜ 健檢</div>
+        <div class="be-d">三節獎金、生日禮金、定期健康檢查，照顧每個重要時刻</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wv" style="background:#fff"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,0 C480,58 960,0 1440,48 L1440,58 L0,58Z" fill="#001f44"/></svg></div>
+
+<!-- ═══ S8 AWARDS ═══ -->
+<section class="s-awards">
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="rv">
+      <span class="lbl">榮耀舞台</span>
+      <h2 class="stitle">你的努力，<br>值得被帶到世界的舞台</h2>
+      <p class="sdesc">頂尖的業績，應該獲得頂尖的認可。富邦人壽為你搭建的不只是一個職位，而是一個被看見的舞台。</p>
+    </div>
+    <div class="aw-grid">
+      <div class="aw-card rv d1">
+        <div class="aw-ball"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="aw-nm">富邦之星</div>
+        <div class="aw-ds">頂尖業績的最高肯定</div>
+      </div>
+      <div class="aw-card rv d2">
+        <div class="aw-ball"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="aw-nm">增員之星</div>
+        <div class="aw-ds">傑出招募表現的榮譽</div>
+      </div>
+      <div class="aw-card rv d3">
+        <div class="aw-ball"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="aw-nm">MDRT 國際認可</div>
+        <div class="aw-ds">全球頂尖理財顧問殿堂</div>
+      </div>
+      <div class="aw-card rv d4">
+        <div class="aw-ball"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="aw-nm">IDA 國際榮耀</div>
+        <div class="aw-ds">全球保險菁英頂級舞台</div>
+      </div>
+    </div>
+    <div class="travel-box rv">
+      <div class="travel-t">獎勵旅遊足跡 × 五大洲</div>
+      <div class="ct-list">
+        <span class="ct-tag"><span class="ct-dot"></span>亞洲</span>
+        <span class="ct-tag"><span class="ct-dot"></span>歐洲</span>
+        <span class="ct-tag"><span class="ct-dot"></span>美洲</span>
+        <span class="ct-tag"><span class="ct-dot"></span>非洲</span>
+        <span class="ct-tag"><span class="ct-dot"></span>大洋洲</span>
+      </div>
+    </div>
+    <div class="aw-tagline rv">你的努力，值得被看見，也值得被帶到世界的舞台。</div>
+  </div>
+</section>
+
+<div class="wv" style="background:#003366"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,28 C360,0 1080,58 1440,20 L1440,58 L0,58Z" fill="#f4f8fc"/></svg></div>
+
+<!-- ═══ S9 SESSION ═══ -->
+<section class="s-session">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">關於這場說明會</span>
+      <h2 class="stitle">30 到 45 分鐘，<br>就可以了解全部</h2>
+      <p class="sdesc">沒有壓力的環境，有充分空間讓你問任何想問的問題。</p>
+    </div>
+    <div class="ss-grid">
+      <div class="ss-card rv d1">
+        <div class="ss-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="ss-t">30 到 45 分鐘</div>
+        <div class="ss-d">面試暨工作說明會，說清楚、講明白，不拖時間</div>
+      </div>
+      <div class="ss-card rv d2">
+        <div class="ss-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="ss-t">1 到 6 人</div>
+        <div class="ss-d">現場人數精簡，有充分空間提問與討論，不是大型說明會</div>
+      </div>
+      <div class="ss-card rv d3">
+        <div class="ss-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="ss-t">台中市政路 386 號</div>
+        <div class="ss-d">27 樓｜西屯區｜台中市</div>
+      </div>
+    </div>
+    <div class="mgr-box rv">
+      <p class="mgr-t">
+        我要找的不是普通的業務員，而是在一到兩年內有機會升任主管職的人才。業務工作確實有挑戰，我不會跟您說這條路很輕鬆，但我可以保證，制度與培訓會給有能力的人相對應的高報酬。如果您是那種不服輸、願意投入的人，我想邀請您來談談，讓您親自評估這份工作是否適合您。
+      </p>
+      <div class="mgr-sig">
+        <div class="mgr-av">鄭</div>
+        <div>
+          <div class="mgr-name">鄭鈞</div>
+          <div class="mgr-pos">富邦人壽　業務經理</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wv" style="background:#f4f8fc"><svg viewBox="0 0 1440 58" preserveAspectRatio="none" style="height:58px"><path d="M0,20 C480,58 960,0 1440,40 L1440,58 L0,58Z" fill="#fff"/></svg></div>
+
+<!-- ═══ S10 FINAL CTA ═══ -->
+<section class="s-final">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl" style="color:var(--teal-a)">立即行動</span>
+      <h2 class="stitle" style="text-align:center">準備好了解更多了嗎？</h2>
+      <p class="final-sub">邀請您了解過後再決定，不會錯過任何機會。</p>
+      <a href="https://calendly.com/rmp8280410/interview" target="_blank" class="final-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        選擇面試時間
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  鄭鈞　富邦人壽　業務經理　｜　台中市西屯區市政路 386 號 27 樓
+  <div class="src">
+    資料來源：增員文宣「卓越富邦 2026」、富邦人壽業務行銷部（資料區間 114 年 1 至 10 月）、行政院主計總處 114 年統計。以上數據僅供參考，實際情況以公司公告為準。
+  </div>
+</footer>
+
+<script>
+// Navbar on scroll
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => {
+  nav.classList.toggle('show', scrollY > 80);
+}, {passive: true});
+
+// Scroll reveal
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); rvObs.unobserve(e.target); } });
+}, {threshold: 0.1, rootMargin: '0px 0px -36px 0px'});
+rvEls.forEach(el => rvObs.observe(el));
+
+// Count-up
+function countUp(el) {
+  const target = parseFloat(el.dataset.t);
+  const dec = parseInt(el.dataset.d || 0);
+  const dur = 1500;
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = (target * ease).toFixed(dec);
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toFixed(dec);
+  })(t0);
+}
+const cuEls = document.querySelectorAll('.cu');
+const cuObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); cuObs.unobserve(e.target); } });
+}, {threshold: 0.5});
+cuEls.forEach(el => cuObs.observe(el));
+</script>
+</body>
+</html>
