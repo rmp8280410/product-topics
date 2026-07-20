@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "recruit-survey-fubon"
+  },
+  "targets": {
+    "recruit-survey-fubon": {
+      "hosting": {
+        "topics": [
+          "product-topics"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

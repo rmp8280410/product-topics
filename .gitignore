@@ -3,3 +3,4 @@ design-system-prompt.md
 # 商品簡報、試算表等參考文件，只留本機不公開上傳
 *.pdf
 *.xlsx
+.deploy/

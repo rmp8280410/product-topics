@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "target": "topics",
+    "public": ".deploy",
+    "ignore": ["firebase.json", ".firebaserc", "**/.*"],
+    "cleanUrls": true
+  }
+}
