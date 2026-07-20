@@ -311,6 +311,13 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 </div>
 </section>
 
+<div class="modal-overlay" id="modal-cta">
+<div class="modal-box" style="text-align:center">
+<button class="modal-close" data-close>✕</button>
+<h3>關閉頁面，與業務朋友討論詳情！</h3>
+</div>
+</div>
+
 <script>
 const progress = document.getElementById('progress');
 window.addEventListener('scroll', () => {
@@ -439,8 +446,8 @@ const ctaBtn = document.getElementById('ctaBtn');
 if(ctaBtn){
   ctaBtn.addEventListener('click', (e)=>{
     e.preventDefault();
-    alert('關閉頁面，與業務朋友討論詳情！');
-    window.close();
+    const modal = document.getElementById('modal-cta');
+    if(modal) modal.classList.add('open');
   });
 }
 </script>
