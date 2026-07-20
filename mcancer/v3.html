@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你的人生，不該被一場病打亂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F8FF;
+  --bg2:#E9F1FF;
+  --panel:#FFFFFF;
+  --accent:#2F6FED;
+  --accent-soft:#6C9BFF;
+  --ink:#16233F;
+  --muted:#5B6B84;
+  --line:rgba(47,111,237,0.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans TC",sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,blockquote{font-family:"Noto Serif TC",serif}
+
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-soft));width:0%;z-index:999;transition:width .1s linear}
+
+.side-tag{
+  position:fixed;right:22px;top:50%;transform:translateY(-50%) rotate(180deg);
+  writing-mode:vertical-rl;letter-spacing:.3em;font-size:.72rem;color:var(--muted);
+  z-index:50;pointer-events:none;
+}
+@media(max-width:820px){.side-tag{display:none}}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 7vw}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  position:relative;background:radial-gradient(ellipse at 70% 20%, #DCE8FF 0%, var(--bg) 60%);
+  border-bottom:1px solid var(--line);
+}
+.hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.5;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 75%)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.82rem;letter-spacing:.28em;color:var(--accent);font-weight:500;
+  margin-bottom:28px;opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+h1.display{
+  font-size:clamp(2.6rem,7vw,5.2rem);font-weight:900;line-height:1.18;letter-spacing:.01em;
+  opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease;
+}
+h1.display.in{opacity:1;transform:translateY(0)}
+h1.display em{font-style:normal;color:var(--accent)}
+.sub{
+  margin-top:26px;font-size:1.15rem;line-height:1.9;color:var(--muted);max-width:560px;
+  opacity:0;transform:translateY(20px);transition:opacity .9s ease .15s,transform .9s ease .15s;
+}
+.sub.in{opacity:1;transform:translateY(0)}
+.scroll-hint{position:absolute;bottom:6vh;left:7vw;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.8rem;opacity:.8}
+.scroll-hint .bar{width:1px;height:34px;background:linear-gradient(var(--accent),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{opacity:0;transform:scaleY(.3);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(.3);transform-origin:bottom}}
+
+/* QUOTE SECTION */
+.quote-section{padding:16vh 0;background:var(--bg2);border-bottom:1px solid var(--line)}
+.quote-mark{font-size:4rem;color:var(--accent);opacity:.5;line-height:1;font-family:"Noto Serif TC",serif}
+blockquote{
+  font-size:clamp(1.5rem,3.6vw,2.5rem);font-weight:700;line-height:1.6;color:var(--ink);
+  max-width:820px;opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease;
+}
+blockquote.in{opacity:1;transform:translateY(0)}
+blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(47,111,237,.4);text-underline-offset:4px}
+.hl{color:var(--accent);font-weight:700;text-decoration:underline;text-decoration-color:rgba(47,111,237,.4);text-underline-offset:3px}
+
+/* LIST SECTIONS (risk / case) */
+.list-section{padding:14vh 0}
+.section-head{margin-bottom:56px}
+.section-head .num{font-size:.85rem;color:var(--accent);letter-spacing:.2em;margin-bottom:16px;display:block}
+.section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;line-height:1.4;max-width:680px}
+.section-head p{margin-top:20px;font-size:1.05rem;line-height:1.9;color:var(--muted);max-width:640px}
+
+.item-list{border-top:1px solid var(--line)}
+.item-row{
+  display:grid;grid-template-columns:70px 1fr 1fr;gap:24px;align-items:center;
+  padding:28px 0;border-bottom:1px solid var(--line);
+  opacity:0;transform:translateX(-16px);transition:opacity .6s ease,transform .6s ease;
+}
+.item-row.in{opacity:1;transform:translateX(0)}
+@media(max-width:680px){.item-row{grid-template-columns:52px 1fr;row-gap:6px}
+  .item-row .item-note{grid-column:2}
+}
+.item-row .item-index{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:48px;padding:0 10px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);font-size:.9rem;font-weight:700;font-family:"Noto Serif TC",serif}
+.item-row .item-name{font-size:1.3rem;font-weight:700;color:var(--ink)}
+.item-row .item-note{font-size:.95rem;color:var(--muted);line-height:1.7}
+.item-row:hover{background:rgba(47,111,237,0.05)}
+
+/* FEATURES */
+.feature-section{padding:14vh 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);margin-top:50px;border:1px solid var(--line)}
+@media(max-width:760px){.feature-grid{grid-template-columns:1fr}}
+.feature-card{
+  background:#FFFFFF;padding:40px 36px;
+  opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;
+}
+.feature-card.in{opacity:1;transform:translateY(0)}
+.feature-card .fc-icon{font-size:1.9rem;margin-bottom:14px;display:block}
+.feature-card .fc-mark{font-size:.78rem;letter-spacing:.2em;color:var(--accent);margin-bottom:16px;display:block}
+.feature-card h3{font-family:"Noto Sans TC",sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:12px;color:var(--ink)}
+.feature-card p{font-size:.96rem;line-height:1.8;color:var(--muted)}
+
+/* SCENARIO TABS */
+.age-picker{max-width:420px;margin:40px 0 0;padding:22px 24px;background:#FFFFFF;border:1px solid var(--line);border-radius:18px}
+.age-picker-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.92rem;color:var(--muted);margin-bottom:14px}
+.age-picker-head .age-value{font-family:"Noto Serif TC",serif;font-size:1.15rem;font-weight:700;color:var(--accent)}
+.age-picker input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+.scenario-tabs{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.scenario-tab{background:transparent;border:1px solid var(--line);color:var(--muted);padding:12px 26px;border-radius:999px;font-size:.95rem;font-weight:700;font-family:"Noto Sans TC",sans-serif;cursor:pointer;transition:all .3s ease}
+.scenario-tab:hover{border-color:var(--accent);color:var(--accent)}
+.scenario-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.scenario-panels{margin-top:40px;min-height:220px}
+.scenario-panel{display:none;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.scenario-panel.active{display:block;opacity:1;transform:translateY(0)}
+.scenario-figure{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.sf-amount{font-family:"Noto Serif TC",serif;font-size:clamp(2.6rem,6vw,4rem);font-weight:900;color:var(--accent);line-height:1}
+.sf-label{font-size:.95rem;color:var(--muted)}
+.scenario-panel p{font-size:1.05rem;line-height:1.9;color:var(--muted);max-width:640px}
+.scenario-more{margin-top:22px;background:transparent;border:none;color:var(--accent);font-size:.92rem;font-weight:700;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:rgba(47,111,237,.35);text-underline-offset:3px;font-family:"Noto Sans TC",sans-serif}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#FFFFFF;border:1px solid var(--line);border-radius:20px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(22,35,63,.18);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(15,23,42,.05);border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(15,23,42,.1)}
+.modal-box .ex-tag{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);background:rgba(47,111,237,.1);padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.modal-box h3{font-size:1.25rem;font-weight:700;margin-bottom:16px;color:var(--ink);font-family:"Noto Serif TC",serif;line-height:1.6}
+.modal-box p{font-size:1rem;line-height:2;color:var(--muted)}
+
+/* CLOSING */
+.closing{padding:18vh 0 14vh;text-align:left}
+.closing h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.4;
+  opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease;}
+.closing h2.in{opacity:1;transform:translateY(0)}
+.closing p{margin-top:24px;font-size:1.1rem;line-height:1.9;color:var(--muted);max-width:560px;
+  opacity:0;transform:translateY(20px);transition:opacity .8s ease .1s,transform .8s ease .1s;}
+.closing p.in{opacity:1;transform:translateY(0)}
+.btn{
+  display:inline-flex;align-items:center;gap:14px;margin-top:40px;
+  background:transparent;border:1px solid var(--accent);color:var(--accent);
+  padding:18px 34px;font-size:1rem;font-weight:500;letter-spacing:.05em;text-decoration:none;
+  transition:background .3s ease,color .3s ease;
+  opacity:0;transform:translateY(20px);
+}
+.btn.in{opacity:1;transform:translateY(0);transition:opacity .8s ease .2s,transform .8s ease .2s,background .3s ease,color .3s ease}
+.btn:hover{background:var(--accent);color:#fff}
+.btn::after{content:"→";transition:transform .3s ease}
+.btn:hover::after{transform:translateX(6px)}
+.fine{margin-top:36px;font-size:.78rem;color:var(--muted);max-width:520px;line-height:1.7}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="side-tag">MEN'S HEALTH PROTECTION · 男性專屬保障</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="grid-lines"></div>
+<div class="wrap">
+<p class="eyebrow">男性健康保障</p>
+<h1 class="display">你的人生，<em>不該</em>被一場病打亂</h1>
+<p class="sub">不管現在的你，是一個人努力，還是扛著一個家，生活都<span class="hl">不該因為生病，被迫按下暫停鍵</span>。</p>
+</div>
+<div class="scroll-hint"><span class="bar"></span><span>往下看</span></div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+<div class="wrap">
+<div class="quote-mark">"</div>
+<blockquote>萬一收入暫停，你有沒有一筆，<span class="accent">不需要賣股票、不需要動用存款，也不必向任何人開口</span>的現金？</blockquote>
+</div>
+</section>
+
+<!-- 男性好發癌症加碼照顧 -->
+<section class="list-section">
+<div class="wrap">
+<div class="section-head">
+<span class="num">01 — 特別為男性加強的照顧</span>
+<h2>到了中壯年，除了大腸癌，這些健康問題也在男性身上悄悄增加。</h2>
+<p>這份規劃針對男性好發的癌症，提供更完整的照顧，確診時<span class="hl">多得到一份支持</span>。</p>
+</div>
+<div class="item-list">
+<div class="item-row"><span class="item-index">01</span><span class="item-name">大腸癌</span><span class="item-note">中壯年常見風險，<span class="hl">列入加強照顧</span></span></div>
+<div class="item-row"><span class="item-index">02</span><span class="item-name">攝護腺癌</span><span class="item-note">男性專屬課題，<span class="hl">同樣加碼支持</span></span></div>
+<div class="item-row"><span class="item-index">03</span><span class="item-name">睪丸癌</span><span class="item-note">容易被忽略，<span class="hl">不能輕忽的警訊</span></span></div>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="feature-section">
+<div class="wrap">
+<div class="section-head">
+<span class="num">02 — 這份規劃陪你到89歲</span>
+<h2>先確認手邊有沒有一筆撐得住的準備。</h2>
+</div>
+<div class="feature-grid">
+<div class="feature-card"><span class="fc-icon">🗓️</span><h3>保障彈性，陪你到89歲</h3><p>可選10年或20年繳費，<span class="hl">照顧一路到89歲</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">🎯</span><h3>男性好發癌症加碼</h3><p>攝護腺癌、睪丸癌、大腸癌等，<span class="hl">最高多1.5倍支持</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">🩺</span><h3>攝護腺／前列腺手術</h3><p>男性常見泌尿外科手術，<span class="hl">額外一筆支持</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">❤️</span><h3>主動脈手術與嚴重肝硬化</h3><p>中年後常見心血管與肝臟問題，<span class="hl">同樣有保障</span>。</p></div>
+</div>
+<div class="feature-grid" style="margin-top:2px">
+<div class="feature-card"><span class="fc-icon">🛡️</span><h3>確診後保費由我們分擔</h3><p>確診後續期保費免繳，<span class="hl">保障不中斷</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">💰</span><h3>保費有去有回</h3><p>一路平安，<span class="hl">符合條件全數領回</span>。</p></div>
+</div>
+</div>
+</section>
+
+<!-- 情境試算 -->
+<section class="list-section" id="scenario">
+<div class="wrap">
+<div class="section-head">
+<span class="num">03 — 不同情境，能得到多少支持？</span>
+<h2>200 萬，看看這份規劃怎麼照顧你。</h2>
+<p>選擇你的年齡，點選下方情境，看看不同狀況下，這份規劃能提供多少支持。</p>
+</div>
+
+<div class="age-picker">
+<div class="age-picker-head"><span>你的年齡</span><span class="age-value"><span id="ageVal">30</span> 歲</span></div>
+<input type="range" id="ageRange" min="18" max="60" value="30" step="1">
+</div>
+
+<div class="scenario-tabs" role="tablist">
+<button class="scenario-tab active" data-scenario="cancer">癌症</button>
+<button class="scenario-tab" data-scenario="specific">特定癌症</button>
+<button class="scenario-tab" data-scenario="illness">特定傷病</button>
+<button class="scenario-tab" data-scenario="death">身故</button>
+<button class="scenario-tab" data-scenario="safe">一生平安</button>
+</div>
+
+<div class="scenario-panels">
+
+<div class="scenario-panel active" data-panel="cancer">
+<div class="scenario-figure"><span class="sf-amount" data-target="200" data-suffix="萬">0</span><span class="sf-label">確診重度癌症，最高一次獲得的支持</span></div>
+<p>確診初期／輕度階段，也有<span class="hl">最高20萬</span>的先行支持，讓你及早因應；一旦進入重度階段，最高可一次獲得<span class="hl">200萬</span>的完整支持。</p>
+</div>
+
+<div class="scenario-panel" data-panel="specific">
+<div class="scenario-figure"><span class="sf-amount" data-target="300" data-suffix="萬">0</span><span class="sf-label">符合特定癌症項目，最高獲得的支持</span></div>
+<p>在原有的重度癌症支持之上，若符合特定癌症項目，<span class="hl">最高再加碼50%</span>，等於最高<span class="hl">300萬</span>的支持。</p>
+<button class="scenario-more" data-modal="specific-list">有哪些特定癌症項目？→</button>
+</div>
+
+<div class="scenario-panel" data-panel="illness">
+<div class="scenario-figure"><span class="sf-amount" data-target="20" data-suffix="萬">0</span><span class="sf-label">符合特定傷病項目，可以獲得的支持</span></div>
+<p>攝護腺／前列腺手術之外，若符合特定傷病項目，<span class="hl">另有一筆20萬</span>的支持（第2年度起）。</p>
+<button class="scenario-more" data-modal="illness-list">有哪些特定傷病項目？→</button>
+</div>
+
+<div class="scenario-panel" data-panel="death">
+<div class="scenario-figure"><span class="sf-amount" id="deathAmount" data-suffix="萬">126</span><span class="sf-label">身故時，家人可以領回的支持</span></div>
+<p>若不幸身故，這筆準備會交到家人手上，<span class="hl">陪他們度過最措手不及的一段時間</span>。</p>
+</div>
+
+<div class="scenario-panel" data-panel="safe">
+<div class="scenario-figure"><span class="sf-amount" id="safeAmount" data-suffix="萬">126</span><span class="sf-label">一路平安，領回的保費</span></div>
+<p>如果一路平安，健康度過保障期間，<span class="hl">這筆準備最終還是回到你身上</span>。</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-specific-list">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">特定癌症項目</span>
+<h3>符合以下項目，在重度癌症支持之上，最高再加碼50%</h3>
+<p>結腸、直腸、直腸乙狀結腸連接處、肛門及肛管、陰莖、其他及未明示男性生殖器官、睪丸、攝護腺、膀胱等惡性腫瘤。</p>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-illness-list">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">特定傷病項目</span>
+<h3>符合以下項目，可以另外獲得一筆支持</h3>
+<p>主動脈外科置換手術、嚴重肝硬化症。</p>
+</div>
+</div>
+
+<!-- CLOSING -->
+<section class="closing">
+<div class="wrap">
+<h2>為未來的日子做準備，進可攻退可守。</h2>
+<p>而是要先確認一件事：<span class="hl">手邊有沒有一筆錢，是完全屬於你，不需要向任何人開口</span>。我想幫你把現在的癌症保障整理一下。</p>
+<a class="btn" href="#" id="ctaBtn">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div>
+</section>
+
+<script>
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progress.style.width = scrolled + '%';
+}, { passive:true });
+
+const targets = document.querySelectorAll('.eyebrow, .display, .sub, blockquote, .item-row, .feature-card, .closing h2, .closing p, .btn');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.15});
+targets.forEach(t=>io.observe(t));
+
+document.querySelectorAll('.item-list').forEach(list=>{
+  [...list.children].forEach((row,i)=>{ row.style.transitionDelay = (i*0.08)+'s'; });
+});
+document.querySelectorAll('.feature-grid').forEach(grid=>{
+  [...grid.children].forEach((card,i)=>{ card.style.transitionDelay = (i*0.1)+'s'; });
+});
+
+// ---- 年齡試算（身故 / 一生平安） ----
+const MALE_RATE_20 = {18:222,19:228,20:233,21:239,22:246,23:252,24:258,25:265,26:271,27:277,28:283,29:290,30:296,31:306,32:315,33:325,34:334,35:344,36:354,37:363,38:373,39:382,40:392,41:412,42:433,43:453,44:473,45:494,46:514,47:534,48:554,49:575,50:595};
+const MALE_RATE_10 = {51:888,52:922,53:955,54:988,55:1022,56:1055,57:1088,58:1121,59:1155,60:1188};
+function getRateFactor(age){
+  if(age<=50) return { rate:MALE_RATE_20[age], years:20 };
+  return { rate:MALE_RATE_10[age], years:10 };
+}
+function animateNumber(el, target){
+  if(!el) return;
+  const suffix = el.dataset.suffix || '';
+  const startVal = parseFloat(el.textContent) || 0;
+  const duration = 500;
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min((now-start)/duration,1);
+    const eased = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(startVal + (target-startVal)*eased) + suffix;
+    if(p<1) requestAnimationFrame(tick); else el.textContent = target+suffix;
+  }
+  requestAnimationFrame(tick);
+}
+const deathAmountEl = document.getElementById('deathAmount');
+const safeAmountEl = document.getElementById('safeAmount');
+function updateAgeAmounts(age){
+  const { rate, years } = getRateFactor(age);
+  const annualPremium = rate * 200;
+  const totalPremium = annualPremium * years;
+  const payout = Math.round(totalPremium * 1.06 / 10000);
+  animateNumber(deathAmountEl, payout);
+  animateNumber(safeAmountEl, payout);
+}
+const ageRange = document.getElementById('ageRange');
+const ageVal = document.getElementById('ageVal');
+if(ageRange){
+  ageRange.addEventListener('input', (e)=>{
+    const age = parseInt(e.target.value, 10);
+    ageVal.textContent = age;
+    updateAgeAmounts(age);
+  });
+  updateAgeAmounts(parseInt(ageRange.value, 10));
+}
+
+// scenario tabs
+function runCountUp(el){
+  if(el.dataset.done) return;
+  el.dataset.done = '1';
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 900;
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min((now-start)/duration,1);
+    const eased = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(eased*target) + suffix;
+    if(p<1) requestAnimationFrame(tick); else el.textContent = target+suffix;
+  }
+  requestAnimationFrame(tick);
+}
+function activateScenario(key){
+  document.querySelectorAll('.scenario-tab').forEach(t=>t.classList.toggle('active', t.dataset.scenario===key));
+  document.querySelectorAll('.scenario-panel').forEach(p=>{
+    const isActive = p.dataset.panel===key;
+    p.classList.toggle('active', isActive);
+    if(isActive){
+      const amt = p.querySelector('.sf-amount[data-target]');
+      if(amt) runCountUp(amt);
+    }
+  });
+}
+document.querySelectorAll('.scenario-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>activateScenario(tab.dataset.scenario));
+});
+const scenarioSection = document.getElementById('scenario');
+if(scenarioSection){
+  const scenarioObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const activeAmt = scenarioSection.querySelector('.scenario-panel.active .sf-amount[data-target]');
+        if(activeAmt) runCountUp(activeAmt);
+        scenarioObs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  scenarioObs.observe(scenarioSection);
+}
+
+// scenario modal
+document.querySelectorAll('.scenario-more').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const modal = document.getElementById('modal-'+btn.dataset.modal);
+    if(modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  const closeBtn = overlay.querySelector('[data-close]');
+  if(closeBtn) closeBtn.addEventListener('click', ()=> overlay.classList.remove('open'));
+});
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+});
+
+// CTA
+const ctaBtn = document.getElementById('ctaBtn');
+if(ctaBtn){
+  ctaBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    alert('關閉頁面，與業務朋友討論詳情！');
+    window.close();
+  });
+}
+</script>
+</body>
+</html>
