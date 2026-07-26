@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>生病，不代表你會住院。</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--accent:#2F6FB0;--accent-dim:#20517F;--ink:#1B2430;--muted:#707B8A;--paper:#F7FAFD;--card:#E9F1FA;--line:#D6E4F2;--warn:#C1553F}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:660px;margin:0 auto;padding:0 26px}
+section{padding:13vh 0}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-25%;right:-30%;width:80vw;height:80vw;max-width:620px;max-height:620px;background:radial-gradient(circle,rgba(47,111,176,.10),transparent 62%);pointer-events:none}
+.eyebrow{font-size:.82rem;letter-spacing:.24em;font-weight:700;color:var(--accent);margin-bottom:30px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent)}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.5rem,7vw,3.9rem);line-height:1.32;letter-spacing:.01em;position:relative}
+.lead{margin-top:32px;font-size:1.12rem;color:var(--muted);font-weight:400;max-width:28em;position:relative}
+.beat h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(1.5rem,4.4vw,2.05rem);line-height:1.55;margin-bottom:22px}
+.beat p{font-size:1.1rem;color:#39424E;font-weight:400;max-width:32em}
+.hl{color:var(--accent);font-weight:600}
+.hl-w{color:var(--warn);font-weight:600}
+/* compare chips */
+.compare{display:flex;flex-direction:column;gap:14px;margin:40px 0 6px}
+.crow{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;opacity:0;transform:translateX(-12px);transition:opacity .6s ease,transform .6s ease}
+.sig.in .crow{opacity:1;transform:none}
+.sig.in .crow:nth-child(2){transition-delay:.12s}
+.sig.in .crow:nth-child(3){transition-delay:.24s}
+.crow .tag{flex-shrink:0;font-size:.78rem;font-weight:700;color:var(--accent-dim);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.crow .desc{font-size:1rem;color:#2C3440;font-weight:500}
+/* stat cards */
+.tax{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:40px 0 8px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;text-align:center}
+.tcard .n{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2rem,9vw,2.7rem);color:var(--accent);line-height:1}
+.tcard .n .u{font-size:.42em;color:var(--ink)}
+.tcard .t{font-size:.9rem;color:var(--muted);margin-top:12px;line-height:1.6}
+.close{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1.9rem,5.2vw,2.7rem);line-height:1.5}
+.cta-sec{padding:11vh 0 16vh}
+.cta{display:inline-block;font-weight:700;color:#fff;background:var(--accent);text-decoration:none;padding:16px 38px;border-radius:999px;transition:all .3s ease;font-size:1.02rem}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(47,111,176,.28)}
+.fine{margin-top:52px;font-size:.75rem;color:#8B94A1;line-height:1.7;font-weight:400;max-width:34em}
+.src{margin-top:16px;font-size:.72rem;color:#94A0AC;font-weight:400;letter-spacing:.02em;line-height:1.6;text-align:center}
+.fade{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center}
+.scroll-cue i{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite;opacity:.6}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.crow{opacity:1;transform:none}}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#FFFFFF;border:1px solid var(--line);border-radius:20px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(22,35,63,.18);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(15,23,42,.05);border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(15,23,42,.1)}
+.modal-box h3{font-size:1.25rem;font-weight:700;margin-bottom:0;color:var(--ink);font-family:"Noto Serif TC",serif;line-height:1.6}
+</style></head><body>
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow fade">保單健檢．用現在的醫療眼光，重新看一次</p>
+<h1 class="fade">生病，<br>不代表你會住院。</h1>
+<p class="lead fade">醫療一直在進步，<br>你的保單，跟上了嗎？</p>
+</div><div class="scroll-cue"><i></i></div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>現在很多治療，早就不用住院。</h2>
+<p>對健康來說是好事，但對保單來說，<span class="hl-w">沒住院，很多時候就不賠</span>。</p></div>
+<div class="compare sig fade">
+<div class="crow"><div class="tag">現在常見</div><div class="desc">門診化療、口服標靶藥，在家就能做</div></div>
+<div class="crow"><div class="tag">現在常見</div><div class="desc">達文西手術，當天出院回家休養</div></div>
+<div class="crow"><div class="tag">你的保單</div><div class="desc">「住院日額」型：沒住滿一天，不理賠</div></div>
+</div>
+</div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>重大傷病卡，不代表帳單歸零。</h2>
+<p>卡能免的，是健保給付範圍內的項目。<br>標靶、免疫治療這類自費項目，卡在手上，還是得自己出。</p></div>
+<div class="tax fade">
+<div class="tcard"><div class="n"><span class="num" data-to="66">0</span><span class="u">%</span></div><div class="t">癌友自費藥費<br>超過 30 萬</div></div>
+<div class="tcard"><div class="n"><span class="num" data-to="25">0</span><span class="u">%</span></div><div class="t">癌友自費<br>超過 100 萬</div></div>
+</div>
+<p class="src fade">台灣癌症基金會癌友自費醫療調查，約64%癌友有自費醫療支出。整理於2026年，個別治療費用因病況與院所而異。</p>
+</div></section>
+
+<section class="beat"><div class="wrap"><div class="fade">
+<h2>你手上的保單，是幾年前規劃的？</h2>
+<p>那時候的醫療現場，跟現在不一樣。<br>保單條款停在簽名那天，<span class="hl">但醫療走得比你想的快</span>。</p>
+</div></div></section>
+
+<section class="cta-sec"><div class="wrap"><div class="fade">
+<p class="close">不是要你重買，<br>是先看懂，<br>保單跟不跟得上現在的醫療。</p>
+<div style="margin-top:44px"><a class="cta" href="#" id="ctaBtn">想幫你看一次，隨時找我</a></div>
+<p class="fine">本頁為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準，醫療費用因個案而異，僅供參考。</p>
+</div></div></section>
+
+<div class="modal-overlay" id="modal-cta">
+<div class="modal-box" style="text-align:center">
+<button class="modal-close" data-close>✕</button>
+<h3>關閉頁面，與業務朋友討論詳情！</h3>
+</div>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.num').forEach(countUp);io.unobserve(e.target);}})},{threshold:.3});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+function countUp(el){if(el.dataset.done)return;el.dataset.done=1;const to=parseFloat(el.dataset.to),dec=el.dataset.dec?+el.dataset.dec:0,dur=1300;let s=null;function step(t){if(!s)s=t;const p=Math.min((t-s)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(to*e).toFixed(dec);if(p<1)requestAnimationFrame(step);else el.textContent=to.toFixed(dec);}requestAnimationFrame(step);}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  const closeBtn=overlay.querySelector('[data-close]');
+  if(closeBtn) closeBtn.addEventListener('click',()=>overlay.classList.remove('open'));
+});
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+});
+const ctaBtn=document.getElementById('ctaBtn');
+if(ctaBtn){
+  ctaBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    if(typeof gtag==='function') gtag('event','click_calculate',{page_title:document.title});
+    const modal=document.getElementById('modal-cta');
+    if(modal) modal.classList.add('open');
+  });
+}
+</script>
+</body></html>

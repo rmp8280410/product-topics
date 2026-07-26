@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>退休那天，薪水會停。生活不會。</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--accent:#2F8F5B;--accent-dim:#236B44;--ink:#1D2A22;--muted:#6E7D72;--paper:#F8FCF9;--card:#EAF6EE;--line:#D6ECDC;--warn:#C1553F}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:660px;margin:0 auto;padding:0 26px}
+section{padding:13vh 0}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-25%;right:-30%;width:80vw;height:80vw;max-width:620px;max-height:620px;background:radial-gradient(circle,rgba(47,143,91,.10),transparent 62%);pointer-events:none}
+.eyebrow{font-size:.82rem;letter-spacing:.24em;font-weight:700;color:var(--accent);margin-bottom:30px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent)}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.5rem,7vw,3.9rem);line-height:1.32;letter-spacing:.01em;position:relative}
+.lead{margin-top:32px;font-size:1.12rem;color:var(--muted);font-weight:400;max-width:28em;position:relative}
+.beat h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(1.5rem,4.4vw,2.05rem);line-height:1.55;margin-bottom:22px}
+.beat p{font-size:1.1rem;color:#3B4A3F;font-weight:400;max-width:32em}
+.hl{color:var(--accent);font-weight:600}
+.hl-w{color:var(--warn);font-weight:600}
+.figure{margin:44px 0 10px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px 28px;text-align:center}
+.figure .cap-top{font-size:.92rem;color:var(--muted);letter-spacing:.02em;margin-bottom:8px}
+.big{font-family:"Noto Serif TC",serif;font-weight:900;line-height:1;color:var(--warn);font-size:clamp(4rem,19vw,6.4rem);letter-spacing:-.01em;display:inline-flex;align-items:baseline;gap:.04em}
+.big .unit{font-size:.3em;font-weight:700;color:var(--ink)}
+.figure .cap-bot{font-size:.98rem;color:#3B4A3F;font-weight:400;margin-top:18px;max-width:27em;margin-left:auto;margin-right:auto}
+.sub-fig{display:flex;justify-content:center;gap:34px;margin-top:26px;flex-wrap:wrap}
+.sub-fig .item{text-align:center}
+.sub-fig .item b{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.9rem;color:var(--accent);display:block;line-height:1}
+.sub-fig .item span{font-size:.8rem;color:var(--muted);display:block;margin-top:8px}
+/* dependency ratio */
+.stats{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:42px auto 16px;max-width:440px}
+.stat{text-align:center;flex:1}
+.stat b{display:block;font-family:"Noto Serif TC",serif;font-weight:900;line-height:1;color:var(--accent)}
+.stat:nth-child(1) b{font-size:clamp(2.4rem,11vw,3.4rem)}
+.stat:nth-child(2) b{font-size:clamp(1.9rem,8vw,2.7rem)}
+.stat:nth-child(3) b{font-size:clamp(1.5rem,6vw,2rem)}
+.stat b.warn{color:var(--warn)}
+.stat span{display:block;margin-top:12px;font-size:.78rem;color:var(--muted);font-weight:400;line-height:1.5}
+.stat-cap{font-size:1rem;color:#3B4A3F;font-weight:400;max-width:30em;text-align:center;margin:0 auto}
+.qmark{font-size:1.06rem;color:var(--accent-dim);font-weight:700;text-align:center;margin:28px auto 0;max-width:24em;font-family:"Noto Serif TC",serif}
+/* line chart */
+.chartbox{margin:44px 0 6px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 22px 22px}
+.chartbox svg{width:100%;height:auto;overflow:visible}
+.axis{stroke:#C7DECD;stroke-width:1.5}
+.inc{stroke:var(--warn);stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:520;stroke-dashoffset:520;transition:stroke-dashoffset 1.6s ease .2s}
+.chartbox.in .inc{stroke-dashoffset:0}
+.area{opacity:0;transition:opacity 1s ease .8s}
+.chartbox.in .area{opacity:1}
+.dot-end{fill:var(--warn);opacity:0;transition:opacity .4s ease 1.6s}
+.chartbox.in .dot-end{opacity:1}
+.axis-lbl{font-family:"Noto Sans TC";font-size:12px;fill:var(--muted)}
+.total-tag{opacity:0;transform:translateY(-6px);transition:opacity .4s ease 1.7s,transform .4s ease 1.7s}
+.chartbox.in .total-tag{opacity:1;transform:none}
+.close{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1.9rem,5.2vw,2.7rem);line-height:1.5}
+.cta-sec{padding:11vh 0 16vh}
+.cta{display:inline-block;font-weight:700;color:#fff;background:var(--accent);text-decoration:none;padding:16px 38px;border-radius:999px;transition:all .3s ease;font-size:1.02rem}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(47,143,91,.28)}
+.fine{margin-top:52px;font-size:.75rem;color:#8B9690;line-height:1.7;font-weight:400;max-width:34em}
+.src{margin-top:16px;font-size:.72rem;color:#96A19A;font-weight:400;letter-spacing:.02em;line-height:1.6;text-align:center}
+.fade{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center}
+.scroll-cue i{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite;opacity:.6}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.inc{stroke-dashoffset:0}.area,.dot-end,.total-tag{opacity:1;transform:none}}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#FFFFFF;border:1px solid var(--line);border-radius:20px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(22,35,63,.18);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(15,23,42,.05);border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(15,23,42,.1)}
+.modal-box h3{font-size:1.25rem;font-weight:700;margin-bottom:0;color:var(--ink);font-family:"Noto Serif TC",serif;line-height:1.6}
+</style></head><body>
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow fade">退休．一個很少人算對的問題</p>
+<h1 class="fade">退休那天，<br>薪水會停。<br>但生活，<br>不會停止收費。</h1>
+<p class="lead fade">大多數人準備的，是「一筆錢」。<br>真正需要的，是一份不會停的收入。</p>
+</div><div class="scroll-cue"><i></i></div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>「那，不是還有勞保嗎？」</h2>
+<p>問題是，這條線，自己也在變薄。<br>勞保連年入不敷出，最新精算預估——</p></div>
+<div class="figure fade">
+<div class="cap-top">最快在這一年，基金就見底</div>
+<div class="big"><span class="num" data-to="2031">0</span></div>
+<div class="sub-fig">
+<div class="item"><b><span class="num" data-to="14.2" data-dec="1">0</span> 兆</b><span>潛藏負債<br>（2025 年底）</span></div>
+<div class="item"><b>逐年撥補</b><span>靠政府一年一年<br>硬撐著</span></div>
+</div>
+<p class="cap-bot">現在能領，是因為政府年年補洞。<br><span class="hl-w">但洞，正在變大。</span></p>
+</div>
+</div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>而且，養這條線的人越來越少。</h2>
+<p>過去好幾個人養一位退休者，未來，剩不到兩個。</p></div>
+<div class="stats fade">
+<div class="stat"><b>5</b><span>過去<br>約 5 人<br>養 1 位退休者</span></div>
+<div class="stat"><b>2</b><span>不久的將來<br>約 2 人<br>養 1 位</span></div>
+<div class="stat"><b class="warn">1.2</b><span>再過幾十年<br>約 1.2 人<br>養 1 位</span></div>
+</div>
+<p class="stat-cap fade">而去年台灣的生育率只剩 <b style="color:var(--warn);font-weight:700">0.7</b>，全球數一數二低。<br>繳錢的人越來越少，領錢的人越來越多。</p>
+<p class="qmark fade">如果勞保真的沒辦法幫我們負擔退休，<br>那還有什麼辦法？</p>
+<p class="src fade">勞保財務：勞動部精算報告；潛藏負債 2025 年底約 14.2 兆。扶養比：國發會人口推估。生育率：內政部 2024，2025 年再降至約 0.7。整理於 2026 年。</p>
+</div></section>
+
+<section class="beat"><div class="wrap">
+<div class="fade"><h2>退休不是一天，是 25 年。</h2>
+<p>65 歲到 90 歲，這段日子每天都要花錢。<br>加總起來，會是一個你可能沒想過的數字。</p></div>
+<div class="chartbox sig fade">
+<svg viewBox="0 0 560 210" role="img" aria-label="65歲到90歲累積生活支出趨勢圖">
+<line class="axis" x1="50" y1="170" x2="540" y2="170"/>
+<line class="axis" x1="50" y1="30" x2="50" y2="170"/>
+<polygon class="area" points="50,170 50,150 540,32 540,170" fill="#2F8F5B" opacity=".08"/>
+<path class="inc" d="M50 150 L540 32"/>
+<circle class="dot-end" cx="540" cy="32" r="6"/>
+<text class="axis-lbl" x="50" y="192">65 歲</text>
+<text class="axis-lbl" x="540" y="192" text-anchor="end">90 歲</text>
+<text class="axis-lbl" x="50" y="20">累積花費</text>
+<g class="total-tag"><text class="lbl" x="470" y="20" text-anchor="end" style="font-family:'Noto Sans TC';font-size:14px;font-weight:700;fill:#C1553F">約 1,260 萬</text></g>
+</svg>
+<p class="cap-bot" style="text-align:center;margin-top:10px">以每月生活費約 4.2 萬元估算，25 年累積下來，<br>逼近 <span class="hl-w" style="font-weight:700">1,260 萬</span>。這還沒算醫療與突發支出。</p>
+<p class="src">退休生活費：2026年台灣人壽×政治大學商學院退休生態調查，每月平均需4.1956萬元，×12個月×25年估算。僅為概念試算，實際支出因人而異。</p>
+</div>
+</div></section>
+
+<section class="cta-sec"><div class="wrap"><div class="fade">
+<p class="close">別把老後，<br>全押在別人身上。<br>替自己，準備一份不會停的收入。</p>
+<div style="margin-top:44px"><a class="cta" href="#" id="ctaBtn">想聊聊，我在</a></div>
+<p class="fine">本頁為觀念說明，非商品條款。數據引用自政府公開資料及第三方調查，年度數字可能隨最新統計調整。保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
+</div></div></section>
+
+<div class="modal-overlay" id="modal-cta">
+<div class="modal-box" style="text-align:center">
+<button class="modal-close" data-close>✕</button>
+<h3>關閉頁面，與業務朋友討論詳情！</h3>
+</div>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.num').forEach(countUp);io.unobserve(e.target);}})},{threshold:.3});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+document.querySelectorAll('.chartbox').forEach(el=>io.observe(el));
+function countUp(el){if(el.dataset.done)return;el.dataset.done=1;const to=parseFloat(el.dataset.to),dec=el.dataset.dec?+el.dataset.dec:0,dur=1300;let s=null;const isYear=to>1900&&dec===0;function step(t){if(!s)s=t;const p=Math.min((t-s)/dur,1),e=1-Math.pow(1-p,3),v=to*e;el.textContent=isYear?Math.round(v):v.toFixed(dec);if(p<1)requestAnimationFrame(step);else el.textContent=isYear?to:to.toFixed(dec);}requestAnimationFrame(step);}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  const closeBtn=overlay.querySelector('[data-close]');
+  if(closeBtn) closeBtn.addEventListener('click',()=>overlay.classList.remove('open'));
+});
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+});
+const ctaBtn=document.getElementById('ctaBtn');
+if(ctaBtn){
+  ctaBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    if(typeof gtag==='function') gtag('event','click_calculate',{page_title:document.title});
+    const modal=document.getElementById('modal-cta');
+    if(modal) modal.classList.add('open');
+  });
+}
+</script>
+</body></html>
