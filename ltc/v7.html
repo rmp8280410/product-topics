@@ -54,6 +54,14 @@ h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.1rem,5.8v
 .numfade{opacity:0;transition:opacity .55s ease}
 .sig.in .numfade{opacity:1}
 #rightBar{transition:height .5s cubic-bezier(.4,0,.2,1),y .5s cubic-bezier(.4,0,.2,1)}
+#rightNum{transition:y .5s cubic-bezier(.4,0,.2,1)}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#FFFFFF;border:1px solid #E4DFD6;border-radius:20px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(22,35,63,.18);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(15,23,42,.05);border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(15,23,42,.1)}
+.modal-box h3{font-size:1.25rem;font-weight:700;margin-bottom:0;color:var(--ink);font-family:"Noto Serif TC",serif;line-height:1.6}
 .picker{margin:36px 0 8px;display:flex;flex-direction:column;gap:18px}
 .picker-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .pk-btn{font-family:"Noto Sans TC";font-weight:700;font-size:.92rem;color:var(--accent);background:#fff;border:1.5px solid var(--accent);padding:9px 24px;border-radius:999px;cursor:pointer;transition:all .25s ease}
@@ -138,7 +146,7 @@ h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.1rem,5.8v
 </div>
 
 <div class="sig fade">
-<svg viewBox="0 0 560 350" role="img" aria-label="150 萬自己存與換個地方放的對照" id="chart2">
+<svg viewBox="0 -20 560 370" role="img" aria-label="150 萬自己存與換個地方放的對照" id="chart2">
 <line class="dashline" x1="36" y1="256" x2="524" y2="256"/>
 <!-- 左：自己存 -->
 <text class="big-num numfade" style="transition-delay:1.0s" x="185" y="246" text-anchor="middle" font-size="24" fill="#8A857E">150 萬</text>
@@ -156,9 +164,16 @@ h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(2.1rem,5.8v
 
 <section class="cta-sec"><div class="wrap"><div class="fade">
 <p class="close">錢，我們都在存。<br>但很少人，為那段<br>「存不到」的日子先準備。</p>
-<div style="margin-top:44px"><a class="cta" href="#" onclick="if(typeof gtag==='function')gtag('event','click_calculate',{page_title:document.title});alert('關閉頁面，與業務朋友討論詳情！');return false;">趁還有選擇權，了解詳情</a></div>
+<div style="margin-top:44px"><a class="cta" href="#" id="ctaBtn">趁還有選擇權，了解詳情</a></div>
 <p class="fine">本頁為觀念說明，非商品條款。保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
 </div></div></section>
+
+<div class="modal-overlay" id="modal-cta">
+<div class="modal-box" style="text-align:center">
+<button class="modal-close" data-close>✕</button>
+<h3>關閉頁面，與業務朋友討論詳情！</h3>
+</div>
+</div>
 
 <script>
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.28});
@@ -179,7 +194,7 @@ const LTK1_CAP={
   65:{"男":2304000, "女":2304000},
   70:{"男":1536000, "女":1536000}
 };
-const CAP_MIN=1536000, CAP_MAX=13824000, H_MIN=40, H_MAX=260, BASE_Y=296;
+const CAP_MIN=1536000, CAP_MAX=13824000, H_MIN=40, H_MAX=260, BASE_Y=296, NUM_GAP=22;
 let curGender="男";
 const ageRange=document.getElementById('ageRange');
 const ageOut=document.getElementById('ageOut');
@@ -193,8 +208,10 @@ function updateChart2(){
   ageOut.textContent=age;
   const cap=LTK1_CAP[age][curGender];
   const h=H_MIN+(cap-CAP_MIN)/(CAP_MAX-CAP_MIN)*(H_MAX-H_MIN);
+  const topY=BASE_Y-h;
   rightBar.setAttribute('height',h.toFixed(1));
-  rightBar.setAttribute('y',(BASE_Y-h).toFixed(1));
+  rightBar.setAttribute('y',topY.toFixed(1));
+  rightNum.setAttribute('y',(topY-NUM_GAP).toFixed(1));
   const wan=Math.round(cap/10000);
   rightNum.textContent=wan.toLocaleString('zh-Hant')+' 萬';
   chart2.setAttribute('aria-label','150 萬自己存，與 '+age+' 歲'+curGender+'性換個地方放後約 '+wan+' 萬的對照');
@@ -206,5 +223,23 @@ pkBtns.forEach(b=>b.addEventListener('click',()=>{
 }));
 ageRange.addEventListener('input', updateChart2);
 updateChart2();
+
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  const closeBtn = overlay.querySelector('[data-close]');
+  if(closeBtn) closeBtn.addEventListener('click', ()=> overlay.classList.remove('open'));
+});
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+});
+const ctaBtn=document.getElementById('ctaBtn');
+if(ctaBtn){
+  ctaBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    if(typeof gtag==='function') gtag('event','click_calculate',{page_title:document.title});
+    const modal=document.getElementById('modal-cta');
+    if(modal) modal.classList.add('open');
+  });
+}
 </script>
 </body></html>
