@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>如果工作不只是換錢，你會怎麼選？</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BVVB2KGCTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BVVB2KGCTF');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --ink:#2B1B12; --muted:#8A7566; --amber:#C6600B; --amber-light:#E8873B;
+  --amber-bg:#FFF4E8; --coral:#D9502F; --green:#3A7D5C; --green-bg:#EEF7F1;
+  --line:#F0E2D2; --bg:#FFFDFB; --bg-warm:#FFF9F2;
+}
+body{font-family:"Noto Sans TC",sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;overflow-x:hidden}
+section{min-height:100vh;padding:9vh 7vw;display:flex;flex-direction:column;justify-content:center;position:relative}
+section:nth-child(even){background:var(--bg-warm)}
+.inner{max-width:760px;width:100%;margin:0 auto}
+h1{font-size:clamp(2.1rem,6vw,3.6rem);font-weight:900;line-height:1.35;color:var(--ink)}
+h2{font-size:clamp(1.7rem,4.2vw,2.5rem);font-weight:900;line-height:1.4;margin-bottom:1.2rem;color:var(--ink)}
+p{font-size:1.06rem;color:#5C4B3E;max-width:620px}
+.eyebrow{font-size:.92rem;font-weight:700;color:var(--amber);letter-spacing:.04em;margin-bottom:1rem;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in,.eyebrow.in,.card.in,.trait.in,.split-card.in{opacity:1;transform:translateY(0)}
+.big{font-size:clamp(1.4rem,3.6vw,2.1rem);font-weight:800;color:var(--amber);line-height:1.5;margin-top:1.8rem}
+
+.hero{background:linear-gradient(160deg,#FFF9F2,#FFEBD6)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none}
+.b1{width:400px;height:400px;background:var(--amber-light);top:-100px;right:-60px}
+.b2{width:280px;height:280px;background:var(--coral);bottom:0;left:-80px;opacity:.2}
+.scroll-cue{margin-top:3rem;font-size:.88rem;color:var(--amber);display:flex;align-items:center;gap:.5rem;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.myth-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2rem;max-width:640px}
+@media(max-width:640px){.myth-grid{grid-template-columns:1fr}}
+.myth-card{border-radius:18px;padding:1.5rem 1.4rem;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.myth-card.think{background:#FFF1EC;border:1.5px solid #FFD3C2}
+.myth-card.real{background:var(--green-bg);border:1.5px solid #BFE3CE}
+.myth-label{font-size:.82rem;font-weight:700;letter-spacing:.03em;margin-bottom:.6rem}
+.myth-card.think .myth-label{color:var(--coral)}
+.myth-card.real .myth-label{color:var(--green)}
+.myth-card p{font-size:.98rem;max-width:none}
+
+.trait-list{display:flex;flex-direction:column;gap:.9rem;margin-top:2rem;max-width:600px}
+.trait{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;opacity:0;transform:translateX(-16px);transition:opacity .55s ease,transform .55s ease}
+.trait-icon{font-size:1.4rem;flex-shrink:0}
+.trait-text{font-weight:700;font-size:1rem;color:var(--ink)}
+.trait-text small{display:block;font-weight:400;font-size:.9rem;color:var(--muted);margin-top:.2rem}
+
+.honest-box{background:#fff;border-left:4px solid var(--amber);border-radius:0 16px 16px 0;padding:1.3rem 1.5rem;margin-top:1.6rem;max-width:620px;opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.honest-box .h-label{font-size:.85rem;font-weight:700;color:var(--amber);margin-bottom:.5rem}
+.honest-box p{font-size:.97rem;max-width:none;color:#5C4B3E}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2rem;max-width:640px}
+@media(max-width:640px){.split{grid-template-columns:1fr}}
+.split-card{border-radius:18px;padding:1.5rem 1.4rem;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.split-card.old{background:#F5F1EC;border:1.5px solid #E5DBCB}
+.split-card.new{background:var(--amber-bg);border:1.5px solid #F3CE9F}
+.split-card .label{font-weight:900;font-size:1.05rem;margin-bottom:.6rem}
+.split-card.old .label{color:var(--muted)}
+.split-card.new .label{color:var(--amber)}
+.split-card p{font-size:.95rem;max-width:none;color:#5C4B3E}
+
+.cta{background:linear-gradient(160deg,#FFF4E8,#FFFDFB);text-align:left}
+.btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;padding:1rem 2.3rem;border-radius:99px;font-weight:700;font-size:1.05rem;margin-top:1.6rem;box-shadow:0 12px 30px rgba(198,96,11,.32);transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(198,96,11,.42)}
+.fine{font-size:.8rem;color:#A8967F;margin-top:1.8rem;max-width:520px}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(43,27,18,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:24px;max-width:440px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease;text-align:center}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:#F5EFE7;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#EBE1D3}
+.modal-box h3{font-size:1.25rem;font-weight:800;color:var(--ink);line-height:1.6}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<section class="hero">
+<div class="hero-blob b1" data-parallax="0.15"></div>
+<div class="hero-blob b2" data-parallax="0.25"></div>
+<div class="inner">
+<p class="eyebrow reveal">在你決定要不要投入這份工作之前</p>
+<h1 class="reveal" style="transition-delay:.1s">如果工作不只是換錢，<br>你會怎麼選？</h1>
+<p class="reveal" style="margin-top:1.4rem;font-size:1.15rem;transition-delay:.2s">多數人選工作，看的是薪水跟穩定。<br>但也有一群人，選的是一份能自己決定要走多遠的事業。</p>
+<div class="scroll-cue reveal" style="transition-delay:.35s">↓ 往下看看是不是誤會了什麼</div>
+</div>
+</section>
+
+<section>
+<div class="inner">
+<p class="eyebrow">先破除幾個常見的誤解</p>
+<h2>你以為的業務工作，<br>可能跟實際的不太一樣</h2>
+<div class="myth-grid">
+<div class="myth-card think">
+<div class="myth-label">你以為</div>
+<p>就是到處推銷，一直拜託人買東西</p>
+</div>
+<div class="myth-card real">
+<div class="myth-label">實際上</div>
+<p>是幫人整理財務規劃，把對方沒想過的風險先攤開來討論</p>
+</div>
+<div class="myth-card think">
+<div class="myth-label">你以為</div>
+<p>要有很廣的人脈才做得起來</p>
+</div>
+<div class="myth-card real">
+<div class="myth-label">實際上</div>
+<p>人脈是做出口碑之後累積出來的結果，不是入場門檻</p>
+</div>
+<div class="myth-card think">
+<div class="myth-label">你以為</div>
+<p>沒底薪，收入很不穩定</p>
+</div>
+<div class="myth-card real">
+<div class="myth-label">實際上</div>
+<p>前期確實需要適應，但收入的天花板不是被別人設定的</p>
+</div>
+<div class="myth-card think">
+<div class="myth-label">你以為</div>
+<p>做業務比較沒有專業含量</p>
+</div>
+<div class="myth-card real">
+<div class="myth-label">實際上</div>
+<p>要懂財務、稅務、法律、保障規劃，這些都要持續學</p>
+</div>
+</div>
+<div class="big">這份工作被誤解最深的地方，<br>是它其實更像在經營一份事業。</div>
+</div>
+</section>
+
+<section>
+<div class="inner">
+<p class="eyebrow">這份工作，實際上在做什麼</p>
+<h2>陪一個人，<br>把他沒想過的事情想清楚</h2>
+<p>大部分人不是不在乎風險，只是平常沒空、也沒理由去想。這份工作要做的，是坐下來陪對方把「萬一發生什麼事，家人怎麼辦」這種問題，一次想透徹。</p>
+<div class="trait-list">
+<div class="trait"><span class="trait-icon">🗣️</span><div class="trait-text">傾聽比說服更重要<small>先搞懂對方在意什麼，才知道該怎麼幫</small></div></div>
+<div class="trait"><span class="trait-icon">📚</span><div class="trait-text">持續學習財務與法律知識<small>市場、稅制、商品每年都在變，停止學習就會落後</small></div></div>
+<div class="trait"><span class="trait-icon">🤝</span><div class="trait-text">長期陪伴，不是一次性銷售<small>好的規劃需要很多年後才看得出價值，關係要走得久</small></div></div>
+<div class="trait"><span class="trait-icon">🧭</span><div class="trait-text">自己決定怎麼安排時間與方向<small>沒有人天天盯著你打卡，但也代表結果要自己負責</small></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="inner">
+<p class="eyebrow">誠實說，這份工作也不輕鬆</p>
+<h2 style="font-size:clamp(1.5rem,3.6vw,2.2rem)">不誇大，也不需要把它<br>說得多好聽</h2>
+<div class="honest-box">
+<div class="h-label">現實面一</div>
+<p>前半年到一年，需要重新建立自己的節奏和客戶信任，這段時間收入通常不會太漂亮。</p>
+</div>
+<div class="honest-box" style="transition-delay:.1s">
+<div class="h-label">現實面二</div>
+<p>會被拒絕，會遇到不理解這份工作的人，這是常態，不是你做得不好。</p>
+</div>
+<div class="honest-box" style="transition-delay:.2s">
+<div class="h-label">現實面三</div>
+<p>沒有人幫你排班表，自律跟主動，決定了你走得快還是走得慢。</p>
+</div>
+<p style="margin-top:1.6rem">這些不是要嚇退你，而是覺得你值得聽到真話，再決定要不要投入。</p>
+</div>
+</section>
+
+<section>
+<div class="inner">
+<p class="eyebrow">換一個角度看</p>
+<h2>找一份工作，<br>還是經營一份事業？</h2>
+<div class="split">
+<div class="split-card old">
+<div class="label">找工作的邏輯</div>
+<p>用時間換薪水，天花板由公司的職級和制度決定，換工作等於重新歸零。</p>
+</div>
+<div class="split-card new">
+<div class="label">經營事業的邏輯</div>
+<p>用專業和信任累積客戶關係，收入跟成長速度取決於自己投入多少，而且會越做越紮實。</p>
+</div>
+</div>
+<div class="big">這不是哪一種比較好，<br>是你想過哪一種人生。</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="inner">
+<p class="eyebrow reveal">如果你還在猶豫</p>
+<h2 class="reveal" style="transition-delay:.1s">不用現在就決定，<br>但可以先聊聊看</h2>
+<p class="reveal" style="transition-delay:.2s">找個時間，聽聽這份工作實際的樣子，問問你在意的問題。想清楚了再決定，不急。</p>
+<a class="btn reveal" href="#" id="ctaBtn" style="transition-delay:.3s">找人聊聊，了解更多</a>
+<p class="fine reveal" style="transition-delay:.4s">本頁內容為職涯觀念分享，實際工作內容、制度與待遇，依實際說明與合約為準。</p>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-cta">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<h3>關閉頁面，我們找時間聊聊！</h3>
+</div>
+</div>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .eyebrow, .myth-card, .trait, .honest-box, .split-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .22 });
+revealEls.forEach(el => io.observe(el));
+
+document.querySelectorAll('.myth-grid, .trait-list, .split').forEach(grid => {
+  [...grid.children].forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+});
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  document.querySelectorAll('[data-parallax]').forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.transform = `translateY(${y * speed}px)`;
+  });
+}, { passive: true });
+
+setTimeout(() => {
+  revealEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) el.classList.add('in');
+  });
+}, 100);
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+  const closeBtn = overlay.querySelector('[data-close]');
+  if (closeBtn) closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+});
+const ctaBtn = document.getElementById('ctaBtn');
+if (ctaBtn) {
+  ctaBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (typeof gtag === 'function') gtag('event', 'click_talk', { page_title: document.title });
+    const modal = document.getElementById('modal-cta');
+    if (modal) modal.classList.add('open');
+  });
+}
+</script>
+</body></html>
