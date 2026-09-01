@@ -53,6 +53,13 @@ h1,h2,h3,blockquote{font-family:"Noto Serif TC",serif}
   border-bottom:1px solid var(--line);
 }
 .hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.5;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 75%)}
+.hero .wrap{position:relative;z-index:1}.hero-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(250px,.72fr);gap:42px;align-items:center}
+.hero-orbit{width:min(30vw,300px);aspect-ratio:1;justify-self:end;position:relative;border-radius:50%;background:conic-gradient(from 15deg,rgba(47,111,237,.78) 0 21%,transparent 21% 25%,rgba(108,155,255,.58) 25% 48%,transparent 48% 52%,rgba(47,111,237,.38) 52% 75%,transparent 75% 79%,rgba(108,155,255,.34) 79% 100%);mask:radial-gradient(circle,transparent 0 48%,#000 49% 100%);filter:drop-shadow(0 18px 32px rgba(47,111,237,.14))}
+.hero-orbit::before{content:"";position:absolute;inset:23%;border-radius:50%;background:var(--accent);box-shadow:0 0 0 9px rgba(255,255,255,.62)}
+.hero-orbit::after{content:"保障\A 不中斷";white-space:pre;position:absolute;inset:31%;z-index:1;display:grid;place-items:center;text-align:center;color:#fff;font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.55;font-size:1rem}
+.hero-orbit span{position:absolute;z-index:2;padding:6px 10px;background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:999px;color:var(--accent);font-size:.72rem;font-weight:700;box-shadow:0 7px 20px rgba(22,35,63,.08)}
+.hero-orbit span:nth-child(1){top:4%;left:-7%}.hero-orbit span:nth-child(2){top:16%;right:-13%}.hero-orbit span:nth-child(3){bottom:7%;left:-8%}
+@media(max-width:760px){.hero-layout{grid-template-columns:1fr}.hero-orbit{width:185px;justify-self:start;margin-top:10px}}
 .eyebrow{
   display:inline-flex;align-items:center;gap:10px;
   font-size:.82rem;letter-spacing:.28em;color:var(--accent);font-weight:500;
@@ -140,6 +147,13 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 .scenario-panel p{font-size:1.05rem;line-height:1.9;color:var(--muted);max-width:640px}
 .scenario-more{margin-top:22px;background:transparent;border:none;color:var(--accent);font-size:.92rem;font-weight:700;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:rgba(47,111,237,.35);text-underline-offset:3px;font-family:"Noto Sans TC",sans-serif}
 
+.cost-btn{margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:14px 24px;border-radius:8px;font-size:.95rem;font-weight:700;font-family:"Noto Sans TC",sans-serif;cursor:pointer;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease,background .3s ease,color .3s ease}
+.cost-btn.in{opacity:1;transform:translateY(0)}
+.cost-btn:hover{background:var(--accent);color:#fff}
+.cost-mini{margin-top:6px;border-top:1px solid var(--line)}
+.cost-mini-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink)}
+.cost-mini-row span:last-child{font-weight:700;color:var(--accent);white-space:nowrap}
+
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
 .modal-overlay.open{display:flex}
@@ -184,9 +198,14 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 <section class="hero">
 <div class="grid-lines"></div>
 <div class="wrap">
+<div class="hero-layout">
+<div>
 <p class="eyebrow">男性健康保障</p>
 <h1 class="display">你的人生，<em>不該</em>被一場病打亂</h1>
-<p class="sub">不管現在的你，是一個人努力，還是扛著一個家，生活都<span class="hl">不該因為生病，被迫按下暫停鍵</span>。</p>
+<p class="sub">無論為自己或家人打拚，生活都<span class="hl">不該因為生病被迫停下</span>。</p>
+</div>
+<div class="hero-orbit" aria-hidden="true"><span>收入</span><span>治療</span><span>家人</span></div>
+</div>
 </div>
 <div class="scroll-hint"><span class="bar"></span><span>往下看</span></div>
 </section>
@@ -195,7 +214,7 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 <section class="quote-section">
 <div class="wrap">
 <div class="quote-mark">"</div>
-<blockquote>萬一收入暫停，你有沒有一筆，<span class="accent">不需要賣股票、不需要動用存款，也不必向任何人開口</span>的現金？</blockquote>
+<blockquote>收入暫停時，<span class="accent">有沒有一筆不必賣股票、不必動用存款的現金？</span></blockquote>
 </div>
 </section>
 
@@ -205,12 +224,13 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 <div class="section-head">
 <span class="num">01 — 特別為男性加強的照顧</span>
 <h2>到了中壯年，除了大腸癌，這些健康問題也在男性身上悄悄增加。</h2>
-<p>這份規劃針對男性好發的癌症，提供更完整的照顧，確診時<span class="hl">多得到一份支持</span>。</p>
+<p>男性好發癌症，確診時<span class="hl">多一份可以立刻運用的支持</span>。</p>
+<button class="cost-btn" data-modal="cost">確診之後，治療要花多少？ →</button>
 </div>
 <div class="item-list">
-<div class="item-row"><span class="item-index">01</span><span class="item-name">大腸癌</span><span class="item-note">中壯年常見風險，<span class="hl">列入加強照顧</span></span></div>
-<div class="item-row"><span class="item-index">02</span><span class="item-name">攝護腺癌</span><span class="item-note">男性專屬課題，<span class="hl">同樣加碼支持</span></span></div>
-<div class="item-row"><span class="item-index">03</span><span class="item-name">睪丸癌</span><span class="item-note">容易被忽略，<span class="hl">不能輕忽的警訊</span></span></div>
+<div class="item-row"><span class="item-index">01</span><span class="item-name">大腸癌</span><span class="item-note"><span class="hl">列入加強照顧</span></span></div>
+<div class="item-row"><span class="item-index">02</span><span class="item-name">攝護腺癌</span><span class="item-note"><span class="hl">同樣加碼支持</span></span></div>
+<div class="item-row"><span class="item-index">03</span><span class="item-name">睪丸癌</span><span class="item-note"><span class="hl">不能忽略的警訊</span></span></div>
 </div>
 </div>
 </section>
@@ -223,14 +243,14 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 <h2>先確認手邊有沒有一筆撐得住的準備。</h2>
 </div>
 <div class="feature-grid">
-<div class="feature-card"><span class="fc-icon">🗓️</span><h3>保障彈性，陪你到89歲</h3><p>可選10年或20年繳費，<span class="hl">照顧一路到89歲</span>。</p></div>
-<div class="feature-card"><span class="fc-icon">🎯</span><h3>男性好發癌症加碼</h3><p>攝護腺癌、睪丸癌、大腸癌等，<span class="hl">最高多1.5倍支持</span>。</p></div>
-<div class="feature-card"><span class="fc-icon">🩺</span><h3>攝護腺／前列腺手術</h3><p>男性常見泌尿外科手術，<span class="hl">額外一筆支持</span>。</p></div>
-<div class="feature-card"><span class="fc-icon">❤️</span><h3>主動脈手術與嚴重肝硬化</h3><p>中年後常見心血管與肝臟問題，<span class="hl">同樣有保障</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">⌁</span><h3>保障到 89 歲</h3><p>可選 10 或 20 年繳費。</p></div>
+<div class="feature-card"><span class="fc-icon">＋</span><h3>男性好發癌症加碼</h3><p><span class="hl">最高多 1.5 倍支持</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">○</span><h3>攝護腺／前列腺手術</h3><p><span class="hl">額外一筆支持</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">↗</span><h3>主動脈手術與嚴重肝硬化</h3><p><span class="hl">同樣有保障</span>。</p></div>
 </div>
 <div class="feature-grid" style="margin-top:2px">
-<div class="feature-card"><span class="fc-icon">🛡️</span><h3>確診後保費由我們分擔</h3><p>確診後續期保費免繳，<span class="hl">保障不中斷</span>。</p></div>
-<div class="feature-card"><span class="fc-icon">💰</span><h3>保費有去有回</h3><p>一路平安，<span class="hl">符合條件全數領回</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">□</span><h3>確診後保費免繳</h3><p><span class="hl">保障不中斷</span>。</p></div>
+<div class="feature-card"><span class="fc-icon">◎</span><h3>平安時保費有機會領回</h3><p><span class="hl">符合條件全數領回</span>。</p></div>
 </div>
 </div>
 </section>
@@ -241,7 +261,7 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 <div class="section-head">
 <span class="num">03 — 不同情境，能得到多少支持？</span>
 <h2>200 萬，看看這份規劃怎麼照顧你。</h2>
-<p>選擇你的年齡，點選下方情境，看看不同狀況下，這份規劃能提供多少支持。</p>
+<p>選擇年齡與情境，快速看見可運用的支持。</p>
 </div>
 
 <div class="age-picker">
@@ -308,11 +328,29 @@ blockquote .accent{color:var(--accent);text-decoration:underline;text-decoration
 </div>
 </div>
 
+<div class="modal-overlay" id="modal-cost">
+<div class="modal-box">
+<button class="modal-close" data-close>✕</button>
+<span class="ex-tag">確診之後，治療要花多少</span>
+<h3>健保之外，這些自費項目要留意</h3>
+<div class="cost-mini">
+<div class="cost-mini-row"><span>正子造影 PET/CT</span><span>3萬～4.5萬 / 次</span></div>
+<div class="cost-mini-row"><span>磁振造影 MRI</span><span>1.6萬～6萬</span></div>
+<div class="cost-mini-row"><span>微創手術（達文西等）</span><span>8萬～45萬 / 次</span></div>
+<div class="cost-mini-row"><span>精準放射治療（質子治療）</span><span>30萬～90萬 / 療程</span></div>
+<div class="cost-mini-row"><span>新世代用藥（標靶、免疫）</span><span>50萬～220萬 / 年</span></div>
+<div class="cost-mini-row"><span>細胞療法</span><span>100萬～1,400萬</span></div>
+</div>
+<p style="margin-top:16px;font-weight:700">當精準醫療成為必然，一年期的潛在自費總額，<span class="hl">輕易突破數百萬</span>。</p>
+<p style="margin-top:10px;font-size:.8rem;color:var(--muted)">費用區間整理自公開醫療行情資訊，實際費用依醫院、療程與個人狀況而異，僅供參考。</p>
+</div>
+</div>
+
 <!-- CLOSING -->
 <section class="closing">
 <div class="wrap">
 <h2>為未來的日子做準備，進可攻退可守。</h2>
-<p>而是要先確認一件事：<span class="hl">手邊有沒有一筆錢，是完全屬於你，不需要向任何人開口</span>。我想幫你把現在的癌症保障整理一下。</p>
+<p>先確認一件事：<span class="hl">手邊有沒有一筆錢，是完全屬於你，不需要向任何人開口</span>。我想幫你把現在的癌症保障整理一下。</p>
 <a class="btn" href="#" id="ctaBtn">詢問與試算</a>
 <p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。</p>
 </div>
@@ -333,7 +371,7 @@ window.addEventListener('scroll', () => {
   progress.style.width = scrolled + '%';
 }, { passive:true });
 
-const targets = document.querySelectorAll('.eyebrow, .display, .sub, blockquote, .item-row, .feature-card, .closing h2, .closing p, .btn');
+const targets = document.querySelectorAll('.eyebrow, .display, .sub, blockquote, .item-row, .feature-card, .cost-btn, .closing h2, .closing p, .btn');
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
 },{threshold:0.15});
@@ -433,7 +471,7 @@ if(scenarioSection){
 }
 
 // scenario modal
-document.querySelectorAll('.scenario-more').forEach(btn=>{
+document.querySelectorAll('.scenario-more, .cost-btn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const modal = document.getElementById('modal-'+btn.dataset.modal);
     if(modal) modal.classList.add('open');

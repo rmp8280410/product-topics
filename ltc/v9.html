@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>75.7萬人在長照，缺口誰來補？</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BVVB2KGCTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BVVB2KGCTF');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F5F0;
+  --paper2:#EFEAE0;
+  --ink:#1B1F27;
+  --muted:#6B6F78;
+  --navy:#1B2A4A;
+  --rust:#C1502E;
+  --line:rgba(27,31,39,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,.num-serif{font-family:"Noto Serif TC",serif}
+.mono{font-family:"Roboto Mono",monospace}
+
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--rust));width:0%;z-index:999;transition:width .1s linear}
+.brief-tag{position:fixed;top:26px;left:7vw;font-size:.72rem;letter-spacing:.32em;color:var(--muted);z-index:50;text-transform:uppercase}
+@media(max-width:680px){.brief-tag{display:none}}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 7vw}
+section{padding:14vh 0}
+.divider{height:1px;background:var(--line)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;background:var(--paper)}
+.hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px;opacity:.6;mask-image:radial-gradient(ellipse at 60% 30%,#000 0%,transparent 70%)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.26em;color:var(--rust);font-weight:700;margin-bottom:24px;opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--rust)}
+.eyebrow.in{opacity:1;transform:translateY(0)}
+.hero-figure{font-size:clamp(4.2rem,15vw,9rem);font-weight:900;line-height:.95;color:var(--navy);opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.hero-figure.in{opacity:1;transform:translateY(0)}
+.hero-figure sup{font-size:.32em;font-weight:700;color:var(--rust);vertical-align:super;margin-left:6px}
+h1.hero-h{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;line-height:1.55;margin-top:22px;max-width:720px;opacity:0;transform:translateY(20px);transition:opacity .9s ease .1s,transform .9s ease .1s}
+h1.hero-h.in{opacity:1;transform:translateY(0)}
+.hero p.sub{margin-top:20px;font-size:1.05rem;line-height:1.9;color:var(--muted);max-width:600px;opacity:0;transform:translateY(18px);transition:opacity .9s ease .2s,transform .9s ease .2s}
+.hero p.sub.in{opacity:1;transform:translateY(0)}
+.scroll-hint{position:absolute;bottom:6vh;left:7vw;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.8rem;opacity:.8}
+.scroll-hint .bar{width:1px;height:34px;background:linear-gradient(var(--rust),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{opacity:0;transform:scaleY(.3);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(.3);transform-origin:bottom}}
+
+/* SECTION HEAD */
+.section-head{margin-bottom:56px}
+.section-head .tag{font-size:.85rem;color:var(--rust);letter-spacing:.2em;margin-bottom:16px;display:block;font-weight:700}
+.section-head h2{font-size:clamp(1.7rem,3.8vw,2.5rem);font-weight:700;line-height:1.5;max-width:700px;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.section-head h2.in{opacity:1;transform:translateY(0)}
+.section-head p{margin-top:18px;font-size:1.02rem;line-height:1.9;color:var(--muted);max-width:640px;opacity:0;transform:translateY(18px);transition:opacity .7s ease .1s,transform .7s ease .1s}
+.section-head p.in{opacity:1;transform:translateY(0)}
+
+/* DUAL LINE CHART：推估需求 vs 實際使用 */
+.line-chart{display:flex;align-items:flex-end;gap:22px;height:220px;margin-top:50px;max-width:680px}
+.line-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.line-pair{width:100%;display:flex;justify-content:center;gap:8px;align-items:flex-end;height:100%}
+.line-bar{width:100%;max-width:26px;border-radius:4px 4px 0 0;height:0;transition:height 1.1s cubic-bezier(.22,1,.36,1)}
+.line-bar.need{background:#C7CBD6}
+.line-bar.use{background:var(--navy)}
+.line-year{margin-top:10px;font-size:.82rem;color:var(--muted)}
+.chart-legend{display:flex;gap:26px;margin-top:22px;font-size:.85rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:8px}
+.chart-legend i{width:12px;height:12px;border-radius:2px;display:inline-block}
+.chart-legend i.need{background:#C7CBD6}
+.chart-legend i.use{background:var(--navy)}
+.gap-callout{margin-top:36px;padding:22px 26px;background:var(--paper2);border-radius:4px;border-left:3px solid var(--rust);font-size:1rem;line-height:1.85;color:var(--ink)}
+.gap-callout b{color:var(--rust)}
+
+/* CAUSE GRID (常見長照原因，各自的發生率) */
+.cause-grid{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap}
+.stat-item{flex:1;min-width:220px}
+.stat-item .cc-name{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+.stat-item .sp-figure{font-family:"Noto Serif TC",serif;font-size:clamp(2.4rem,6vw,3.6rem);font-weight:900;color:var(--navy);line-height:1.15}
+.stat-item .sp-note{margin-top:10px;font-size:.88rem;color:var(--muted);line-height:1.7}
+
+/* COST LADDER (共用結構) */
+.cost-ladder{margin-top:10px;border-top:1px solid var(--line)}
+.cost-row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.cost-row.in{opacity:1;transform:translateY(0)}
+.cost-name{font-size:1.05rem;font-weight:700;color:var(--ink)}
+.cost-name span{display:block;font-size:.85rem;font-weight:400;color:var(--muted);margin-top:4px}
+.cost-amt{font-family:"Roboto Mono",monospace;font-size:1.15rem;font-weight:700;color:var(--rust);white-space:nowrap;text-align:right}
+
+/* PDF 月花費圖卡：保留簡報原稿的圖示、金額與編號 */
+.pdf-cost-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:44px}
+.pdf-cost-card{margin:0;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 10px 26px rgba(27,42,74,.08);opacity:1;transform:none;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),box-shadow .3s ease}
+.pdf-cost-card img{display:block;width:100%;height:auto;aspect-ratio:1.467;object-fit:cover;object-position:top;mix-blend-mode:multiply}
+.pdf-cost-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(27,42,74,.15)}
+.motion-ready .pdf-cost-card{opacity:0;transform:translateY(18px)}
+.motion-ready .pdf-cost-card.in{opacity:1;transform:translateY(0)}
+.pdf-cost-caption{margin-top:22px;color:var(--muted);font-size:.9rem;line-height:1.8}
+.pdf-cost-total{margin:26px 0 0;overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 12px 30px rgba(27,42,74,.1);opacity:1;transform:none;transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.pdf-cost-total img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.motion-ready .pdf-cost-total{opacity:0;transform:translateY(18px)}
+.motion-ready .pdf-cost-total.in{opacity:1;transform:translateY(0)}
+@media(max-width:760px){.pdf-cost-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:32px}.pdf-cost-card{border-radius:10px}}
+
+.cost-total{margin-top:40px;padding:34px 30px;background:var(--navy);color:#fff;border-radius:8px;text-align:center;opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.cost-total.in{opacity:1;transform:translateY(0)}
+.cost-total .ct-label{font-size:.88rem;letter-spacing:.15em;color:#B9C4DA;margin-bottom:10px}
+.cost-total .ct-figure{font-family:"Noto Serif TC",serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:var(--rust)}
+
+/* SOLUTION */
+.solution{background:var(--paper2)}
+.solution-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);margin-top:50px;border:1px solid var(--line)}
+@media(max-width:760px){.solution-grid{grid-template-columns:1fr}}
+.solution-card{background:var(--paper2);padding:34px 32px;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.solution-card.in{opacity:1;transform:translateY(0)}
+.solution-card .sc-mark{font-family:"Roboto Mono",monospace;font-size:.85rem;color:var(--rust);margin-bottom:14px;display:block}
+.solution-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;color:var(--ink)}
+.solution-card p{font-size:.96rem;line-height:1.8;color:var(--muted)}
+.hl{color:var(--rust);font-weight:700}
+
+/* CLOSING */
+.closing{padding:16vh 0;text-align:left}
+.closing h2{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.5;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.closing h2.in{opacity:1;transform:translateY(0)}
+.closing p{margin-top:22px;font-size:1.08rem;line-height:1.9;color:var(--muted);max-width:600px;opacity:0;transform:translateY(20px);transition:opacity .8s ease .1s,transform .8s ease .1s}
+.closing p.in{opacity:1;transform:translateY(0)}
+.btn{display:inline-flex;align-items:center;gap:14px;margin-top:38px;background:var(--navy);color:#fff;padding:18px 38px;border-radius:4px;text-decoration:none;font-weight:700;letter-spacing:.03em;transition:background .3s ease,transform .3s ease;opacity:0;transform:translateY(18px)}
+.btn.in{opacity:1;transform:translateY(0);transition:opacity .8s ease .2s,transform .8s ease .2s,background .3s ease}
+.btn:hover{background:var(--rust);transform:translateY(-2px)}
+.btn::after{content:"→"}
+.fine{margin-top:32px;font-size:.78rem;color:#9A9A94;max-width:520px;line-height:1.75}
+
+.source{font-size:.8rem;color:#9A9A94;margin-top:16px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(27,31,39,.55);display:none;align-items:center;justify-content:center;z-index:999;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:8px;max-width:520px;width:100%;padding:36px 32px;position:relative;box-shadow:0 30px 80px rgba(27,31,39,.25);transform:scale(.95);opacity:0;transition:transform .3s ease,opacity .3s ease;text-align:left}
+.modal-overlay.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:var(--paper2);border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:var(--line)}
+.modal-box h3{font-size:1.2rem;font-weight:700;color:var(--ink);line-height:1.6}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<div class="progress" id="progress"></div>
+<div class="brief-tag">DATA BRIEF · 長期照顧的財務缺口</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="grid-lines"></div>
+<div class="wrap">
+<p class="eyebrow">先看數字，再談規劃</p>
+<div class="hero-figure">75.7<sup>萬</sup></div>
+<h1 class="hero-h">去年，有75.7萬人<br>正在使用長期照顧服務</h1>
+<p class="sub">這是政府公開的統計數字，而且這個數字，五年來只增不減。長照不是「萬一」，而是越來越多家庭正在面對的日常。</p>
+</div>
+<div class="scroll-hint"><span class="bar"></span><span>往下看數據</span></div>
+</section>
+
+<!-- 需求與使用趨勢 -->
+<section>
+<div class="wrap">
+<div class="section-head">
+<span class="tag">01 — 需求一年比一年多</span>
+<h2>五年間，實際使用長照服務的人數成長了 67.9%</h2>
+<p>推估需求人數穩定維持在80幾萬人，但實際使用服務的人數，正快速往推估需求逼近。</p>
+</div>
+<div class="line-chart" id="lineChart">
+<div class="line-col"><div class="line-pair"><div class="line-bar need" data-target="165"></div><div class="line-bar use" data-target="90"></div></div><span class="line-year">2020</span></div>
+<div class="line-col"><div class="line-pair"><div class="line-bar need" data-target="171"></div><div class="line-bar use" data-target="97"></div></div><span class="line-year">2021</span></div>
+<div class="line-col"><div class="line-pair"><div class="line-bar need" data-target="166"></div><div class="line-bar use" data-target="115"></div></div><span class="line-year">2022</span></div>
+<div class="line-col"><div class="line-pair"><div class="line-bar need" data-target="172"></div><div class="line-bar use" data-target="138"></div></div><span class="line-year">2023</span></div>
+<div class="line-col"><div class="line-pair"><div class="line-bar need" data-target="178"></div><div class="line-bar use" data-target="151"></div></div><span class="line-year">2024</span></div>
+</div>
+<div class="chart-legend"><span><i class="need"></i>推估需求人數（萬人）</span><span><i class="use"></i>實際使用人數（萬人）</span></div>
+<div class="gap-callout">2024年推估需求約 <b>89.2萬人</b>，實際使用約 <b>75.7萬人</b>。差距正在縮小，代表越來越多家庭正在使用長照資源，而不是自己默默扛下來。</div>
+<p class="source">資料來源：衛生福利部，近五個完整年度長照人數統計</p>
+</div>
+</section>
+
+<div class="divider wrap"></div>
+
+<!-- 常見長照原因與發生率 -->
+<section>
+<div class="wrap">
+<div class="section-head">
+<span class="tag">02 — 常見的長照原因，都有明確的發生率</span>
+<h2>失智、中風、跌倒骨折，都可能讓長照突然發生</h2>
+<p>這三種狀況每年都在真實發生，而且風險會隨年齡持續往上疊加。</p>
+</div>
+<div class="cause-grid">
+<div class="stat-item"><div class="cc-name">失智</div><div class="sp-figure">23.23%</div><div class="sp-note">85歲以上長者盛行率，65歲以上整體7.99%</div></div>
+<div class="stat-item"><div class="cc-name">中風</div><div class="sp-figure">61.2%</div><div class="sp-note">初次中風患者，1個月後即失能</div></div>
+<div class="stat-item"><div class="cc-name">跌倒骨折</div><div class="sp-figure">80%</div><div class="sp-note">髖關節骨折後，至少喪失一項生活自理能力</div></div>
+</div>
+<p class="source">資料來源：衛生福利部109-112年臺灣社區失智症流行病學調查；台灣中風登錄資料庫；衛生福利部國民健康署</p>
+</div>
+</section>
+
+<div class="divider wrap"></div>
+
+<!-- 家庭實際花費 -->
+<section>
+<div class="wrap">
+<div class="section-head">
+<span class="tag">03 — 缺口，最後由家庭來補</span>
+<h2>常見的照顧情境，每個月要花多少</h2>
+<p>把政府給付之外，家庭實際要負擔的費用攤開來看，落差比想像中大。</p>
+</div>
+<div class="pdf-cost-grid" aria-label="台灣長照家庭每月花費項目">
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-01.jpg" alt="日常照顧費：2,000至90,000元，居家服務、日照或看護"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-02.jpg" alt="住宿機構費：35,000至60,000元以上，養護機構、長照機構或護理之家"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-03.jpg" alt="醫療與復健費：500至8,000元以上，門診、藥物、復健與居家護理"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-04.jpg" alt="輔具與住宅改善：300至3,000元，輪椅、照顧床、扶手與浴廁改善"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-05.jpg" alt="日常消耗品：3,000至15,000元以上，尿布、營養品與醫療耗材"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-06.jpg" alt="交通與陪診費：1,000至6,000元以上，長照車、計程車、救護車與陪診"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-07.jpg" alt="家屬收入損失：30,000至60,000元以上，減班、請假或離職照顧"></figure>
+<figure class="pdf-cost-card"><img src="assets/pdf-crops/monthly-cost-08.jpg" alt="突發與後期照護：0至72,000元以上，住院、臨時看護與夜間照顧"></figure>
+</div>
+<p class="pdf-cost-caption">八項花費不一定同時發生，但一旦照顧拉長，缺口通常不是單一項目造成。</p>
+<figure class="pdf-cost-total"><img src="assets/pdf-crops/monthly-cost-total.jpg" alt="常見照顧情境與每月總負擔：家屬照顧加部分長照服務每月7,000至25,000元；外籍看護加生活耗材每月35,000至55,000元；入住長照機構或護理之家每月40,000至70,000元以上；本國籍一對一全日看護每月70,000至110,000元以上"></figure>
+<p class="source">圖示與費用區間整理自《保險圓餅圖》第32頁；實際費用依地區、照顧方式與個人需求而異。</p>
+</div>
+</section>
+
+<!-- 解決方案 -->
+<section class="solution">
+<div class="wrap">
+<div class="section-head">
+<span class="tag">04 — 如果有一筆錢，專門補上這段缺口</span>
+<h2>照顧的責任，不該只靠一個人硬扛</h2>
+<p>這份規劃的用意，不是預測誰會需要長照，而是先確認一件事：萬一那一天真的來了，家裡手邊有沒有一筆固定的錢，可以撐住每個月的照顧費用，不必打亂原本的生活。</p>
+</div>
+<div class="solution-grid">
+<div class="solution-card"><span class="sc-mark">01</span><h3>符合條件即可申請</h3><p>不必等到用盡積蓄才開始想辦法，<span class="hl">及早取得一筆準備金</span>。</p></div>
+<div class="solution-card"><span class="sc-mark">02</span><h3>每月固定的一筆錢</h3><p>用來補上看護費、機構費之間的落差，<span class="hl">不必每個月都在煩惱錢從哪來</span>。</p></div>
+<div class="solution-card"><span class="sc-mark">03</span><h3>不必動用其他家人的存款</h3><p>照顧一個人，<span class="hl">不用連累全家的財務規劃</span>。</p></div>
+<div class="solution-card"><span class="sc-mark">04</span><h3>平安時，也不是浪費</h3><p>符合條件時，<span class="hl">保費仍有機會全數領回</span>，跟你的存款一樣，還是你的資產。</p></div>
+</div>
+</div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+<div class="wrap">
+<h2>先看清楚數字，<br>再決定手邊需要準備多少。</h2>
+<p>把上面這幾組數字放在心裡，回頭檢查一下手邊的準備，是不是真的撐得住一段長期照顧。</p>
+<a class="btn" href="#" id="ctaBtn">詢問與試算</a>
+<p class="fine">本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。文中統計數字整理自政府公開資料，僅供參考。</p>
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-cta">
+<div class="modal-box" style="text-align:center">
+<button class="modal-close" data-close>✕</button>
+<h3>關閉頁面，與業務朋友討論詳情！</h3>
+</div>
+</div>
+
+<script>
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progress.style.width = scrolled + '%';
+}, { passive:true });
+
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ready');
+const targets = document.querySelectorAll('.eyebrow, .hero-figure, .hero-h, .hero p.sub, .section-head h2, .section-head p, .cost-row, .pdf-cost-card, .pdf-cost-total, .cost-total, .solution-card, .closing h2, .closing p, .btn, .stat-item');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.15});
+targets.forEach(t=>io.observe(t));
+
+document.querySelectorAll('.pdf-cost-grid, .solution-grid').forEach(list=>{
+  [...list.children].forEach((row,i)=>{ row.style.transitionDelay = (i*0.08)+'s'; });
+});
+
+// line chart fill
+const lineChart = document.getElementById('lineChart');
+if(lineChart){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        [...lineChart.querySelectorAll('.line-bar')].forEach((bar,i)=>{
+          setTimeout(()=>{ bar.style.height = bar.dataset.target + 'px'; }, i*80);
+        });
+        obs.disconnect();
+      }
+    });
+  },{threshold:0.4});
+  obs.observe(lineChart);
+}
+
+// CTA
+const ctaBtn = document.getElementById('ctaBtn');
+if(ctaBtn){
+  ctaBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    if(typeof gtag==='function') gtag('event','click_calculate',{page_title:document.title});
+    const modal = document.getElementById('modal-cta');
+    if(modal) modal.classList.add('open');
+  });
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  const closeBtn = overlay.querySelector('[data-close]');
+  if(closeBtn) closeBtn.addEventListener('click', ()=> overlay.classList.remove('open'));
+});
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+});
+</script>
+</body></html>
