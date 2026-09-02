@@ -66,6 +66,17 @@ h1.display .soft{color:var(--rose-deep)}
   opacity:0;transform:translateY(18px);transition:opacity .9s ease .15s,transform .9s ease .15s}
 .hero p.sub.in{opacity:1;transform:translateY(0)}
 
+.hero-video{position:relative;margin-top:34px;max-width:460px;border-radius:20px;overflow:hidden;cursor:pointer;
+  box-shadow:0 20px 50px rgba(156,74,92,.22);
+  opacity:0;transform:translateY(18px);transition:opacity .9s ease .25s,transform .9s ease .25s}
+.hero-video.in{opacity:1;transform:translateY(0)}
+.hero-video-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.hero-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;
+  background:var(--rose-deep);border:3px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 26px rgba(58,46,48,.3);transition:transform .25s ease}
+.hero-video:hover .hero-video-play{transform:translate(-50%,-50%) scale(1.08)}
+.hero-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+
 /* LIFE STAGE SECTIONS */
 .stage{padding:14vh 0;position:relative;overflow:hidden}
 .stage-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -211,6 +222,12 @@ h1.display .soft{color:var(--rose-deep)}
 <p class="eyebrow">For Her · 為妳準備的</p>
 <h1 class="display">妳未來想守護的地方，<br><span class="soft">保障準備好了嗎？</span></h1>
 <p class="sub">每個人生階段，都值得一份不慌張的準備。</p>
+<div class="hero-video" data-yt-id="eVsUTSZMCKQ">
+<img class="hero-video-thumb" src="https://img.youtube.com/vi/eVsUTSZMCKQ/hqdefault.jpg" alt="廣告影片預覽" loading="lazy">
+<button class="hero-video-play" type="button" aria-label="播放影片">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+</button>
+</div>
 </div>
 </section>
 
@@ -387,7 +404,7 @@ window.addEventListener('scroll', () => {
   progress.style.width = scrolled + '%';
 }, { passive:true });
 
-const targets = document.querySelectorAll('.eyebrow, .display, .sub, .stage-tag, .stage h2, .stage p, .pull, .core, .feature-item, .cost-btn, .closing blockquote, .btn');
+const targets = document.querySelectorAll('.eyebrow, .display, .sub, .hero-video, .stage-tag, .stage h2, .stage p, .pull, .core, .feature-item, .cost-btn, .closing blockquote, .btn');
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
 },{threshold:0.15});
@@ -495,6 +512,15 @@ document.querySelectorAll('.modal-overlay').forEach(overlay=>{
 });
 document.addEventListener('keydown',(e)=>{
   if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+});
+
+// hero 廣告影片：點擊縮圖才載入 iframe
+document.querySelectorAll('.hero-video').forEach(box=>{
+  box.addEventListener('click', ()=>{
+    const id = box.dataset.ytId;
+    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="廣告影片" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>`;
+    if(typeof gtag==='function') gtag('event','play_ad_video',{page_title:document.title});
+  }, { once:true });
 });
 
 // CTA
