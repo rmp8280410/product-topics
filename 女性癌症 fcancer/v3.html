@@ -61,7 +61,9 @@ h1,h2,blockquote,.serif{font-family:"Noto Serif TC",serif}
 h1.display{font-size:clamp(2.3rem,6vw,4.4rem);font-weight:600;line-height:1.45;color:var(--ink);
   opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease;max-width:760px}
 h1.display.in{opacity:1;transform:translateY(0)}
+h1.display .title-first{white-space:nowrap}
 h1.display .soft{color:var(--rose-deep)}
+@media(max-width:680px){h1.display{font-size:clamp(1.5rem,7.2vw,2.15rem)}}
 .hero p.sub{margin-top:26px;font-size:1.1rem;line-height:1.95;color:var(--muted);max-width:520px;
   opacity:0;transform:translateY(18px);transition:opacity .9s ease .15s,transform .9s ease .15s}
 .hero p.sub.in{opacity:1;transform:translateY(0)}
@@ -221,7 +223,7 @@ h1.display .soft{color:var(--rose-deep)}
 <div class="hero-constellation" aria-hidden="true"><span>健康</span><span>生活</span><span>家人</span></div>
 <div class="wrap hero-inner">
 <p class="eyebrow">For Her · 為妳準備的</p>
-<h1 class="display">女人，妳想守護的人生，<br><span class="soft">保障準備好了嗎？</span></h1>
+<h1 class="display"><span class="title-first">女人，妳想守護的人生，</span><br><span class="soft">保障準備好了嗎？</span></h1>
 <p class="sub">每個人生階段，都值得一份不慌張的準備。</p>
 <div class="hero-video" data-yt-id="eVsUTSZMCKQ">
 <img class="hero-video-thumb" src="https://img.youtube.com/vi/eVsUTSZMCKQ/hqdefault.jpg" alt="廣告影片預覽" loading="lazy">
