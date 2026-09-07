@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>你的房子，真的是你的嗎？</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BVVB2KGCTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BVVB2KGCTF');
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -533,6 +540,31 @@
   /* ─── SECTION INNER LAYOUT ─── */
   .inner { max-width: 880px; width: 100%; }
 
+  /* ─── CTA BUTTON ─── */
+  .cta-btn {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-top: 1rem;
+    box-shadow: 0 12px 30px rgba(10,61,145,.28);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(10,61,145,.4); }
+
+  /* ─── MODAL ─── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(17,24,39,.55); display: none; align-items: center; justify-content: center; z-index: 999; padding: 24px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: #fff; border-radius: 24px; max-width: 440px; width: 100%; padding: 36px 32px; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,.25); transform: scale(.95); opacity: 0; transition: transform .3s ease, opacity .3s ease; text-align: center; }
+  .modal-overlay.open .modal-box { transform: scale(1); opacity: 1; }
+  .modal-close { position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; background: #F1F4F8; border: none; font-size: 1.1rem; color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .modal-close:hover { background: #E2E8F0; }
+  .modal-box h3 { font-size: 1.25rem; font-weight: 800; color: var(--dark); line-height: 1.6; }
+
   @media (max-width: 680px) {
     section { padding: 8vh 6vw; }
     .split { grid-template-columns: 1fr; }
@@ -884,11 +916,20 @@
       </div>
     </div>
 
+    <a class="cta-btn reveal" href="#" id="ctaBtn" style="transition-delay:0.15s">詢問與試算</a>
+
     <p class="fine reveal" style="transition-delay:0.25s; margin-top:2rem">
       本頁內容為觀念說明，非商品條款。實際保障內容、給付項目與條件，依各保險公司公開說明文件及保險契約條款為準。
     </p>
   </div>
 </section>
+
+<div class="modal-overlay" id="modal-cta">
+  <div class="modal-box">
+    <button class="modal-close" data-close>✕</button>
+    <h3 style="font-size:1rem;white-space:nowrap">關閉頁面，與業務朋友討論詳情！</h3>
+  </div>
+</div>
 
 <script>
   // ── Scroll Reveal ──
@@ -992,6 +1033,25 @@
       }
     });
   }, 100);
+
+  // ── CTA modal ──
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+    const closeBtn = overlay.querySelector('[data-close]');
+    if (closeBtn) closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  });
+  const ctaBtn = document.getElementById('ctaBtn');
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (typeof gtag === 'function') gtag('event', 'click_calculate', { page_title: document.title });
+      const modal = document.getElementById('modal-cta');
+      if (modal) modal.classList.add('open');
+    });
+  }
 </script>
 </body>
 </html>
